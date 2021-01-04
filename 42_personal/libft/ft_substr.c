@@ -6,11 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 21:31:37 by sna               #+#    #+#             */
-/*   Updated: 2020/12/27 21:58:21 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:29:34 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.t"
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

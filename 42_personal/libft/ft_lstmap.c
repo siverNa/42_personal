@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 20:59:51 by sna               #+#    #+#             */
-/*   Updated: 2020/12/31 21:12:05 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 20:01:42 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		if ((curr->next = ft_lstnew(f(list_adr->content))) == 0)
 		{
-			ft_lstclear(&new_head, del);
+			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
 		curr = curr->next;

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 20:02:49 by sna               #+#    #+#             */
-/*   Updated: 2020/12/26 20:15:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:26:04 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*tmp;
+	unsigned char	*c_dest;
 	unsigned char	*c_src;
+	size_t			i;
 
-	if (dest == '\0' && src == '\0')
-		return (0);
-	if (dest <= src)
+	if (dest == 0 && src == 0)
+		return (NULL);
+	c_dest = (unsigned char *)dest;
+	c_src = (unsigned char *)src;
+	i = 0;
+	if (c_dest > c_src)
 	{
-		tmp = dest;
-		c_src = src;
-		while (n--)
-			*tmp++ = *s++;
+		while (++i <= n)
+			c_dest[n - i] = c_src[n - i];
 	}
 	else
 	{
-		tmp = dest;
-		tmp = tmp + n;
-		c_src = src;
-		c_src = c_src + n;
-		while (n--)
-			*--tmp = *--s;
+		while (i < n)
+			c_dest[i] = c_src[i];
 	}
 	return (dest);
 }

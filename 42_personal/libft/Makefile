@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/03 13:48:37 by sna               #+#    #+#              #
-#    Updated: 2021/01/03 13:52:42 by sna              ###   ########.fr        #
+#    Updated: 2021/01/04 15:18:20 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\
 		ft_lstmap.c
 
-OBJS = $(SRCS: .c= .o)
+OBJS = $(SRCS:.c=.o)
 
-OBJS_BONUS = $(BONUS: .c= .o)
+OBJS_BONUS = $(BONUS:.c=.o)
 
 $(NAME): $(OBJS)
 		ar rcs $(NAME) $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 18:25:01 by sna               #+#    #+#             */
-/*   Updated: 2020/12/28 19:20:22 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:40:31 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result = (char *)malloc(sizeof(char) * (end - front + 1));
 	if (result == 0)
 		return (0);
-	ft_strlcpy(result, s1 + front, end - start + 1);
+	ft_strlcpy(result, s1 + front, end - front + 1);
 	return (result);
 }
 /*

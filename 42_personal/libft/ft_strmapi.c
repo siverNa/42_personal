@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:16:26 by sna               #+#    #+#             */
-/*   Updated: 2020/12/29 18:04:04 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:53:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*retult;
+	char	*result;
 	size_t	i;
 
 	if (!s || !f)

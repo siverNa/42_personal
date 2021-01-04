@@ -6,19 +6,19 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:22:43 by sna               #+#    #+#             */
-/*   Updated: 2020/12/25 18:52:30 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 15:43:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*d;
 	unsigned char	*s;
 
-	if (dest == '\0' && src == '\0')
+	if (dest == 0 && src == 0)
 		return (0);
 	i = 0;
 	d = (unsigned char *)dest;

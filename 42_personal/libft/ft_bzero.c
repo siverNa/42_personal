@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 17:51:13 by sna               #+#    #+#             */
-/*   Updated: 2020/12/25 18:04:15 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 15:40:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_bzero(void *s, size_t n)
 		ptr[i] = 0;
 		i++;
 	}
-	return (s);
 }
 /*
 ** The bzero() function fills the memory area of 's' with 0x00 as 'n' bytes.

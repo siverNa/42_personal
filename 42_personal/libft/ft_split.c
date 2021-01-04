@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 18:45:37 by sna               #+#    #+#             */
-/*   Updated: 2021/01/01 22:10:18 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:49:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_s_to_new(char *n_str, char const *s, size_t a_i, size_t str_len)
 	return (n_str);
 }
 
-char	**ft_split_sec(char **new_str, char const *s, char c, int count_str)
+char	**ft_split_sec(char **new_str, char const *s, char c, size_t count_str)
 {
 	size_t	a_i;
 	size_t	m_i;
@@ -57,7 +57,7 @@ char	**ft_split_sec(char **new_str, char const *s, char c, int count_str)
 	a_i = 0;
 	m_i = 0;
 	str_len = 0;
-	while (s[a_i] != '\0' && i < count_str)
+	while (s[a_i] != '\0' && m_i < count_str)
 	{
 		while (s[a_i] != '\0' && s[a_i] == c)
 			a_i++;
@@ -86,7 +86,7 @@ char	**ft_split(char const *s, char c)
 	count_str = ft_get_cnt(s, c);
 	if (!(new_str = (char **)malloc(sizeof(char *) * (count_str + 1))))
 		return (NULL);
-	ft_split_two(new_str, s, c, count_str);
+	ft_split_sec(new_str, s, c, count_str);
 	return (new_str);
 }
 /*

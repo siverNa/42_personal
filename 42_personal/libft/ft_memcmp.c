@@ -6,9 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 16:48:27 by sna               #+#    #+#             */
-/*   Updated: 2020/12/27 17:23:07 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:28:05 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {

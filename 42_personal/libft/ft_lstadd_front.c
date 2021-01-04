@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:57:56 by sna               #+#    #+#             */
-/*   Updated: 2020/12/30 18:57:48 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/04 19:55:47 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (list == 0 || new == 0)
+	if (lst == 0 || new == 0)
 		return ;
 	new->next = *lst;
 	*lst = new;
