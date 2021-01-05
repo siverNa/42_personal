@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:57:56 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:55:47 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 17:59:17 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 /*
-** Adds the element ’new’ at the beginning of the list.
+** Adds the element 'new' at the beginning of the list.
 */

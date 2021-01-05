@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:08:23 by sna               #+#    #+#             */
-/*   Updated: 2020/12/29 20:13:43 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:20:18 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_putendl_fd(char *s, int fd)
 	ft_putchar_fd('\n', fd);
 }
 /*
-** Outputs the string ’s’ to the given file descriptor, followed by a newline.
+** Outputs the string 's' to the given file descriptor, followed by a newline.
 */

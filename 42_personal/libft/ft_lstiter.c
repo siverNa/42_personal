@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 19:35:58 by sna               #+#    #+#             */
-/*   Updated: 2020/12/31 19:49:10 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:06:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 /*
-** Iterates the list ’lst’ and applies the function ’f’
+** Iterates the list 'lst' and applies the function 'f'
 ** to the content of each element.
 */

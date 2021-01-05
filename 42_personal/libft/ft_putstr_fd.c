@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:01:47 by sna               #+#    #+#             */
-/*   Updated: 2020/12/29 20:12:40 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:24:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 /*
-** Outputs the string ’s’ to the given file descriptor.
+** Outputs the string 's' to the given file descriptor.
 */

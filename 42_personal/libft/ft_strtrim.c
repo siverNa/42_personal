@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 18:25:01 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:40:31 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:39:33 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (result);
 }
 /*
-** Allocates (with malloc()) and returns a copy of ’s1’ with the characters
-** specified in ’set’ removed from the beginning and the end of the string.
+** Allocates (with malloc()) and returns a copy of 's1' with the characters
+** specified in 'set' removed from the beginning and the end of the string.
 ** If successful, return the manipulated 's1'.
 ** Returns NULL if failed or failed to allocate.
 */

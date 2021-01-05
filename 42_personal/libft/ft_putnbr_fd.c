@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:45:42 by sna               #+#    #+#             */
-/*   Updated: 2020/12/29 20:06:44 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:23:05 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 /*
-** Outputs the integer ’n’ to the given file descriptor.
+** Outputs the integer 'n' to the given file descriptor.
 */

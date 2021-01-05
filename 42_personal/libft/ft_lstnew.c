@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 17:10:33 by sna               #+#    #+#             */
-/*   Updated: 2020/12/30 17:57:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:13:17 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstnew(void *content)
 }
 /*
 ** Allocates (with malloc(3)) and returns a new element.
-** The variable ’content’ is initialized with
-** the value of the parameter ’content’.
-** The variable ’next’ is initialized to NULL.
+** The variable 'content' is initialized with
+** the value of the parameter 'content'.
+** The variable 'next' is initialized to NULL.
 */

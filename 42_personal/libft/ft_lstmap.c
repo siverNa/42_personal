@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 20:59:51 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 20:01:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:10:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (new_list);
 }
 /*
-** Iterates the list ’lst’ and applies the function ’f’
+** Iterates the list 'lst' and applies the function 'f'
 ** to the content of each element.
 ** Creates a new list resulting of the successive applications of
-** the function ’f’.
-** The ’del’ function is used to delete the content of an element if needed.
+** the function 'f'.
+** The 'del' function is used to delete the content of an element if needed.
 ** The new list. Return NULL if the allocation fails.
 */

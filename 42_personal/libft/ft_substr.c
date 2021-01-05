@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 21:31:37 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:29:34 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:49:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (c_s);
 }
 /*
-** Allocates (with malloc(3)) and returns a substring from the string ’s’
-** The substring begins at index ’start’ and is of maximum size ’len’
+** Allocates (with malloc(3)) and returns a substring from the string 's'
+** The substring begins at index 'start' and is of maximum size 'len'.
 ** If successful, return the partial string
 ** if 's' is empty or allocation fails, return NULL.
 */

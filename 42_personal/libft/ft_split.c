@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 18:45:37 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:49:46 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:27:05 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	**ft_split(char const *s, char c)
 }
 /*
 ** Allocates (with malloc(3)) and returns an array of strings
-** obtained by splitting ’s’ using the character ’c’ as a delimiter.
+** obtained by splitting 's' using the character 'c' as a delimiter.
 ** The array must be ended by a NULL pointer.
 ** The array of new strings resulting from the split.
 ** NULL if the allocation fails.

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:26:49 by sna               #+#    #+#             */
-/*   Updated: 2020/12/28 15:59:49 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:30:41 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 }
 /*
 ** Allocates (with malloc(3)) and returns a new string,
-** which is the result of the concatenation of ’s1’ and ’s2’.
+** which is the result of the concatenation of 's1' and 's2'.
 ** If successful, 's1' + 's2' returns combined memory.
 ** If unsuccessful, return NULL.
 */

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 18:50:32 by sna               #+#    #+#             */
-/*   Updated: 2020/12/31 19:20:45 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:01:44 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 }
 /*
 ** Deletes and frees the given element and every successor of that element,
-** using the function ’del’ and free(3).
+** using the function 'del' and free(3).
 ** Finally, the pointer to the list must be set to NULL.
 */

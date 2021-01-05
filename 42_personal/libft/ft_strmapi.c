@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:16:26 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:53:55 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 18:34:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (result);
 }
 /*
-** Applies the function ’f’ to each character of the string ’s’
+** Applies the function 'f' to each character of the string 's'
 ** to create a new string (with malloc())
-** resulting from successive applications of ’f’.
-** The string created from the successive applications of ’f’.
+** resulting from successive applications of 'f'.
+** The string created from the successive applications of 'f'
 ** or Returns NULL if the allocation fails.
 */
