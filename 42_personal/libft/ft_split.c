@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 18:45:37 by sna               #+#    #+#             */
-/*   Updated: 2021/01/05 18:27:05 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 19:07:17 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	**ft_split_sec(char **new_str, char const *s, char c, size_t count_str)
 		str_len = 0;
 		m_i++;
 	}
-	new_str[m_i] = '\0';
+	new_str[m_i] = 0;
 	return (new_str);
 }
 

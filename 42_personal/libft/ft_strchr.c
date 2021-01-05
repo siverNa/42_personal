@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 21:18:01 by sna               #+#    #+#             */
-/*   Updated: 2020/12/24 22:19:02 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 21:33:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	size_t i;
 
-	if (s == 0)
-		return (0);
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -25,8 +23,6 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
-	if (c == 0)
-		return ((char *)s + i);
 	return (0);
 }
 /*

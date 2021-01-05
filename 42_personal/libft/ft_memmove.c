@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 20:02:49 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 19:26:04 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 21:49:11 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else
 	{
-		while (i < n)
+		while (n-- > 0)
+		{
 			c_dest[i] = c_src[i];
+			i++;
+		}
 	}
 	return (dest);
 }

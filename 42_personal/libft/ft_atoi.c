@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 16:06:10 by sna               #+#    #+#             */
-/*   Updated: 2020/12/25 16:40:59 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/05 21:43:56 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_atoi(const char *nptr)
 {
 	int				check;
-	unsigned long	num;
+	unsigned int	num;
 	size_t			i;
 
 	num = 0;
@@ -35,7 +35,7 @@ int		ft_atoi(const char *nptr)
 		num = num * 10 + (nptr[i] - '0');
 		i++;
 	}
-	return ((int)num * check);
+	return (num * check);
 }
 /*
 ** ft_atoi() : atoi = char to int
