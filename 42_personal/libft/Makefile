@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/03 13:48:37 by sna               #+#    #+#              #
-#    Updated: 2021/01/06 19:50:02 by sna              ###   ########.fr        #
+#    Updated: 2021/01/06 20:32:55 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,6 @@ clean:
 fclean: clean
 		rm -f $(NAME)
 
-re:
-		fclean all
+re: fclean all
 
 .PHONY: bonus all clean fclean re
