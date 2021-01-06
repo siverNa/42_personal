@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/03 13:48:37 by sna               #+#    #+#              #
-#    Updated: 2021/01/04 20:28:27 by sna              ###   ########.fr        #
+#    Updated: 2021/01/06 19:50:02 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,6 @@ bonus: $(OBJS) $(OBJS_BONUS)
 		ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 all: $(NAME)
-
-so:
-	$(CC) -fPIC $(CFLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
 
 clean:
 		rm -f $(OBJS) $(OBJS_BONUS)
