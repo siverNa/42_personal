@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 21:18:01 by sna               #+#    #+#             */
-/*   Updated: 2021/01/05 21:33:58 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/06 18:46:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
+	if (s[i] == (char)c && c == 0)
+		return ((char *)s + i);
 	return (0);
 }
 /*

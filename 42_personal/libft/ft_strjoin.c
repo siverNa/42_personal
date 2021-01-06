@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:26:49 by sna               #+#    #+#             */
-/*   Updated: 2021/01/05 21:47:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/06 18:42:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s1_len;
 	size_t	s2_len;
 
-	if (s1 == 0 && s2 == 0)
-		return (0);
+	if (s1 == 0 || s2 == 0)
+		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	join_s = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
