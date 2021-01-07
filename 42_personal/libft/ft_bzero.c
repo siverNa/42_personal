@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 17:51:13 by sna               #+#    #+#             */
-/*   Updated: 2021/01/04 15:40:49 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/07 14:33:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	unsigned char	*ptr;
 	size_t			i;
 
-	ptr = s;
+	ptr = (unsigned char *)s;
 	i = 0;
 	while (i < n)
 	{
