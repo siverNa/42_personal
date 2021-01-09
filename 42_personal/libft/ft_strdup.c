@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 19:13:41 by sna               #+#    #+#             */
-/*   Updated: 2020/12/27 20:11:51 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/09 15:56:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 
 	len = ft_strlen(s);
-	temp = malloc(sizeof(char) * (len + 1));
+	temp = (char *)malloc(sizeof(char) * (len + 1));
 	if (temp == 0)
 		return (0);
 	i = 0;
