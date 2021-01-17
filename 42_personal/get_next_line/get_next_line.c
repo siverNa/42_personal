@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:24:05 by sna               #+#    #+#             */
-/*   Updated: 2021/01/17 16:06:39 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/17 21:13:35 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ int		get_next_line(int fd, char **line)
 	{
 		buff[rd_len] = 0;
 		if (rem[fd] == NULL)
-			rem[fd] = ft_strdup(buff);
+			temp = ft_strdup(buff);
 		else
-			rem[fd] = ft_strjoin(rem[fd], buff);
-		temp = rem[fd];
+			temp = ft_strjoin(rem[fd], buff);
 		if (rem[fd] != 0)
 			free(rem[fd]);
 		rem[fd] = temp;
