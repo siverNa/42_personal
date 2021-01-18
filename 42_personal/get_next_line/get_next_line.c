@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:24:05 by sna               #+#    #+#             */
-/*   Updated: 2021/01/18 17:03:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/18 18:30:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		get_line(char **line, char **rem, char *nl_addr)
 		*rem = temp;
 		return (1);
 	}
-	else if (*rem)
+	if (*rem)
 	{
 		*line = ft_strdup(*rem);
 		free(*rem);
