@@ -6,11 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:56:04 by sna               #+#    #+#             */
-/*   Updated: 2021/01/17 18:03:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/01/20 17:29:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {
