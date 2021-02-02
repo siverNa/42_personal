@@ -1,75 +1,68 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include "./libft/libft.h"
 
-void	ft_putchar(char c)
+int		print_char(int c)
 {
-	write(1, &c, 1);
+	int		len;
+
+	len = 0;
+
+	len += ft_putchar(c);
+
+	return (len);
 }
 
-void	ft_putnbr(int n)
+int		process_format(va_list ap, char *format)
 {
-	if (n == -2147483648)
+	int		len;
+	int		i;
+	//int		width;
+
+	i = 0;
+	len = 0;
+	//width = 0;
+	while (format[i] != '\0')
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		while (format[i] != '%' && format[i] != '\0')
+			len += ft_putchar(format[i++]);
+		if (format[i] == '%')
+		{
+			//while (format[++i] != '\0' && !(ft_strchr("cspdiuxX%", format[i])))
+			i++;
+			if (format[i] == 'c') //서식 지정자가 'c' 라면 문자하나 출력
+			{
+				len += print_char(va_arg(ap, int));
+			}
+			else if (format[i] == '%') // '%' 라면 %만 출력하도록 설정
+				len += print_char('%');
+		}
 	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-n);
-	}
-	else
-	{
-		if (n >= 10)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
+
+	return (len);
 }
 
-int practice_printf(const char *format, ...)
+int		practice_printf(const char *format, ...)
 {
 	va_list ap;
 	int		len;
-	char	c_var;
 
 	len = 0;
 	va_start(ap, format);
-	while (*format && format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'c')
-			{
-				c_var = va_arg(ap, int);
-				write(1, &c_var, 1);
-				len++;
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				c_var = va_arg(ap, int);
-				ft_putnbr(c_var);
-				len++;
-			}
-			if (format != NULL)
-				format++;
-		}
-		else
-		{
-			write(1, format, 1);
-			format++;
-			len++;
-		}
-	}
+
+	len = process_format(ap, (char *)format);
 	va_end(ap);
 	return (len);
 }
 
 int main(void)
 {
-	printf("printf value : %d\n", 20);
-	practice_printf("practice_printf value : %d\n", 20);
+	printf("printf value : %%\n");
+	practice_printf("practice_printf value : %%\n");
+	
+	printf("printf value : %c\n", 'a');
+	practice_printf("practice_printf value : %c\n", 'a');
 
 	return (0);
 }
