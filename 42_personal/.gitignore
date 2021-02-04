@@ -6,9 +6,8 @@ gnl-war-machine-v2019
 GNL_lover
 42TESTERS-GNL
 gnlkiller
-
 #lib
 *.a
-
 #exe
 *.out
+.vscode
