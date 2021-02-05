@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/04 18:38:48 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/05 19:27:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,11 @@ void			init_form(t_form *form);
 int				print_char(int c, t_form *form);
 int				print_width(int width, int f_len, int flag);
 
+/*
+** ft_printf_string.c function
+*/
+
+char			*str_to_buff(char *str, int prec_len, int s_len);
+int				put_str_width(char **buff, t_form *form);
+int				print_string(char *str, t_form *form);	
 #endif

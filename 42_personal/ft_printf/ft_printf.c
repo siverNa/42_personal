@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:11:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/04 19:20:24 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/05 17:55:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		print_type(va_list ap, t_form *form)
 		len = print_char(va_arg(ap, int), form);
 	else if (type == '%')
 		len = print_char('%', form);
+	else if (type == 's')
+		len = print_string(va_arg(ap, char *), form);
 	return (len);
 }
 
