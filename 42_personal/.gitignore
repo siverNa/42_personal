@@ -11,3 +11,4 @@ gnlkiller
 #exe
 *.out
 .vscode
+*.gch
