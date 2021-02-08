@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/07 20:53:25 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/08 19:48:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int				ft_printf(const char *format, ...);
 */
 
 void			init_form(t_form *form);
+int				ft_nbrlen(unsigned long long nbr, t_form *form);
+char			*ft_baseset(char type);
 
 /*
 ** ft_printf_char.c function
@@ -65,5 +67,16 @@ int				print_width(int width, int f_len, int flag);
 char			*str_to_buff(char *str, int prec_len, int s_len);
 int				put_str_width(char **buff, t_form *form);
 int				print_string(char *str, t_form *form);
+
+/*
+** ft_printf_number.c function
+*/
+
+int				put_pointer_nbr(char **n_buff);
+int				put_minus(t_form *form, char **n_buff);
+int				put_minus2(t_form *form, char **n_buff, int n_len);
+int				put_str_prec(unsigned long long nbr, t_form *form,
+		char **n_buff);
+int				print_number(unsigned long long nbr, t_form *form);
 
 #endif

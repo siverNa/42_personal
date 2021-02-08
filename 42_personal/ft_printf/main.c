@@ -29,11 +29,11 @@ int main(void)
 
 	a = printf("printf value is : %-15s\n", "hello");
 	b = ft_printf("ft_printf value is : %-15s\n", "hello");
+	printf("printf return : %d, ft_printf return %d\n", a, b);
 
 	printf("   printf value is : %.4s\n", "hello");
 	ft_printf("ft_printf value is : %.4s\n", "hello");
 
-
-	printf("printf return : %d, ft_printf return %d\n", a, b);
-
+	printf("   printf value is : %d\n", 50);
+	ft_printf("ft_printf value is : %d\n", 50);
 }

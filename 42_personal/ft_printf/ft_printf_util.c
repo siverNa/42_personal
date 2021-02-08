@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:25:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/04 18:37:57 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/08 19:48:24 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,30 @@ void	init_form(t_form *form)
 	form->width = 0;
 	form->prec = 0;
 	form->type = 0;
+}
+
+int		ft_nbrlen(unsigned long long nbr, t_form *form)
+{
+	int		i;
+
+	if (nbr == 0 && form->prec != 0)
+		return (1);
+	i = 0;
+	while (nbr)
+	{
+		i++;
+		nbr = nbr / form->nbr_base;
+	}
+	return (i);
+}
+
+char	*ft_baseset(char type)
+{
+	if (type == 'd' || type == 'i' || type == 'u')
+		return ("0123456789");
+	else if (type == 'x' || type == 'p')
+		return ("0123456789abcdef");
+	else if (type == 'X')
+		return ("0123456789ABCDEF");
+	return (0);
 }
