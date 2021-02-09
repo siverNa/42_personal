@@ -34,6 +34,9 @@ int main(void)
 	printf("   printf value is : %.4s\n", "hello");
 	ft_printf("ft_printf value is : %.4s\n", "hello");
 
+	printf("   printf value is : 하하호호 %c 하하호호\n", '\0');
+	ft_printf("ft_printf value is : 하하호호 %c 하하호호\n", '\0');
+
 	printf("   printf value is : %d\n", 50);
 	ft_printf("ft_printf value is : %d\n", 50);
 }

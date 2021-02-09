@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:25:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/08 19:48:24 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/09 18:13:57 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_form(t_form *form)
 	form->width = 0;
 	form->prec = 0;
 	form->type = 0;
+	form->nbr_base = 10;
+	form->nbr_sign = 1;
 }
 
 int		ft_nbrlen(unsigned long long nbr, t_form *form)
