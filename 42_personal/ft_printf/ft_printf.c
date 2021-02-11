@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:11:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/08 19:51:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/11 17:01:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	check_form(va_list ap, char *format, t_form *form, int i)
 	else if (format[i] == '-')
 		form->flag |= F_MINUS;
 	else if (format[i] == '.')
+	{
 		form->flag |= F_PREC;
+		form->prec = 0;
+	}
 	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, form, i);
 }
@@ -91,7 +94,7 @@ int		process_format(va_list ap, char *format)
 			while (format[++i] != '\0' && !(ft_strchr(TYPE, format[i])))
 				check_form(ap, format, form, i);
 			form->type = format[i++];
-			if ((form->flag & F_MINUS || form->prec > 0) && form->type != '%')
+			if ((form->flag & F_MINUS || form->prec > -1) && form->type != '%')
 				form->flag &= (~F_ZERO);
 			len += print_type(ap, form);
 		}

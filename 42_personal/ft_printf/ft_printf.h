@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/08 19:48:58 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/11 18:07:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ char			*ft_baseset(char type);
 ** ft_printf_char.c function
 */
 
+int				print_width_len(t_form *form, int f_len);
 int				print_char(int c, t_form *form);
-int				print_width(int width, int f_len, int flag);
 
 /*
 ** ft_printf_string.c function
