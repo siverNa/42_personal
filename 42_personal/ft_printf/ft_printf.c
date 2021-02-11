@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:11:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/11 17:01:01 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/11 21:00:00 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check_width_and_prec(va_list ap, char *format, t_form *form, int i)
 
 void	check_form(va_list ap, char *format, t_form *form, int i)
 {
-	if (format[i] == '0' && !(form->flag & F_WIDTH) && !(form->flag & F_PREC))
+	if (format[i] == '0' && form->width == 0 && !(form->flag & F_PREC))
 		form->flag |= F_ZERO;
 	else if (format[i] == '-')
 		form->flag |= F_MINUS;
