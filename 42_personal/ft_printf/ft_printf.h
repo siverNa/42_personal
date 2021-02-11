@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/02/11 18:07:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/02/11 21:08:21 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # define TYPE		"cspdiuxX%"
 # define F_MINUS	1
 # define F_ZERO		2
-# define F_WIDTH	4
-# define F_PREC		8
+# define F_PREC		4
 
 typedef struct	s_form
 {
