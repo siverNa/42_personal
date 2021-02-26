@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/24 19:42:25 by sna               #+#    #+#              #
-#    Updated: 2021/02/24 20:24:01 by sna              ###   ########.fr        #
+#    Updated: 2021/02/26 17:15:26 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,10 @@ RUN		apt-get update && apt-get -y upgrade && apt-get -y install \
 			wget
 
 COPY	./srcs/run.sh ./
-COPY	./srcs/default ./tmp
-COPY	./srcs/wp-config.php ./tmp
-COPY	./srcs/config.inc.php ./tmp
+COPY	./srcs/default ./etc/nginx/sites-available/
+COPY	./srcs/wp-config.php ./
+COPY	./srcs/config.inc.php ./
+COPY	./srcs/default_a ./
 
 EXPOSE	80 443
 
