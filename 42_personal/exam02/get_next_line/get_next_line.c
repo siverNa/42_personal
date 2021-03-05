@@ -77,10 +77,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s2_len = ft_strlen(s2);
 	join_s = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (join_s == 0)
-		return (NULL);
+		return (0);
 	ft_memcpy(join_s, s1, s1_len);
-	ft_memcpy(join_s + sl_len, s2, s2_len);
-	join_s[s1_len + s2_len] = '\0';
+	ft_memcpy(join_s + s1_len, s2, s2_len);
+	join_s[s1_len + s2_len] = 0;
 	return (join_s);
 }
 
@@ -110,7 +110,7 @@ int		get_line(char **line, char *nl_addr, char **rem)
 
 int		get_next_line(char **line)
 {
-	static char	**rem;
+	static char	*rem;
 	char		buff[BUFFER_SIZE + 1];
 	char		*temp;
 	char		*nl_addr;
@@ -118,17 +118,17 @@ int		get_next_line(char **line)
 
 	if (!line || BUFFER_SIZE < 1)
 		return (-1);
-	if (*rem == NULL)
-		*rem = ft_strdup("");
-	while ((nl_addr = ft_strchr(*rem, '\n')) == 0 &&
+	if (rem == NULL)
+		rem = ft_strdup("");
+	while ((nl_addr = ft_strchr(rem, '\n')) == 0 &&
 			(rd_len = read(0, buff, BUFFER_SIZE) > 0))
 	{
 		buff[rd_len] = '\0';
-		temp = ft_strjoin(*rem, buff);
-		free(*rem);
-		*rem = temp;
+		temp = ft_strjoin(rem, buff);
+		free(rem);
+		rem = temp;
 	}
 	if (rd_len < 0)
 		return (-1);
-	return (get_line(line, nl_addr, rem));
+	return (get_line(line, nl_addr, &rem));
 }
