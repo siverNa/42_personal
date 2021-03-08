@@ -152,7 +152,8 @@ char	*ft_baseset(char type)
 	return (0);
 }
 
-int		put_minus2(t_form *form, char **n_buff, int n_len)
+/* 필요없는 부분
+int		put_minus2(t_form *form,char **n_buff, int n_len)
 {
 	int				nbr_len;
 
@@ -169,6 +170,7 @@ int		put_minus2(t_form *form, char **n_buff, int n_len)
 	}
 	return (nbr_len);
 }
+*/
 
 int		put_str_width(char **buff, t_form *form)
 {
@@ -237,7 +239,7 @@ int		print_number(unsigned long long nbr, t_form *form)
 	nbr_len = put_str_prec(nbr, form, &nbr_buff);
 	nbr_len += put_minus(form, &nbr_buff);
 	s_len = put_str_width(&nbr_buff, form);
-	s_len += put_minus2(form, &nbr_buff, nbr_len);
+	//s_len += put_minus2(form,&nbr_buff, nbr_len);
 	ft_putstr(nbr_buff);
 	free(nbr_buff);
 	return (s_len);
