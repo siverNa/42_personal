@@ -19,7 +19,9 @@ char	*ft_strchr(const char *s, int c)
 int		ft_strlen(const char *s)
 {
 	size_t 		i;
-
+	
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 		i++;
@@ -92,8 +94,8 @@ int		get_line(char **line, char *nl_addr, char **rem)
 	{
 		nl_addr[0] = '\0';
 		*line = ft_strdup(*rem);
-		free(*rem);
 		temp = ft_strdup(nl_addr + 1);
+		free(*rem);
 		*rem = temp;
 		return (1);
 	}
