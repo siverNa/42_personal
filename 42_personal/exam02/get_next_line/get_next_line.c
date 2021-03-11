@@ -116,7 +116,7 @@ int		get_next_line(char **line)
 	char		*nl_addr;
 	int			rd_len;
 
-	if (!line || BUFFER_SIZE < 1)
+	if (!line)
 		return (-1);
 	if (rem == NULL)
 		rem = ft_strdup("");
