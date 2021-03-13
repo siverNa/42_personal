@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 16:06:10 by sna               #+#    #+#             */
-/*   Updated: 2021/01/06 16:18:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/03/13 14:57:30 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int				check;
 	unsigned long	num;
@@ -21,8 +21,8 @@ int		ft_atoi(const char *nptr)
 	num = 0;
 	check = 1;
 	i = 0;
-	while (nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r' ||
-			nptr[i] == '\t' || nptr[i] == '\v' || nptr[i] == ' ')
+	while (nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r' || nptr
+		[i] == '\t' || nptr[i] == '\v' || nptr[i] == ' ')
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{

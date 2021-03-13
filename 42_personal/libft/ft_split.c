@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 18:45:37 by sna               #+#    #+#             */
-/*   Updated: 2021/01/08 17:46:25 by sna              ###   ########.fr       */
+/*   Updated: 2021/03/13 14:31:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ char	**ft_split_sec(char **new_str, char const *s, char c, size_t count_str)
 			a_i++;
 			str_len++;
 		}
-		if (!(new_str[m_i] = (char *)malloc(sizeof(char) * (str_len + 1))))
+		new_str[m_i] = (char *)malloc(sizeof(char) * (str_len + 1));
+		if (new_str[m_i] == NULL)
 			return (ft_free(new_str));
 		ft_s_to_new(new_str[m_i], s, a_i, str_len);
 		str_len = 0;
@@ -98,7 +99,8 @@ char	**ft_split(char const *s, char c)
 	if (s == 0)
 		return (NULL);
 	count_str = ft_get_cnt(s, c);
-	if (!(new_str = (char **)malloc(sizeof(char *) * (count_str + 1))))
+	new_str = (char **)malloc(sizeof(char *) * (count_str + 1));
+	if (new_str == NULL)
 		return (NULL);
 	ft_split_sec(new_str, s, c, count_str);
 	return (new_str);

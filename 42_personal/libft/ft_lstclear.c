@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 18:50:32 by sna               #+#    #+#             */
-/*   Updated: 2021/01/05 18:01:44 by sna              ###   ########.fr       */
+/*   Updated: 2021/03/13 16:02:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *link;
+	t_list	*link;
 
 	if (lst == 0 || del == 0)
 		return ;

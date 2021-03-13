@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 19:05:05 by sna               #+#    #+#             */
-/*   Updated: 2021/01/05 18:14:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/03/13 15:49:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	size_t	i;
 
