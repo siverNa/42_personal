@@ -6,21 +6,21 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:42:29 by sna               #+#    #+#             */
-/*   Updated: 2021/03/13 15:13:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/03/13 16:21:39 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	determin(int n)
+long long	determin(int n)
 {
-	int			temp;
+	long long	temp;
 
 	if (n < 0)
 		temp = -(long long)n;
 	else
-		temp = (long long n);
-	return (temp);
+		temp = (long long)n;
+	return ((long long)temp);
 }
 
 int	get_len_int(int n)
