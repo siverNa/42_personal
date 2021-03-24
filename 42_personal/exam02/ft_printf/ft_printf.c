@@ -322,6 +322,8 @@ int		process_format(va_list ap, char *format)
 			init_form(form);
 			while (format[++i] != '\0' && !(ft_strchr(TYPE, format[i])))
 				check_form(format, form, i);
+			if (format[i] == '\0')
+				break;
 			form->type = format[i++];
 			len += print_type(ap, form);
 		}
