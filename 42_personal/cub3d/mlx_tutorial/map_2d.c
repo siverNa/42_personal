@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "./minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 
 #define X_EVENT_KEY_PRESS			2
 #define X_EVENT_KEY_EXIT			17
