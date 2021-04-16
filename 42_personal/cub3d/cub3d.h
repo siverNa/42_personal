@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/04/15 18:54:28 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/16 17:45:51 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+# include <fcntl.h>
 # include "libft/libft.h"
 /*
 ** if use mac, modify "./mlx/mlx.h", maybe
@@ -61,12 +62,24 @@ typedef	struct	s_game
 	void		*win;
 	t_img		img;
 	char		**map;
+	int			check[8];
 }				t_game;
 
+/*
+** cub3d.c
+*/
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
-int				print_error(int e_code, char *msg);
 int				check_file_extension(char *file);	
 void			window_init(t_game *game);
+/*
+** cub3d_util.c
+*/
+void			freenull(void **var);
+int				print_error(int e_code, char *msg);
+/*
+** read_map.c
+*/
+int				open_file(char *file_path, t_game *game);
 
 #endif

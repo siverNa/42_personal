@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/04/15 18:55:33 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/16 17:42:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ int			deal_key(int key_code, t_game *game)
 int			close_window(t_game *game)
 {
 	exit(0);
-}
-
-int			print_error(int e_code, char *msg)
-{
-	if (e_code == 0)
-	{
-		write(1, "Error\n", 6);
-		write(1, msg, ft_strlen(msg));
-		write(1, "\n", 1);
-	}
 }
 
 int			check_file_extension(char *file)
@@ -69,6 +59,8 @@ int 		main(int argc, char **argv)
 	{
 		if (check_file_extension(argv[1]) == 0)
 			return (print_error(0, "wrong file extension"));
+		if (open_file(argv[1], &game) == 0)
+			return (0);
 	}
 
 	window_init(&game);
