@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/04/16 17:45:51 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/20 18:21:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ typedef	struct	s_game
 	void		*win;
 	t_img		img;
 	char		**map;
+	int			**texture;
+	int			**buf;
 	int			check[8];
+	t_vector	map_size;
+	int			sprite_num;
 }				t_game;
 
 /*
@@ -70,7 +74,6 @@ typedef	struct	s_game
 */
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
-int				check_file_extension(char *file);	
 void			window_init(t_game *game);
 /*
 ** cub3d_util.c
@@ -81,5 +84,12 @@ int				print_error(int e_code, char *msg);
 ** read_map.c
 */
 int				open_file(char *file_path, t_game *game);
+int				read_file(t_game *game, int fd, int *is_finish);
+int				read_map(t_game *game, int fd, char *line);
+/*
+** check_map.c
+*/
+int				check_map(t_game *game);
+int				check_file_extension(char *file);
 
 #endif

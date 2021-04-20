@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/04/16 17:42:26 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/20 16:56:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,6 @@ int			deal_key(int key_code, t_game *game)
 int			close_window(t_game *game)
 {
 	exit(0);
-}
-
-int			check_file_extension(char *file)
-{
-	int			i;
-	char		*extension;
-
-	extension = 0;
-	i = ft_strlen(file) - 1;
-	while (i >= 0)
-	{
-		if (file[i] == '.')
-		{
-			extension = file + i;
-			break ;
-		}
-		i--;
-	}
-	if (!extension)
-		return (0);
-	return (!ft_strncmp(extension, ".cub", 5));
 }
 
 void		window_init(t_game *game)
