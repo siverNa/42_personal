@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/04/20 16:56:53 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/23 16:03:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int 		main(int argc, char **argv)
 		if (check_file_extension(argv[1]) == 0)
 			return (print_error(0, "wrong file extension"));
 		if (open_file(argv[1], &game) == 0)
-			return (0);
+			return (print_error(0, "someting wrong"));
 	}
 
 	window_init(&game);

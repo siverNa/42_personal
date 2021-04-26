@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/04/20 18:21:58 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/26 16:21:22 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ typedef struct	s_vector
 	double		y;
 }				t_vector;
 
+typedef struct	s_sprite
+{
+	double		x;
+	double		y;
+	double		distance;
+}				t_sprite;
+
+typedef struct	s_player
+{
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
+	double		speed;
+}				t_player;
+
 typedef struct	s_img
 {
 	void		*img;
@@ -67,6 +82,11 @@ typedef	struct	s_game
 	int			check[8];
 	t_vector	map_size;
 	int			sprite_num;
+	t_player	player;
+	t_vector	screen_size;
+	t_vector	fc_color;
+	t_sprite	*sprite;
+	double		*z_buffer;
 }				t_game;
 
 /*
@@ -78,6 +98,8 @@ void			window_init(t_game *game);
 /*
 ** cub3d_util.c
 */
+int				free_all(t_game *game);
+int				free_map(void **map, int cnt);
 void			freenull(void **var);
 int				print_error(int e_code, char *msg);
 /*
@@ -86,10 +108,27 @@ int				print_error(int e_code, char *msg);
 int				open_file(char *file_path, t_game *game);
 int				read_file(t_game *game, int fd, int *is_finish);
 int				read_map(t_game *game, int fd, char *line);
+int				set_map(t_game *game, t_list *map_list);
+int				set_player(t_player *player, int y, int x, char dir);
 /*
 ** check_map.c
 */
+int				padding_map(t_game *game);
+int				check_hole(t_game *game, int y, int x);
 int				check_map(t_game *game);
 int				check_file_extension(char *file);
+/*
+** check_map_identifier.c
+*/
+int				check_id(char **arr, int max);
+int				check_idnum(t_game *game, int id, int op);
+int				parsing(t_game *game, char *line);
+/*
+** set_map_identifier.c
+*/
 
+int				set_screen_size(t_game *game, char *line);
+int				set_sprite(t_game *game);
+int				set_fc_color(t_game *game, char *line);
+int				set_texture(t_game *game, char *line, int dir);
 #endif
