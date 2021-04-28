@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 17:09:52 by sna               #+#    #+#             */
-/*   Updated: 2021/04/26 13:30:39 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/28 17:19:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,19 @@ int		parsing(t_game *game, char *line)
 		return (1);
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		return (check_idnum(game, 0, set_texture(game, line + 3, 0)));
+		//return (check_idnum(game, 0, 1));
 	if (ft_strncmp(line, "SO ", 3) == 0)
 		return (check_idnum(game, 1, set_texture(game, line + 3, 1)));
+		//return (check_idnum(game, 1, 1));
 	if (ft_strncmp(line, "WE ", 3) == 0)
 		return (check_idnum(game, 2, set_texture(game, line + 3, 2)));
+		//return (check_idnum(game, 2, 1));
 	if (ft_strncmp(line, "EA ", 3) == 0)
 		return (check_idnum(game, 3, set_texture(game, line + 3, 3)));
+		//return (check_idnum(game, 3, 1));
 	if (ft_strncmp(line, "S ", 2) == 0)
 		return (check_idnum(game, 4, set_texture(game, line + 2, 4)));
+		//return (check_idnum(game, 4, 1));
 	if (ft_strncmp(line, "F ", 2) == 0)
 		return (check_idnum(game, 5, set_fc_color(game, line)));
 	if (ft_strncmp(line, "C ", 2) == 0)

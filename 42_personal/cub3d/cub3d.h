@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/04/26 16:21:22 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/28 17:18:12 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,10 @@ typedef	struct	s_game
 /*
 ** cub3d.c
 */
+int				game_init(t_game *game);
+int				window_init(t_game *game, int width, int height);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
-void			window_init(t_game *game);
 /*
 ** cub3d_util.c
 */
@@ -126,7 +127,6 @@ int				parsing(t_game *game, char *line);
 /*
 ** set_map_identifier.c
 */
-
 int				set_screen_size(t_game *game, char *line);
 int				set_sprite(t_game *game);
 int				set_fc_color(t_game *game, char *line);

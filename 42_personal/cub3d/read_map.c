@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:29:01 by sna               #+#    #+#             */
-/*   Updated: 2021/04/26 16:22:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/04/28 18:12:59 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ int		read_file(t_game *game, int fd, int *is_finish)
 		cnt = -1;
 		*is_finish = 0;
 		while (++cnt < 8)
+		{
 			*is_finish += game->check[cnt];
+			printf("is_finish : %d\n", *is_finish);
+		}
+		printf("end ++cnt while\n");
 		if (*is_finish == 8)
 		{
 			freenull((void **)&line);
@@ -122,13 +126,13 @@ int		read_file(t_game *game, int fd, int *is_finish)
 				return (print_error(0, "wrong map"));
 			break ;
 		}
-		else
-			write(1, "not is_finish 8\n", 16);
 		if (parsing(game, line) == 0)
 		{
 			freenull((void **)&line);
 			return (print_error(0, "wrong identifier"));
 		}
+		else
+			printf("%s\n", line);
 		//printf("%s\n", line);
 		freenull((void **)&line);
 	}
