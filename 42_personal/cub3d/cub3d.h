@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/04/28 17:18:12 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/10 16:28:57 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,15 @@ typedef	struct	s_game
 	double		*z_buffer;
 }				t_game;
 
+typedef struct	s_ray
+{
+	t_vector	side_dist;
+	t_vector	delta_dist;
+	double		perp_wall_dist;
+	t_vector	step;
+	int			side;
+}				t_ray;
+
 /*
 ** cub3d.c
 */
@@ -96,6 +105,7 @@ int				game_init(t_game *game);
 int				window_init(t_game *game, int width, int height);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
+void			start_game(t_game *game);
 /*
 ** cub3d_util.c
 */
@@ -131,4 +141,9 @@ int				set_screen_size(t_game *game, char *line);
 int				set_sprite(t_game *game);
 int				set_fc_color(t_game *game, char *line);
 int				set_texture(t_game *game, char *line, int dir);
+/*
+** raycast.c
+*/
+void			draw_floor_ceil(t_game *game, int floor, int ceil);
+int				raycasting(t_game *game);
 #endif
