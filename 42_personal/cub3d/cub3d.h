@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/10 16:28:57 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/11 19:17:31 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,11 @@ int				set_texture(t_game *game, char *line, int dir);
 /*
 ** raycast.c
 */
+void			draw_wall(t_game *game, t_ray ray, int x, t_vector tex);
 void			draw_floor_ceil(t_game *game, int floor, int ceil);
+int				get_tex_width(t_vector pos, t_vector ray_dir, t_ray ray);
+t_ray			init_dda(t_vector pos, t_vector ray_dir, t_vector map);
+double			dda(t_game *game, t_vector ray_dir, t_vector *map, t_ray *ray);
 int				raycasting(t_game *game);
+
 #endif
