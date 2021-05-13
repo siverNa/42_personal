@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/10 16:29:11 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 16:04:16 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ int			window_init(t_game *game, int width, int height)
 void		start_game(t_game *game)
 {
 	mlx_loop_hook(game->mlx, &raycasting, game);
-
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L >> 0, &deal_key, &game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 1L >> 0, &close_window, &game);
-
 	mlx_loop(game->mlx);
 }
 

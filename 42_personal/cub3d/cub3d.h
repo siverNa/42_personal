@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/11 19:17:31 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 16:00:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,16 @@ typedef struct	s_ray
 	int			side;
 }				t_ray;
 
+typedef struct	s_sprite_ray
+{
+	t_vector	draw_start;
+	t_vector	draw_end;
+	t_vector	pos;
+	t_vector	tex;
+	t_vector	transform;
+	t_vector	size;
+}				t_sprite_ray;
+
 /*
 ** cub3d.c
 */
@@ -144,11 +154,24 @@ int				set_texture(t_game *game, char *line, int dir);
 /*
 ** raycast.c
 */
-void			draw_wall(t_game *game, t_ray ray, int x, t_vector tex);
-void			draw_floor_ceil(t_game *game, int floor, int ceil);
 int				get_tex_width(t_vector pos, t_vector ray_dir, t_ray ray);
 t_ray			init_dda(t_vector pos, t_vector ray_dir, t_vector map);
 double			dda(t_game *game, t_vector ray_dir, t_vector *map, t_ray *ray);
 int				raycasting(t_game *game);
+/*
+** draw_game.c
+*/
+void    		draw_screen(t_game *game);
+void			draw_wall(t_game *game, t_ray ray, int x, t_vector tex);
+void			draw_floor_ceil(t_game *game, int floor, int ceil);
+/*
+** check_sprite.c
+*/
+void    		draw_sprite(t_game *game, t_sprite_ray spr_ray,
+							int spr_screen_x);
+void    		init_sprite_ray(t_game *game, t_sprite_ray *spr_ray,
+							int *spr_screen_x, int i);
+void    		present_sprite(t_game *game);
+void    		sort_sprite(t_game *game);
 
 #endif

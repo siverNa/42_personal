@@ -6,61 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:19:18 by sna               #+#    #+#             */
-/*   Updated: 2021/05/11 19:15:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 11:18:19 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_wall(t_game *game, t_ray ray, int x, t_vector tex)
-{
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	double		step;
-	double		tex_pos;
-
-	line_height = (int)(game->screen_size.y / ray.perp_wall_dist);
-	draw_start = -line_height / 2 + game->screen_size.y / 2;
-	if (draw_start < 0)
-		draw_start = 0;
-	draw_end = line_height / 2 + game->screen_size.y / 2;
-	if (draw_end >= game->screen_size.y)
-		draw_end = game->screen_size.y - 1;
-	step = 1.0 * TEXHEIGHT / line_height;
-	tex_pos = (draw_start - game->screen_size.y / 2 +
-	line_height / 2) * step;
-	while (draw_start < draw_end)
-	{
-		tex.y = (int)tex_pos & (TEXHEIGHT - 1);
-		tex_pos += step;
-		game->buf[draw_start][x] =\
-			game->texture[ray.side][TEXHEIGHT * (int)tex.y + (int)tex.x];
-		draw_start++;
-	}
-}
-
-void	draw_floor_ceil(t_game *game, int floor, int ceil)
-{
-	int			x;
-	int			y;
-	int			color;
-
-	color = ceil;
-	y = -1;
-	while (++y < game->screen_size.y)
-	{
-		x = -1;
-		while (++x < game->screen_size.x)
-		{
-			if (y > game->screen_size.y / 2)
-				color = floor;
-			game->buf[y][x] = color;
-		}
-	}
-}
-
-int		get_texture_width(t_vector pos, t_vector ray_dir, t_ray ray)
+int		get_tex_width(t_vector pos, t_vector ray_dir, t_ray ray)
 {
 	int			tex_x;
 	double		wall_x;
@@ -119,7 +71,7 @@ double	dda(t_game *game, t_vector ray_dir, t_vector *map, t_ray *ray)
 		return ((map->x - game->player.pos.x + (1 - ray->step.x) / 2)
 		/ ray_dir.x);
 	else
-		return ((map->y - game->player.pos.y + (1 - ray->step.y) . 2)
+		return ((map->y - game->player.pos.y + (1 - ray->step.y) / 2)
 		/ ray_dir.y);
 }
 
@@ -142,9 +94,12 @@ int		raycasting(t_game *game)
 		ray_dir.y = game->player.dir.y +
 		game->player.plane.y * (2 * w / game->screen_size.x - 1);
 		ray.perp_wall_dist = dda(game, ray_dir, &map, &ray);
-		tex.x = get_texture_width(game->player.pos, ray_dir, ray);
+		tex.x = get_tex_width(game->player.pos, ray_dir, ray);
 		draw_wall(game, ray, w, tex);
 		game->z_buffer[w] = ray.perp_wall_dist;
 	}
+	sort_sprite(game);
+	present_sprite(game);
+	draw_screen(game);
 	return (0);
 }
