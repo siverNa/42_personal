@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 11:18:51 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 15:58:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 17:15:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void    draw_sprite(t_game *game, t_sprite_ray spr_ray, int spr_screen_x)
             y = spr_ray.draw_start.y - 1;
             while (++y < spr_ray.draw_end.y)
             {
-                //int d = (y-vMoveScreen) * 256 - h * 128 + spriteHeight * 128;  //256 and 128 factors to avoid floats
-                //int texY = ((((y-vMoveScreen) * 256 - h * 128 + spriteHeight * 128) * texHeight) / spriteHeight) / 256;
                 tex.y = ((((y - (int)(0.0f / spr_ray.transform.y)) * 256 -
                 game->screen_size.y * 128 + spr_ray.size.y * 128) * TEXHEIGHT)
                 / spr_ray.size.y) / 256;

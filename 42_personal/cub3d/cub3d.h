@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 16:00:29 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 17:20:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ typedef struct	s_sprite_ray
 */
 int				game_init(t_game *game);
 int				window_init(t_game *game, int width, int height);
-int				deal_key(int key_code, t_game *game);
-int				close_window(t_game *game);
 void			start_game(t_game *game);
 /*
 ** cub3d_util.c
@@ -173,5 +171,11 @@ void    		init_sprite_ray(t_game *game, t_sprite_ray *spr_ray,
 							int *spr_screen_x, int i);
 void    		present_sprite(t_game *game);
 void    		sort_sprite(t_game *game);
+/*
+** input_key.c
+*/
+void        	move_camera(t_player *player, double speed);
+int				deal_key(int key_code, t_game *game);
+int				close_window(t_game *game);
 
 #endif

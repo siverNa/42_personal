@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:57:03 by sna               #+#    #+#             */
-/*   Updated: 2021/04/21 20:56:54 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/13 16:56:04 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			check_hole(t_game *game, int y, int x)
 	int		i;
 
 	if (x < 0 || x >= game->map_size.x ||
-			y < 0 || y>= game->map_size.y)
+			y < 0 || y >= game->map_size.y)
 		return (1);
 	loca = game->map[y][x];
 	if (loca == '1' || loca == 'x')
@@ -111,4 +111,3 @@ int			check_file_extension(char *file)
 		return (0);
 	return (!ft_strncmp(extension, ".cub", 5));
 }
-

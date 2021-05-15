@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 16:09:49 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/16 01:25:35 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,6 @@ int			game_init(t_game *game)
 	return (1);
 }
 
-int			deal_key(int key_code, t_game *game)
-{
-	if (key_code == KEY_ESC)
-	{
-		free_all(game);
-		exit(0);
-	}
-	return (0);
-}
-
-int			close_window(t_game *game)
-{
-	free_all(game);
-	exit(0);
-	return (0);
-}
-
 int			window_init(t_game *game, int width, int height)
 {
 	int			w;
@@ -88,8 +71,8 @@ int			window_init(t_game *game, int width, int height)
 void		start_game(t_game *game)
 {
 	mlx_loop_hook(game->mlx, &raycasting, game);
-	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L >> 0, &deal_key, &game);
-	mlx_hook(game->win, X_EVENT_KEY_EXIT, 1L >> 0, &close_window, &game);
+	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L >> 0, &deal_key, game);
+	mlx_hook(game->win, X_EVENT_KEY_EXIT, 1L >> 0, &close_window, game);
 	mlx_loop(game->mlx);
 }
 
