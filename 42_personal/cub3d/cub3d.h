@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 17:20:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/17 17:01:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void			start_game(t_game *game);
 /*
 ** cub3d_util.c
 */
-int				free_all(t_game *game);
+void			free_all(t_game *game);
 int				free_map(void **map, int cnt);
 void			freenull(void **var);
 int				print_error(int e_code, char *msg);
@@ -175,6 +175,8 @@ void    		sort_sprite(t_game *game);
 ** input_key.c
 */
 void        	move_camera(t_player *player, double speed);
+void        	move_player_f_b(t_game *game, t_player *player, double speed);
+void       		move_player_r_l(t_game *game, t_player *player, double speed);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
 

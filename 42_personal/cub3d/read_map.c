@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:29:01 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 17:16:09 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/17 15:42:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		set_player(t_player *player, int y, int x, char dir)
 	radian = 3.14159265 / 180;
 	if (dir == 'W')
 		move_camera(player, 90 * radian);
-	else if (dir = 'S')
+	else if (dir == 'S')
 		move_camera(player, 180 * radian);
 	else if (dir == 'E')
 		move_camera(player, 270 * radian);

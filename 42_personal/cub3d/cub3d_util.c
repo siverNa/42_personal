@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:18:56 by sna               #+#    #+#             */
-/*   Updated: 2021/04/25 18:17:44 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/17 15:44:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		free_all(t_game *game)
+void		free_all(t_game *game)
 {
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
