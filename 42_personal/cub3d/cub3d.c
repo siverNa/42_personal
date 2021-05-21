@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/16 01:25:35 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/21 21:49:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			window_init(t_game *game, int width, int height)
 	{
 		if (!(game->buf[h] = (int *)malloc(sizeof(int) * (width + 1))))
 			return (0);
-		game->buf[(int)width] = 0;
+		game->buf[h][(int)width] = 0;
 		w = -1;
 		while (++w < width)
 			game->buf[h][w] = 0;
@@ -91,6 +91,9 @@ int 		main(int argc, char **argv)
 		if (window_init(&game, game.screen_size.x, game.screen_size.y) == 0)
 			return (print_error(free_map((void **)game.texture, 5),
 						"malloc error"));
+		if (argc == 3)
+			if (save_bmp(&game, argv[2]) == 0)
+				return (0);
 		start_game(&game);
 	}
 	else

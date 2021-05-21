@@ -25,3 +25,5 @@ test_all.sh
 .vscode
 *.gch
 main.c
+
+save_screen.bmp

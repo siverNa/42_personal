@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/17 17:01:15 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/21 22:06:56 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,9 @@ void        	move_player_f_b(t_game *game, t_player *player, double speed);
 void       		move_player_r_l(t_game *game, t_player *player, double speed);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
+/*
+** save_bmp.c
+*/
+int     		save_bmp(t_game *game, char *input);
 
 #endif
