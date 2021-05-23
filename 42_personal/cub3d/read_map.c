@@ -6,13 +6,12 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:29:01 by sna               #+#    #+#             */
-/*   Updated: 2021/05/17 15:42:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/23 17:38:03 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "get_next_line.h"
-#include <stdio.h>
 
 int		set_player(t_player *player, int y, int x, char dir)
 {
@@ -75,7 +74,6 @@ int		read_map(t_game *game, int fd, char *line)
 			game->map_size.x = ft_strlen(line);
 		ft_lstadd_back(&map_list, ft_lstnew(ft_strdup(line)));
 		freenull((void **)&line);
-		printf("map reading\n");
 	}
 	freenull((void **)&line);
 	close(fd);
@@ -85,12 +83,7 @@ int		read_map(t_game *game, int fd, char *line)
 		return (0);
 	ft_lstclear(&map_list, free);
 	if (check_map(game) == 0)
-	{
-		printf("map error\n");
 		return (0);
-	}
-	else
-		printf("good\n");
 	return (set_sprite(game));
 }
 
@@ -104,11 +97,7 @@ int		read_file(t_game *game, int fd, int *is_finish)
 		cnt = -1;
 		*is_finish = 0;
 		while (++cnt < 8)
-		{
 			*is_finish += game->check[cnt];
-			printf("is_finish : %d\n", *is_finish);
-		}
-		printf("end ++cnt while\n");
 		if (*is_finish == 8)
 		{
 			freenull((void **)&line);
@@ -121,9 +110,6 @@ int		read_file(t_game *game, int fd, int *is_finish)
 			freenull((void **)&line);
 			return (print_error(0, "wrong identifier"));
 		}
-		else
-			printf("%s\n", line);
-		//printf("%s\n", line);
 		freenull((void **)&line);
 	}
 	return (1);
@@ -132,26 +118,18 @@ int		read_file(t_game *game, int fd, int *is_finish)
 int		open_file(char *file_path, t_game *game)
 {
 	int		fd;
-	int		cnt;
+	int		idx;
 	int		is_finish;
 
-	cnt = 0;
-	while (cnt < 8)
-		game->check[cnt++] = 0;
+	idx = 0;
+	while (idx < 8)
+		game->check[idx++] = 0;
 	if ((fd = open(file_path, O_RDONLY)) == -1)
 		return (print_error(0, "wrong file path"));
 	if (read_file(game, fd, &is_finish) == 0)
-	{
-		printf("cant insert read_file()\n");
 		return (0);
-	}
-	else
-		write(1, "success read_file\n", 18);
 	close(fd);
 	if (is_finish != 8)
-	{
-		printf("is finish not 8\n");
 		return (0);
-	}
 	return (1);
 }

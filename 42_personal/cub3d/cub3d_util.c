@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:18:56 by sna               #+#    #+#             */
-/*   Updated: 2021/05/17 15:44:26 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/23 17:42:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		free_all(t_game *game)
 
 int		free_map(void **map, int cnt)
 {
-	while (-cnt >= 0)
+	while (--cnt >= 0)
 		free (map[cnt]);
 	free(map);
 	return (0);
@@ -48,4 +48,3 @@ int		print_error(int e_code, char *msg)
 	}
 	return (0);
 }
-

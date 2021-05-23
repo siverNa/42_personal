@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 11:18:51 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 17:15:46 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/23 18:47:56 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void    present_sprite(t_game *game)
     int             spr_screen_x;
     t_sprite_ray    spr_ray;
 
-    //int vMoveScreen = int(vMove / transformY);
     i = -1;
     while (++i < game->sprite_num)
     {
@@ -104,7 +103,6 @@ void    sort_sprite(t_game *game)
     i = -1;
     while (++i < game->sprite_num)
     {
-        // (posY - sprite[i].y) * (posY - sprite[i].y));
         game->sprite[i].distance = ((game->player.pos.x - game->sprite[i].x) *
             (game->player.pos.x - game->sprite[i].x) + (game->player.pos.y -
             game->sprite[i].y) * (game->player.pos.y - game->sprite[i].y));
