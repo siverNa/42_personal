@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/21 22:15:43 by sna               #+#    #+#              #
-#    Updated: 2021/05/21 23:25:31 by sna              ###   ########.fr        #
+#    Updated: 2021/05/24 12:38:43 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,12 @@ OBJS =		$(SRCS:.c=.o)
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 LIBFT =		-L./libft -lft
-MLX =		-L./minilibx-linux -lm -lmlx -lXext -lX11 -lbsd
+MLX =		-lm -lmlx
+OPENGL =	-framework OpenGL -framework Appkit
 
 $(NAME) :	$(OBJS)
 			$(MAKE) bonus -C ./libft
-			gcc $(OBJS) $(CFLAGS) -I. $(MLX) $(LIBFT) -o $(NAME)
+			gcc $(OBJS) $(CFLAGS) -I . $(MLX) $(LIBFT) $(OPENGL) -o $(NAME)
 
 all :		$(NAME)
 
