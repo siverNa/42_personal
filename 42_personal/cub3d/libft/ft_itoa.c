@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 19:42:29 by sna               #+#    #+#             */
-/*   Updated: 2021/03/13 16:21:39 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:37:38 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ long long	determin(int n)
 	return ((long long)temp);
 }
 
-int	get_len_int(int n)
+int			get_len_int(int n)
 {
 	int			len;
 
@@ -39,7 +39,7 @@ int	get_len_int(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int			s_len;
 	int			check;

@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/23 17:24:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:18:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			game_init(t_game *game)
+int		game_init(t_game *game)
 {
 	int			i;
 	int			j;
@@ -41,7 +41,7 @@ int			game_init(t_game *game)
 	return (1);
 }
 
-int			window_init(t_game *game, int width, int height)
+int		window_init(t_game *game, int width, int height)
 {
 	int			w;
 	int			h;
@@ -68,7 +68,7 @@ int			window_init(t_game *game, int width, int height)
 	return (1);
 }
 
-void		start_game(t_game *game)
+void	start_game(t_game *game)
 {
 	mlx_loop_hook(game->mlx, &raycasting, game);
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L >> 0, &deal_key, game);
@@ -76,7 +76,7 @@ void		start_game(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-int 		main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_game		game;
 
@@ -89,8 +89,10 @@ int 		main(int argc, char **argv)
 		if (open_file(argv[1], &game) == 0)
 			return (print_error(0, "someting wrong"));
 		if (window_init(&game, game.screen_size.x, game.screen_size.y) == 0)
+		{
 			return (print_error(free_map((void **)game.texture, 5),
 						"malloc error"));
+		}
 		if (argc == 3)
 			if (save_bmp(&game, argv[2]) == 0)
 				return (0);

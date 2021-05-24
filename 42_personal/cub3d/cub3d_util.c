@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:18:56 by sna               #+#    #+#             */
-/*   Updated: 2021/05/23 17:42:08 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:35:47 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		free_all(t_game *game)
+void	free_all(t_game *game)
 {
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
@@ -27,7 +27,7 @@ void		free_all(t_game *game)
 int		free_map(void **map, int cnt)
 {
 	while (--cnt >= 0)
-		free (map[cnt]);
+		free(map[cnt]);
 	free(map);
 	return (0);
 }
@@ -42,9 +42,9 @@ int		print_error(int e_code, char *msg)
 {
 	if (e_code == 0)
 	{
-	write(1, "Error\n", 6);
-	write(1, msg, ft_strlen(msg));
-	write(1, "\n", 1);
+		write(1, "Error\n", 6);
+		write(1, msg, ft_strlen(msg));
+		write(1, "\n", 1);
 	}
 	return (0);
 }

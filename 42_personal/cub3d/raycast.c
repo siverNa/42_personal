@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 16:19:18 by sna               #+#    #+#             */
-/*   Updated: 2021/05/13 16:26:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:32:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		get_tex_width(t_vector pos, t_vector ray_dir, t_ray ray)
 
 t_ray	init_dda(t_vector pos, t_vector ray_dir, t_vector map)
 {
-	t_ray 		ray;
+	t_ray		ray;
 
 	ray.step.x = 1;
 	ray.step.y = 1;

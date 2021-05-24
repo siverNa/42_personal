@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/23 17:18:10 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:21:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,29 +159,29 @@ int				raycasting(t_game *game);
 /*
 ** draw_game.c
 */
-void    		draw_screen(t_game *game);
+void			draw_screen(t_game *game);
 void			draw_wall(t_game *game, t_ray ray, int x, t_vector tex);
 void			draw_floor_ceil(t_game *game, int floor, int ceil);
 /*
 ** check_sprite.c
 */
-void    		draw_sprite(t_game *game, t_sprite_ray spr_ray,
+void			draw_sprite(t_game *game, t_sprite_ray spr_ray,
 							int spr_screen_x);
-void    		init_sprite_ray(t_game *game, t_sprite_ray *spr_ray,
+void			init_sprite_ray(t_game *game, t_sprite_ray *spr_ray,
 							int *spr_screen_x, int i);
-void    		present_sprite(t_game *game);
-void    		sort_sprite(t_game *game);
+void			present_sprite(t_game *game);
+void			sort_sprite(t_game *game);
 /*
 ** input_key.c
 */
-void        	move_camera(t_player *player, double speed);
-void        	move_player_f_b(t_game *game, t_player *player, double speed);
-void       		move_player_r_l(t_game *game, t_player *player, double speed);
+void			move_camera(t_player *player, double speed);
+void			move_player_f_b(t_game *game, t_player *player, double speed);
+void			move_player_r_l(t_game *game, t_player *player, double speed);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
 /*
 ** save_bmp.c
 */
-int     		save_bmp(t_game *game, char *input);
+int				save_bmp(t_game *game, char *input);
 
 #endif

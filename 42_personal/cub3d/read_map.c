@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:29:01 by sna               #+#    #+#             */
-/*   Updated: 2021/05/23 17:38:03 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 11:41:12 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		set_player(t_player *player, int y, int x, char dir)
 {
 	double	radian;
-	
+
 	if (dir != 'N' && dir != 'W' && dir != 'S' && dir != 'E')
 		return (0);
 	player->pos.x = x + 0.5f;
