@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 17:33:19 by sna               #+#    #+#             */
-/*   Updated: 2021/05/24 11:59:38 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/24 16:17:47 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		set_screen_size(t_game *game, char *line)
 {
 	char	**resol;
+	int		max_x;
+	int		max_y;
 
 	if (!(resol = ft_split(line + 2, ' ')))
 		return (0);
@@ -22,10 +24,11 @@ int		set_screen_size(t_game *game, char *line)
 		return (0);
 	game->screen_size.x = ft_atoi(resol[0]);
 	game->screen_size.y = ft_atoi(resol[1]);
-	if (game->screen_size.x > 1920)
-		game->screen_size.x = 1920;
-	if (game->screen_size.y > 1080)
-		game->screen_size.y = 1080;
+	mlx_get_screen_size(game->mlx, &max_x, &max_y);
+	if (game->screen_size.x > max_x)
+		game->screen_size.x = max_x;
+	if (game->screen_size.y > max_y)
+		game->screen_size.y = max_y;
 	free_map((void **)resol, 2);
 	return (1);
 }
