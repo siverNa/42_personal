@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/24 12:31:05 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/25 17:04:16 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,14 @@ int		main(int argc, char **argv)
 			return (print_error(0, "someting wrong"));
 		if (window_init(&game, game.screen_size.x, game.screen_size.y) == 0)
 		{
-			return (print_error(free_map((void **)game.texture, 5),
-						"malloc error"));
+			return (print_error(free_map((void **)game.texture, 5), "error"));
 		}
 		if (argc == 3)
+		{
 			if (save_bmp(&game, argv[2]) == 0)
 				return (0);
+			exit(0);
+		}
 		start_game(&game);
 	}
 	else
