@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/21 22:15:43 by sna               #+#    #+#              #
-#    Updated: 2021/05/24 17:28:49 by sna              ###   ########.fr        #
+#    Updated: 2021/05/25 11:26:49 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS =		$(SRCS:.c=.o)
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 LIBFT =		-L./libft -lft
-MLX =		-L./minilibx -lmlx
+MLX =		-L./mlx -lmlx
 OPENGL =	-framework OpenGL -framework Appkit
 
 $(NAME) :	$(OBJS)
@@ -39,7 +39,7 @@ fclean :	clean
 			rm -rf $(NAME)
 			rm -rf save_screen.bmp
 			$(MAKE) fclean -C ./libft
-			$(MAKE) clean -C ./minilibx
+			$(MAKE) clean -C ./mlx
 
 re :		fclean all
 

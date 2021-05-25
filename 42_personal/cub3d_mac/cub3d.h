@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:53:04 by sna               #+#    #+#             */
-/*   Updated: 2021/05/24 17:12:45 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/25 11:23:27 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-# include "./minilibx/mlx.h"
+# include "./mlx/mlx.h"
 # include "./minilibx_opengl_custom/mlx_custom.h"
 
 # define X_EVENT_KEY_PRESS		2
