@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/21 22:15:43 by sna               #+#    #+#              #
-#    Updated: 2021/05/25 11:26:49 by sna              ###   ########.fr        #
+#    Updated: 2021/05/26 13:28:37 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,22 +25,22 @@ MLX =		-L./mlx -lmlx
 OPENGL =	-framework OpenGL -framework Appkit
 
 $(NAME) :	$(OBJS)
-			$(MAKE) bonus -C ./libft
-			$(MAKE) -C ./minilibx_opengl_custom
-			gcc $(OBJS) $(CFLAGS) -I . $(MLX) $(LIBFT) $(OPENGL) -o $(NAME)
+			@$(MAKE) -C ./libft
+			@$(MAKE) -C ./minilibx_opengl_custom
+			gcc $^ $(CFLAGS) -I . $(MLX) $(LIBFT) $(OPENGL) -o $@
 
 all :		$(NAME)
 
 clean :		
 			rm -rf $(OBJS)
-			$(MAKE) clean -C ./libft
+			@$(MAKE) clean -C ./libft
 
 fclean :	clean
 			rm -rf $(NAME)
 			rm -rf save_screen.bmp
-			$(MAKE) fclean -C ./libft
-			$(MAKE) clean -C ./mlx
+			@$(MAKE) fclean -C ./libft
+			@$(MAKE) clean -C ./mlx
 
 re :		fclean all
 
-.PHONY :	all clean fclean re libft
+.PHONY :	all clean fclean re
