@@ -112,6 +112,7 @@ void			start_game(t_game *game);
 /*
 ** cub3d_util.c
 */
+int				check_resol(int rx, int ry);
 void			free_all(t_game *game);
 int				free_map(void **map, int cnt);
 void			freenull(void **var);
@@ -142,6 +143,7 @@ int				parsing(t_game *game, char *line);
 */
 int				set_screen_size(t_game *game, char *line);
 int				set_sprite(t_game *game);
+int				check_comma(char *line);
 int				set_fc_color(t_game *game, char *line);
 int				set_texture(t_game *game, char *line, int dir);
 /*

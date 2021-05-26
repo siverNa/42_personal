@@ -1,11 +1,10 @@
-R 1920 1280
+R 1000 2004
 NO ./textures/redbrick.xpm
 SO ./textures/bluestone.xpm
 WE ./textures/colorstone.xpm
 EA ./textures/mossy.xpm
-
 S ./textures/barrel.xpm
-F 30,225,0
+F 0,225,0
 C 0,0,220
 
         1111111111111111111111111

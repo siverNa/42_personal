@@ -89,9 +89,7 @@ int		main(int argc, char **argv)
 		if (open_file(argv[1], &game) == 0)
 			return (print_error(0, "someting wrong"));
 		if (window_init(&game, game.screen_size.x, game.screen_size.y) == 0)
-		{
 			return (print_error(free_map((void **)game.texture, 5), "error"));
-		}
 		if (argc == 3)
 		{
 			if (save_bmp(&game, argv[2]) == 0)

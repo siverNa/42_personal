@@ -24,6 +24,8 @@ int		set_screen_size(t_game *game, char *line)
 		return (0);
 	game->screen_size.x = ft_atoi(resol[0]);
 	game->screen_size.y = ft_atoi(resol[1]);
+	if (!check_resol(game->screen_size.x, game->screen_size.y))
+		return (0);
 	mlx_get_screen_size(game->mlx, &max_x, &max_y);
 	if (game->screen_size.x > max_x)
 		game->screen_size.x = max_x;
@@ -60,12 +62,32 @@ int		set_sprite(t_game *game)
 	return (1);
 }
 
+int		check_comma(char *line)
+{
+	int		i;
+	int		cnt;
+
+	i = 0;
+	cnt = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] == ',')
+			cnt++;
+		i++;
+	}
+	if (cnt != 2)
+		return (0);
+	return (1);
+}
+
 int		set_fc_color(t_game *game, char *line)
 {
 	char	**rgb;
 	int		color;
 	int		i;
 
+	if (!check_comma(line))
+		return (0);
 	if (!(rgb = ft_split(line + 2, ',')))
 		return (0);
 	if (check_id(rgb, 3) == 0)

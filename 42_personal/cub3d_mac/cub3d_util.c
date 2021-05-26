@@ -12,6 +12,16 @@
 
 #include "cub3d.h"
 
+int		check_resol(int rx, int ry)
+{
+	int	max;
+
+	max = 2147483647;
+	if (0 < rx && rx <= max && 0 < ry && ry <= max)
+		return (1);
+	return (0);
+}
+
 void	free_all(t_game *game)
 {
 	if (game->img.img)
