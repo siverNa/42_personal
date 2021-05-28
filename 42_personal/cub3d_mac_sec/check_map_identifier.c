@@ -59,13 +59,9 @@ int		parsing(t_game *game, char *line)
 		return (check_idnum(game, 2, set_texture(game, line + 3, 2)));
 	if (ft_strncmp(line, "EA ", 3) == 0)
 		return (check_idnum(game, 3, set_texture(game, line + 3, 3)));
-	if (ft_strncmp(line, "S ", 2) == 0)
-		return (check_idnum(game, 4, set_texture(game, line + 2, 4)));
 	if (ft_strncmp(line, "F ", 2) == 0)
-		return (check_idnum(game, 5, set_fc_color(game, line)));
+		return (check_idnum(game, 4, set_fc_color(game, line)));
 	if (ft_strncmp(line, "C ", 2) == 0)
-		return (check_idnum(game, 6, set_fc_color(game, line)));
-	if (ft_strncmp(line, "R ", 2) == 0)
-		return (check_idnum(game, 7, set_screen_size(game, line)));
+		return (check_idnum(game, 5, set_fc_color(game, line)));
 	return (0);
 }

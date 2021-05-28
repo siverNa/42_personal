@@ -26,11 +26,9 @@ void	free_all(t_game *game)
 {
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
-	free_map((void **)game->texture, 5);
+	free_map((void **)game->texture, 4);
 	free_map((void **)game->buf, game->screen_size.y + 1);
-	free(game->z_buffer);
 	free_map((void **)game->map, game->map_size.y + 1);
-	free(game->sprite);
 	mlx_destroy_window(game->mlx, game->win);
 }
 

@@ -12,18 +12,13 @@
 
 #include "cub3d.h"
 
-int		set_screen_size(t_game *game, char *line)
+int		set_screen_size(t_game *game)
 {
-	char	**resol;
 	int		max_x;
 	int		max_y;
 
-	if (!(resol = ft_split(line + 2, ' ')))
-		return (0);
-	if (check_id(resol, 2) == 0)
-		return (0);
-	game->screen_size.x = ft_atoi(resol[0]);
-	game->screen_size.y = ft_atoi(resol[1]);
+	game->screen_size.x = SCREEN_X;
+	game->screen_size.y = SCREEN_Y;
 	if (!check_resol(game->screen_size.x, game->screen_size.y))
 		return (0);
 	mlx_get_screen_size(game->mlx, &max_x, &max_y);
@@ -31,34 +26,6 @@ int		set_screen_size(t_game *game, char *line)
 		game->screen_size.x = max_x;
 	if (game->screen_size.y > max_y)
 		game->screen_size.y = max_y;
-	free_map((void **)resol, 2);
-	return (1);
-}
-
-int		set_sprite(t_game *game)
-{
-	int		x;
-	int		y;
-	int		cnt;
-
-	game->sprite = (t_sprite *)malloc(sizeof(t_sprite) * game->sprite_num);
-	if (!(game->sprite))
-		return (0);
-	cnt = 0;
-	y = -1;
-	while (++y < game->map_size.y)
-	{
-		x = -1;
-		while (++x < game->map_size.x)
-		{
-			if (game->map[y][x] == '2')
-			{
-				game->sprite[cnt].x = y + 0.5f;
-				game->sprite[cnt].y = x + 0.5f;
-				cnt++;
-			}
-		}
-	}
 	return (1);
 }
 

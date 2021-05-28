@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 17:42:09 by sna               #+#    #+#             */
-/*   Updated: 2021/05/25 17:04:16 by sna              ###   ########.fr       */
+/*   Updated: 2021/05/28 17:29:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int		game_init(t_game *game)
 	player->plane.y = 0.66;
 	player->speed = 0.08;
 	game->mlx = mlx_init();
-	game->texture = (int **)malloc(sizeof(int *) * 5);
+	game->texture = (int **)malloc(sizeof(int *) * 4);
 	if (!(game->texture))
 		return (0);
 	i = -1;
-	while (++i < 5)
+	while (++i < 4)
 	{
 		game->texture[i] = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 		if (!(game->texture[i]))
@@ -63,8 +63,6 @@ int		window_init(t_game *game, int width, int height)
 		while (++w < width)
 			game->buf[h][w] = 0;
 	}
-	if (!(game->z_buffer = (double *)malloc(sizeof(double) * width)))
-		return (0);
 	return (1);
 }
 
@@ -82,23 +80,20 @@ int		main(int argc, char **argv)
 
 	if (game_init(&game) == 0)
 		return (0);
-	if (argc >= 2 && argc <= 3)
+	if (argc == 2)
 	{
 		if (check_file_extension(argv[1]) == 0)
 			return (print_error(0, "wrong file extension"));
 		if (open_file(argv[1], &game) == 0)
 			return (print_error(0, "someting wrong"));
 		if (window_init(&game, game.screen_size.x, game.screen_size.y) == 0)
-			return (print_error(free_map((void **)game.texture, 5), "error"));
-		if (argc == 3)
 		{
-			if (save_bmp(&game, argv[2]) == 0)
-				return (0);
-			exit(0);
+			return (print_error(free_map((void **)game.texture, 4),
+						"malloc error"));
 		}
 		start_game(&game);
 	}
 	else
-		print_error(free_map((void **)game.texture, 5), "wrong argument num");
+		print_error(free_map((void **)game.texture, 4), "wrong argument num");
 	return (0);
 }

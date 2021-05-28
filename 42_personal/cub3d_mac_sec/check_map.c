@@ -69,7 +69,6 @@ int			check_map(t_game *game)
 	int		i;
 	int		j;
 
-	game->sprite_num = 0;
 	i = -1;
 	while (++i < game->map_size.y)
 	{
@@ -81,8 +80,6 @@ int			check_map(t_game *game)
 				if (check_hole(game, i, j) == 0)
 					return (0);
 			}
-			else if (game->map[i][j] == '2')
-				game->sprite_num++;
 			else if (game->map[i][j] != '0' && game->map[i][j] != '1' &&
 					game->map[i][j] != 'x')
 				return (0);

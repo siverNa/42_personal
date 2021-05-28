@@ -33,6 +33,8 @@
 # define KEY_RIGHT				124
 # define TEXWIDTH				64
 # define TEXHEIGHT				64
+# define SCREEN_X				1920
+# define SCREEN_Y				1280
 
 typedef struct	s_vector
 {
@@ -74,14 +76,11 @@ typedef	struct	s_game
 	char		**map;
 	int			**texture;
 	int			**buf;
-	int			check[8];
+	int			check[6];
 	t_vector	map_size;
-	int			sprite_num;
 	t_player	player;
 	t_vector	screen_size;
 	t_vector	fc_color;
-	t_sprite	*sprite;
-	double		*z_buffer;
 }				t_game;
 
 typedef struct	s_ray
@@ -92,16 +91,6 @@ typedef struct	s_ray
 	t_vector	step;
 	int			side;
 }				t_ray;
-
-typedef struct	s_sprite_ray
-{
-	t_vector	draw_start;
-	t_vector	draw_end;
-	t_vector	pos;
-	t_vector	tex;
-	t_vector	transform;
-	t_vector	size;
-}				t_sprite_ray;
 
 /*
 ** cub3d.c
@@ -141,8 +130,7 @@ int				parsing(t_game *game, char *line);
 /*
 ** set_map_identifier.c
 */
-int				set_screen_size(t_game *game, char *line);
-int				set_sprite(t_game *game);
+int				set_screen_size(t_game *game);
 int				check_comma(char *line);
 int				set_fc_color(t_game *game, char *line);
 int				set_texture(t_game *game, char *line, int dir);
@@ -160,15 +148,6 @@ void			draw_screen(t_game *game);
 void			draw_wall(t_game *game, t_ray ray, int x, t_vector tex);
 void			draw_floor_ceil(t_game *game, int floor, int ceil);
 /*
-** check_sprite.c
-*/
-void			draw_sprite(t_game *game, t_sprite_ray spr_ray,
-							int spr_screen_x);
-void			init_sprite_ray(t_game *game, t_sprite_ray *spr_ray,
-							int *spr_screen_x, int i);
-void			present_sprite(t_game *game);
-void			sort_sprite(t_game *game);
-/*
 ** input_key.c
 */
 void			move_camera(t_player *player, double speed);
@@ -176,9 +155,5 @@ void			move_player_f_b(t_game *game, t_player *player, double speed);
 void			move_player_r_l(t_game *game, t_player *player, double speed);
 int				deal_key(int key_code, t_game *game);
 int				close_window(t_game *game);
-/*
-** save_bmp.c
-*/
-int				save_bmp(t_game *game, char *input);
 
 #endif

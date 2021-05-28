@@ -84,7 +84,7 @@ int		read_map(t_game *game, int fd, char *line)
 	ft_lstclear(&map_list, free);
 	if (check_map(game) == 0)
 		return (0);
-	return (set_sprite(game));
+	return (1);
 }
 
 int		read_file(t_game *game, int fd, int *is_finish)
@@ -96,9 +96,9 @@ int		read_file(t_game *game, int fd, int *is_finish)
 	{
 		cnt = -1;
 		*is_finish = 0;
-		while (++cnt < 8)
+		while (++cnt < 6)
 			*is_finish += game->check[cnt];
-		if (*is_finish == 8)
+		if (*is_finish == 6)
 		{
 			freenull((void **)&line);
 			if (read_map(game, fd, line) == 0)
@@ -112,6 +112,7 @@ int		read_file(t_game *game, int fd, int *is_finish)
 		}
 		freenull((void **)&line);
 	}
+	set_screen_size(game);
 	return (1);
 }
 
@@ -122,14 +123,14 @@ int		open_file(char *file_path, t_game *game)
 	int		is_finish;
 
 	idx = 0;
-	while (idx < 8)
+	while (idx < 6)
 		game->check[idx++] = 0;
 	if ((fd = open(file_path, O_RDONLY)) == -1)
 		return (print_error(0, "wrong file path"));
 	if (read_file(game, fd, &is_finish) == 0)
 		return (0);
 	close(fd);
-	if (is_finish != 8)
+	if (is_finish != 6)
 		return (0);
 	return (1);
 }

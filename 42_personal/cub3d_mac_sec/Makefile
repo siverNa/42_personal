@@ -12,9 +12,9 @@
 
 NAME =		cub3D
 
-SRCS =		check_map_identifier.c check_map.c check_sprite.c cub3d_util.c \
+SRCS =		check_map_identifier.c check_map.c cub3d_util.c \
 			cub3d.c draw_game.c get_next_line.c input_key.c raycast.c \
-			read_map.c save_bmp.c set_map_identifier.c
+			read_map.c set_map_identifier.c
 
 OBJS =		$(SRCS:.c=.o)
 
@@ -31,13 +31,12 @@ $(NAME) :	$(OBJS)
 
 all :		$(NAME)
 
-clean :		
+clean :
 			rm -rf $(OBJS)
 			@$(MAKE) clean -C ./libft
 
 fclean :	clean
 			rm -rf $(NAME)
-			rm -rf save_screen.bmp
 			@$(MAKE) fclean -C ./libft
 			@$(MAKE) clean -C ./mlx
 

@@ -96,10 +96,7 @@ int		raycasting(t_game *game)
 		ray.perp_wall_dist = dda(game, ray_dir, &map, &ray);
 		tex.x = get_tex_width(game->player.pos, ray_dir, ray);
 		draw_wall(game, ray, w, tex);
-		game->z_buffer[w] = ray.perp_wall_dist;
 	}
-	sort_sprite(game);
-	present_sprite(game);
 	draw_screen(game);
 	return (0);
 }
