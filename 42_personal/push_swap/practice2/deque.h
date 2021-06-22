@@ -17,6 +17,7 @@ typedef struct      s_node
 
 typedef struct      s_deque
 {
+    int             size;
     t_node          *head;
     t_node          *tail;
 }                   t_deque;
