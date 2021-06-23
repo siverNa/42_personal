@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/06/22 15:39:10 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/23 18:23:27 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
-# define    TRUE    1
-# define    FALSE   0
+# define TRUE       1
+# define FALSE      0
+# define INT_MAX    2147483647
+# define INT_MIN    (-INT_MAX - 1)
 
 typedef struct      s_node
 {
@@ -30,6 +32,7 @@ typedef struct      s_node
 typedef struct      s_deque
 {
     int             size;
+    int             top;
     t_node          *head;
     t_node          *tail;
 }                   t_deque;

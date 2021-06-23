@@ -1,6 +1,6 @@
 #include "deque.h"
 
-Data    dq_get_last(t_deque *d)
+int    dq_get_last(t_deque *d)
 {
     if (dq_is_empty(d))
     {
@@ -10,7 +10,7 @@ Data    dq_get_last(t_deque *d)
     return (d->tail->data);
 }
 
-Data    dq_get_first(t_deque *d)
+int    dq_get_first(t_deque *d)
 {
     if (dq_is_empty(d))
     {
@@ -20,10 +20,10 @@ Data    dq_get_first(t_deque *d)
     return (d->head->data);
 }
 
-Data    dq_remove_last(t_deque *d)
+int    dq_remove_last(t_deque *d)
 {
     t_node  *rnode;
-    Data    rdata;
+    int    rdata;
 
     rnode = d->tail;
     if (dq_is_empty(d))
@@ -41,10 +41,10 @@ Data    dq_remove_last(t_deque *d)
     return (rdata);
 }
 
-Data    dq_remove_first(t_deque *d)
+int    dq_remove_first(t_deque *d)
 {
     t_node  *rnode;
-    Data    rdata;
+    int    rdata;
 
     rnode = d->head;
     if (dq_is_empty(d))
@@ -63,22 +63,22 @@ Data    dq_remove_first(t_deque *d)
     return (rdata);
 }
 
-void    dq_add_last(t_deque *d, Data data)
+void    dq_add_last(t_deque *d, int data)
 {
     t_node  *newnode;
 
     newnode = (t_node *)malloc(sizeof(t_node));
-    newnode->data = data;
-    newnode->prev = d->tail;
+    newnode->data = data;//tmp->n = (int)num
+    newnode->prev = d->tail;//tmp->prev = *back;
     if (dq_is_empty(d))
         d->head = newnode;
     else
-        d->tail->next = newnode;
-    newnode->next = NULL;
-    d->tail = newnode;
+        d->tail->next = newnode;//*back->nxt = tmp;
+    newnode->next = NULL;//tmp->next = null;
+    d->tail = newnode;//*back = tmp;
 }
 
-void    dq_add_first(t_deque *d, Data data)
+void    dq_add_first(t_deque *d, int data)
 {
     t_node  *newnode;
 
