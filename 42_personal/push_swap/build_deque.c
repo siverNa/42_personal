@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/06/23 19:03:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/24 17:42:54 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,32 @@ void    print_error()
 {
     write(1, "error\n", 6);
     exit(1);
+}
+
+int     check_overlap(t_deque *q, int ac)
+{
+    t_node  *temp;
+    int     i;
+    int     j;
+    int     k;
+    int     arr[ac + 1];
+
+    temp = q->head;
+    i = 0;
+    while (temp)
+    {
+        arr[i++] = temp->data;
+        temp = temp->next;
+    }
+    j = -1;
+    while (j++ < i)
+    {
+        k = j;
+        while (++k < i)
+            if (arr[j] == arr[k])
+                return (0);
+    }
+    return (1);
 }
 
 int     check_number(int ac, char **av)
@@ -33,15 +59,15 @@ int     check_number(int ac, char **av)
             return (0);
         while (ft_isdigit(av[i][j]))
             j++;
-        if (av[i][j] == '\0')
+        if (av[i][j])
             return (0);
         i++;
     }
+    return (1);
 }
 
 void    lst_addend(char *str, t_deque *a)
 {
-    t_node  *tmp;
     long    num;
 
     num = ft_atoi(str);
@@ -54,16 +80,26 @@ void    lst_addend(char *str, t_deque *a)
 
 void    build_deque(t_deque *a, t_deque *b, int ac, char **av)
 {
+    t_node  *temp;
     int     i;
 
     i = 1;
-    if (!check_number(ac, av))
+    if (!check_number(ac, av) || !(a->head = malloc(sizeof(t_node))))
         print_error();
-    deque_init(&a);
-    deque_init(&b);
+    deque_init(b);
     a->head->data = ft_atoi(av[i++]);
     a->head->prev = NULL;
     a->tail = a->head;
     while (i < ac)
         lst_addend(av[i++], a);
+    if (!check_overlap(a, ac))
+    {
+        while (a->head)
+        {
+            temp = a->head;
+            a->head = a->head->next;
+            free(temp);
+        }
+        print_error();
+    }
 }

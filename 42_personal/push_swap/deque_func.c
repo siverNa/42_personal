@@ -1,4 +1,4 @@
-#include "deque.h"
+#include "push_swap.h"
 
 int    dq_get_last(t_deque *d)
 {
