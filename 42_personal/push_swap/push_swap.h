@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/06/24 17:42:57 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/28 17:39:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void                dq_add_first(t_deque *d, int data);
 void                dq_add_first(t_deque *d, int data);
 int                 dq_is_empty(t_deque *d);
 void                deque_init(t_deque *d);
-
 /*
 ** build_deque.c
 */
@@ -58,5 +57,9 @@ int                 check_overlap(t_deque *q, int ac);
 int                 check_number(int ac, char **av);
 void                lst_addend(char *str, t_deque *a);
 void                build_deque(t_deque *a, t_deque *b, int ac, char **av);
+/*
+** swap_func.c
+*/
+void                push(t_node **from, t_node **to, t_node **to_end);
 
 #endif
