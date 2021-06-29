@@ -6,29 +6,34 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 18:07:34 by sna               #+#    #+#              #
-#    Updated: 2021/06/22 18:09:23 by sna              ###   ########.fr        #
+#    Updated: 2021/06/29 18:50:43 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME =		push_swap
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC =		gcc
+CFLAGS =	-Wall -Wextra -Werror
+LIBFT =		-L./libft -lft
 
-SRCS = main.c
+SRCS =		pw_main.c build_deque.c deque_func.c swap_func.c 
 
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJS)
+$(NAME):	$(OBJS)
+			@$(MAKE) bonus -C ./libft
+			$(CC) $^ $(CFLAGS) -I . $(LIBFT) -o $@
 
-all: $(NAME)
+all:		$(NAME)
 
 clean:
-		rm -f $(OBJS) $(OBJS_BONUS)
+			rm -rf $(OBJS)
+			@$(MAKE) clean -C ./libft
 
-fclean: clean
-		rm -f $(NAME)
+fclean: 	clean
+			rm -f $(NAME)
+			@$(MAKE) fclean -C ./libft
 
-re: fclean all
+re: 		fclean all
 
-.PHONY: bonus all clean fclean re
+.PHONY:		all clean fclean re

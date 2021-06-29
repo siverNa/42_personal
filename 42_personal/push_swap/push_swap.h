@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/06/28 17:39:48 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/29 18:43:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void                build_deque(t_deque *a, t_deque *b, int ac, char **av);
 /*
 ** swap_func.c
 */
+void	            swap(t_node **tail);
 void                push(t_node **from, t_node **to, t_node **to_end);
 
 #endif

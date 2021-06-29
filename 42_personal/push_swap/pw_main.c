@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/06/28 18:06:18 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/29 18:54:52 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av)
 
     push(&a.tail, &b.tail, &b.head);
     push(&a.tail, &b.tail, &b.head);
-    push(&b.tail, &a.tail, &a.head);
+    swap(&b.tail);
 
     while (!dq_is_empty(&a))
         printf("%d ",dq_remove_last(&a));
