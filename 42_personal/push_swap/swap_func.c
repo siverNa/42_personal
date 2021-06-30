@@ -6,11 +6,36 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:26:29 by sna               #+#    #+#             */
-/*   Updated: 2021/06/29 17:00:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/06/30 20:17:34 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rev_rotate(t_node **head, t_node **tail)
+{
+	if (*head == NULL || *tail == NULL || (*head)->next == NULL)
+		return ;
+	(*head)->prev = *tail;
+	(*tail)->next = *head;
+	*head = (*head)->next;
+	(*head)->prev = NULL;
+	*tail = (*tail)->next;
+	(*tail)->next = NULL;
+	
+}
+
+void	rotate(t_node **head, t_node **tail)
+{
+	if (*head == NULL || *tail == NULL || (*tail)->prev == NULL)//비어있는 리스트면 그냥 리턴
+		return ;
+	(*tail)->next = *head;//연결리스트의 시작과 끝을 연결
+	(*head)->prev = *tail;
+	*tail = (*tail)->prev;
+	(*tail)->next = NULL;
+	*head = (*head)->prev;
+	(*head)->prev = NULL;
+}
 
 void	swap(t_node **tail)
 {
@@ -39,7 +64,7 @@ void	push(t_node **from, t_node **to, t_node **to_head)
 	if (*to)
 		(*to)->next = temp;//*to 주소가 존재하면 from 주소가 저장된 temp를 (*to)->prev에 입력
 	else
-		*to_head = temp;//아니면 *to_end 에 temp입력
+		*to_head = temp;//아니면 *to_tail 에 temp입력
 	temp->prev = *to;//temp->next 주소(다음 주소)로 *to 저장
 	*to = temp;
 	(*to)->next = NULL;
