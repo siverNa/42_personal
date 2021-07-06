@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/07/05 19:01:01 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/06 18:56:03 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int ac, char **av)
 {
     t_deque a;
     t_deque b;
+    int     arr[ac];
     
     build_deque(&a, &b, ac, av);
     
@@ -24,6 +25,14 @@ int main(int ac, char **av)
         printf("a is sorted\n");
     else
         printf("a is not sorted\n");
+    
+    //./push_swap 1 2 3 4 가 입력됐을 경우 ac의 값은 5임
+    //배열의 크기는 숫자 4개만 들어가야 하므로 ac - 1을 해줘야함
+    sort(&a, arr, ac - 1);
+    
+    for (int i = 0; i < ac - 1; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
     
     /*
     push(&a.tail, &b.tail, &b.head);
