@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/07/06 18:49:16 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/08 17:48:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void                push(t_node **from, t_node **to, t_node **to_end);
 ** perform.c
 */
 int                 a_is_sorted(t_deque *a);
+void                simply_number(t_deque *a, int *copy_arr, int n);
 /*
 ** quick_sort.c
 */

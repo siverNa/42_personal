@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 17:28:00 by sna               #+#    #+#             */
-/*   Updated: 2021/07/06 18:52:06 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/08 17:08:42 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void quick_swap(int *arr, int a, int b) // a,b 스왑 함수
 
 int partition(int *arr, int left, int right)
 {
-    int pivot; // 피벗의 위치는 가장 왼쪽에서 시작
-    int low;
-    int high;
+    int     pivot; // 피벗의 위치는 가장 왼쪽에서 시작
+    int     low;
+    int     high;
 
     pivot = arr[left];
     low = left + 1;
