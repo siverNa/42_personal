@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/07/13 19:38:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/18 20:53:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void                push(t_node **from, t_node **to, t_node **to_end);
 int                 a_is_sorted(t_deque *a);
 void                simply_number_sec(int *temp, int *copy, int n);
 void                simply_number(t_deque *a, int *copy_arr, int n);
+void                perform(t_deque *a, t_deque *b, int size);
 /*
 ** quick_sort.c
 */
@@ -77,5 +78,9 @@ void                quick_swap(int *arr, int a, int b);
 int                 partition(int *arr, int left, int right);
 void                quicksort(int *arr, int left, int right);
 void                sort(t_deque *a, int *arr, int n);
+/*
+** test_swap_func.c
+*/
+void	            test_push(t_deque *a, t_deque *b);
 
 #endif
