@@ -6,17 +6,17 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:45:14 by sna               #+#    #+#             */
-/*   Updated: 2021/07/18 20:58:21 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/19 18:30:14 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	test_push(t_deque *a, t_deque *b)
+void	test_push(t_deque *a, t_deque *b, char c)
 {
 	t_node *temp;
 
-	if (a == NULL || b == NULL)//from이 비어있을 때는 아무것도 수행 안함
+	if (a == NULL || b == NULL || !c)//from이 비어있을 때는 아무것도 수행 안함
 		return ;
 	temp = a->tail;//from 주소 저장
 	a->tail = (a->tail)->prev;//from의 이전 리스트 주소를 from에 저장
@@ -31,4 +31,8 @@ void	test_push(t_deque *a, t_deque *b)
 	temp->prev = b->tail;//temp->next 주소(다음 주소)로 *to 저장
 	b->tail = temp;
 	(b->tail)->next = NULL;
+	if (c == 'a')
+		write(1, "pa\n", 3);
+	else if (c == 'b')
+		write(1, "pb\n", 3);
 }

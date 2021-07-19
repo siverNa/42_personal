@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/07/18 21:01:11 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/19 18:36:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,32 +87,19 @@ void    perform(t_deque *a, t_deque *b, int size)
     max_bits = 0;
     while ((max_num >> max_bits) != 0)
         ++max_bits;
-    i = 0;
-    while (i < max_bits)
+    i = -1;
+    while (++i < max_bits)
     {
-        j = 0;
-        while (j < size)
+        j = -1;
+        while (++j < size)
         {
             num = a->tail->data;
             if (((num >> i) & 1) == 1)
-            {
-                rotate(&a->head, &a->tail);
-                write(1, "ra\n", 3);
-            }
+                rotate(&a->head, &a->tail, 'a');
             else
-            {
-                //push(&a->tail, &b->tail, &b->head);
-                test_push(a, b);
-                write(1, "pb\n", 3);
-            }
-            j++;
+                test_push(a, b, 'b');
         }
-        i++;
-    }
-    while (!dq_is_empty(b))
-    {
-        //push(&b->tail, &a->tail, &a->head);
-        test_push(b, a);
-        write(1, "pa\n", 3);
+        while (!dq_is_empty(b))
+            test_push(b, a, 'a');
     }
 }

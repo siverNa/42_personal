@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:26:29 by sna               #+#    #+#             */
-/*   Updated: 2021/06/30 20:17:34 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/19 18:51:40 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rev_rotate(t_node **head, t_node **tail)
+void	rev_rotate(t_node **head, t_node **tail, char c)
 {
 	if (*head == NULL || *tail == NULL || (*head)->next == NULL)
 		return ;
@@ -22,10 +22,14 @@ void	rev_rotate(t_node **head, t_node **tail)
 	(*head)->prev = NULL;
 	*tail = (*tail)->next;
 	(*tail)->next = NULL;
+	if (c == 'a')
+		write(1, "rra\n", 3);
+	else if (c == 'b')
+		write(1, "rrb\n", 3);
 	
 }
 
-void	rotate(t_node **head, t_node **tail)
+void	rotate(t_node **head, t_node **tail, char c)
 {
 	if (*head == NULL || *tail == NULL || (*tail)->prev == NULL)//비어있는 리스트면 그냥 리턴
 		return ;
@@ -35,9 +39,13 @@ void	rotate(t_node **head, t_node **tail)
 	(*tail)->next = NULL;
 	*head = (*head)->prev;
 	(*head)->prev = NULL;
+	if (c == 'a')
+		write(1, "ra\n", 3);
+	else if (c == 'b')
+		write(1, "rb\n", 3);
 }
 
-void	swap(t_node **tail)
+void	swap(t_node **tail, char c)
 {
 	t_node *temp;
 
@@ -49,6 +57,10 @@ void	swap(t_node **tail)
 	temp->next = *tail;//자리를 바꾸고나면 temp가 가리키는 이전 리스트는 head가 되어야함
 	(*tail)->prev = temp;//자리를 바꾸고난 뒤, head - temp 순이므로 head의 다음 주소에 temp 저장
 	(*tail)->next = NULL;//맨 앞이므로 이전 주소엔 null 저장
+	if (c == 'a')
+		write(1, "sa\n", 3);
+	else if (c == 'b')
+		write(1, "sb\n", 3);
 }
 
 void	push(t_node **from, t_node **to, t_node **to_head)
