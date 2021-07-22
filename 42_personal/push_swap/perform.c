@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/07/22 20:58:48 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/22 21:22:23 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void    perform_over_five(t_deque *a, t_deque *b, int size)
         j = -1;
         while (++j < size)
         {
-            num = a->tail->data;
+            num = a->head->data;
             if (((num >> i) & 1) == 1)
                 rotate(&a->head, &a->tail, 'a');
             else
