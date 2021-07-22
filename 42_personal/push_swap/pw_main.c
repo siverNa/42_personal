@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/07/18 21:00:39 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/22 20:59:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ int main(int ac, char **av)
     swap(&b.tail);
     rev_rotate(&b.head, &b.tail);
     */
-    perform(&a, &b, ac - 1);
+    //perform(&a, &b, ac - 1);
+    push_swap(&a, &b, ac - 1);
 
     while (!dq_is_empty(&a))
-        printf("%d ",dq_remove_last(&a));
+        printf("%d ",dq_remove_first(&a));
     printf("\n");
     
     while (!dq_is_empty(&b))
-        printf("%d ",dq_remove_last(&b));
+        printf("%d ",dq_remove_first(&b));
     printf("\n");
 }

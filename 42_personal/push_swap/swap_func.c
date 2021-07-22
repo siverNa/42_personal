@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:26:29 by sna               #+#    #+#             */
-/*   Updated: 2021/07/19 18:51:40 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/22 20:54:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	rev_rotate(t_node **head, t_node **tail, char c)
 {
-	if (*head == NULL || *tail == NULL || (*head)->next == NULL)
+	if (*head == NULL || *tail == NULL || (*tail)->prev == NULL)
 		return ;
 	(*head)->prev = *tail;
 	(*tail)->next = *head;
-	*head = (*head)->next;
+	*head = (*head)->prev;
+	*tail = (*tail)->prev;
 	(*head)->prev = NULL;
-	*tail = (*tail)->next;
 	(*tail)->next = NULL;
 	if (c == 'a')
 		write(1, "rra\n", 3);
@@ -31,32 +31,32 @@ void	rev_rotate(t_node **head, t_node **tail, char c)
 
 void	rotate(t_node **head, t_node **tail, char c)
 {
-	if (*head == NULL || *tail == NULL || (*tail)->prev == NULL)//비어있는 리스트면 그냥 리턴
+	if (*head == NULL || *tail == NULL || (*head)->next == NULL)//비어있는 리스트면 그냥 리턴
 		return ;
 	(*tail)->next = *head;//연결리스트의 시작과 끝을 연결
 	(*head)->prev = *tail;
-	*tail = (*tail)->prev;
-	(*tail)->next = NULL;
-	*head = (*head)->prev;
+	*head = (*head)->next;
 	(*head)->prev = NULL;
+	*tail = (*tail)->next;
+	(*tail)->next = NULL;
 	if (c == 'a')
 		write(1, "ra\n", 3);
 	else if (c == 'b')
 		write(1, "rb\n", 3);
 }
 
-void	swap(t_node **tail, char c)
+void	swap(t_node **head, char c)
 {
 	t_node *temp;
 
-	if (*tail == NULL || (*tail)->prev == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return ;
-	temp = *tail;//temp에 head리스트 주소 저장
-	*tail = (*tail)->prev;//head의 다음 리스트를 head에 저장 
-	temp->prev = (*tail)->prev;//현재 head의 리스트가 1일때, 자리를 바꾸고 다음 리스트인 2의 주소를 temp가 가질 수 있도록 작업
-	temp->next = *tail;//자리를 바꾸고나면 temp가 가리키는 이전 리스트는 head가 되어야함
-	(*tail)->prev = temp;//자리를 바꾸고난 뒤, head - temp 순이므로 head의 다음 주소에 temp 저장
-	(*tail)->next = NULL;//맨 앞이므로 이전 주소엔 null 저장
+	temp = *head;//temp에 head리스트 주소 저장
+	*head = (*head)->next;//head의 다음 리스트를 head에 저장 
+	temp->next = (*head)->next;//현재 head의 리스트가 1일때, 자리를 바꾸고 다음 리스트인 2의 주소를 temp가 가질 수 있도록 작업
+	temp->prev = *head;//자리를 바꾸고나면 temp가 가리키는 이전 리스트는 head가 되어야함
+	(*head)->next = temp;//자리를 바꾸고난 뒤, head - temp 순이므로 head의 다음 주소에 temp 저장
+	(*head)->prev = NULL;//맨 앞이므로 이전 주소엔 null 저장
 	if (c == 'a')
 		write(1, "sa\n", 3);
 	else if (c == 'b')

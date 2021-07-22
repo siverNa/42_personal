@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/07/19 18:36:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/22 20:58:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int     a_is_sorted(t_deque *a)
     temp = a->head;
     while (temp)
     {
-        if (temp->next && temp->data < temp->next->data)
+        if (temp->next && temp->data > temp->next->data)
             return (0);
         temp = temp->next;
         if (temp == a->tail)
@@ -75,7 +75,7 @@ void    simply_number(t_deque *a, int *copy_arr, int n)
     }
 }
 
-void    perform(t_deque *a, t_deque *b, int size)
+void    perform_over_five(t_deque *a, t_deque *b, int size)
 {
     int     max_num;
     int     max_bits;
@@ -102,4 +102,17 @@ void    perform(t_deque *a, t_deque *b, int size)
         while (!dq_is_empty(b))
             test_push(b, a, 'a');
     }
+}
+
+int     push_swap(t_deque *a, t_deque *b, int size)
+{
+    if (size <= 0)
+        return (1);
+    if (size == 1)
+        return (0);
+    if (size == 2 && a->tail->prev->data < a->tail->data)
+        swap(&a->head, 'a');
+    if (size > 5)
+        perform_over_five(a, b, size);
+    return (2);
 }

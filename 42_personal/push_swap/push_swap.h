@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/07/19 18:51:15 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/22 20:41:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void                build_deque(t_deque *a, t_deque *b, int ac, char **av);
 */
 void	            rev_rotate(t_node **head, t_node **tail, char c);
 void	            rotate(t_node **head, t_node **tail, char c);
-void	            swap(t_node **tail, char c);
+void	            swap(t_node **head, char c);
 void                push(t_node **from, t_node **to, t_node **to_end);
 /*
 ** perform.c
@@ -70,7 +70,8 @@ void                push(t_node **from, t_node **to, t_node **to_end);
 int                 a_is_sorted(t_deque *a);
 void                simply_number_sec(int *temp, int *copy, int n);
 void                simply_number(t_deque *a, int *copy_arr, int n);
-void                perform(t_deque *a, t_deque *b, int size);
+void                perform_over_five(t_deque *a, t_deque *b, int size);
+int                 push_swap(t_deque *a, t_deque *b, int size);
 /*
 ** quick_sort.c
 */
