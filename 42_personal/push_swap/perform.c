@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/07/22 21:22:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/23 21:15:41 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int     push_swap(t_deque *a, t_deque *b, int size)
         return (1);
     if (size == 1)
         return (0);
-    if (size == 2 && a->tail->prev->data < a->tail->data)
+    if (size == 2 && a->head->data > a->head->next->data)
         swap(&a->head, 'a');
     if (size > 5)
         perform_over_five(a, b, size);
