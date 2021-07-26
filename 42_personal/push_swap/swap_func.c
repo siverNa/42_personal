@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:26:29 by sna               #+#    #+#             */
-/*   Updated: 2021/07/22 20:54:46 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/26 19:02:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	rev_rotate(t_node **head, t_node **tail, char c)
 	(*head)->prev = NULL;
 	(*tail)->next = NULL;
 	if (c == 'a')
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (c == 'b')
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	
 }
 
