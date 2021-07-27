@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/07/27 18:52:27 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/27 22:15:27 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ int                 push_swap(t_deque *a, t_deque *b, int size);
 /*
 ** perform_sec.c
 */
+int                 search_min(int *arr, int size);
 void                dec_to_arr(t_node *temp, int *arr, int size);
-//void                perform_four(t_deque *a, t_deque *b, int size);
+void                perform_four(t_deque *a, t_deque *b, int size);
 void                perform_three(t_deque *a, t_deque *b, int size);
 /*
 ** quick_sort.c
