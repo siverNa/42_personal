@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:46:45 by sna               #+#    #+#             */
-/*   Updated: 2021/07/27 22:14:25 by sna              ###   ########.fr       */
+/*   Updated: 2021/07/29 19:47:18 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,43 @@ void    dec_to_arr(t_node *temp, int *arr, int size)
     }
 }
 
+void    perform_five(t_deque *a, t_deque *b, int size)
+{
+    t_node  *temp;
+    int     arr[5];
+    int     min;
+    int     i;
+
+    temp = a->head;
+    dec_to_arr(temp, arr, size);
+    min = search_min(arr, size);
+    i = 0;
+    if (min == 0)
+    {
+        if (arr[0] < arr[1] && arr[1] < arr[2] && arr[2] < arr[3] &&
+        arr[3] < arr[4] && arr[0] < arr[4])
+            return ;
+        overlap_four(a, b, 4);
+    }
+    else if (0 < min && min < 3)
+    {
+        while (i++ < min)
+            rotate(&a->head, &a->tail, 'a');
+        overlap_four(a, b, 4);
+    }
+    else if (min == 3)
+    {
+        while (i++ < (min - 1))
+            rev_rotate(&a->head, &a->tail, 'a');
+        overlap_four(a, b, 4);
+    }
+    else if (min == 4)
+    {
+        rev_rotate(&a->head, &a->tail, 'a');
+        overlap_four(a, b, 4);
+    }
+}
+
 void    perform_four(t_deque *a, t_deque *b, int size)
 {
     t_node  *temp;
@@ -58,31 +95,23 @@ void    perform_four(t_deque *a, t_deque *b, int size)
         if (arr[0] < arr[1] && arr[1] < arr[2] && arr[2] < arr[3] &&
         arr[0] < arr[3])
             return ;
-        test_push(a, b, 'b');
-        perform_three(a, b, 3);
-        test_push(b, a, 'a');
+        overlap_three(a, b, 3);
     }
     else if (min == 1)
     {
         rotate(&a->head, &a->tail, 'a');
-        test_push(a, b, 'b');
-        perform_three(a, b, 3);
-        test_push(b, a, 'a');
+        overlap_three(a, b, 3);
     }
     else if (min == 2)
     {
         rev_rotate(&a->head, &a->tail, 'a');
         rev_rotate(&a->head, &a->tail, 'a');
-        test_push(a, b, 'b');
-        perform_three(a, b, 3);
-        test_push(b, a, 'a');
+        overlap_three(a, b, 3);
     }
     else if (min == 3)
     {
         rev_rotate(&a->head, &a->tail, 'a');
-        test_push(a, b, 'b');
-        perform_three(a, b, 3);
-        test_push(b, a, 'a');
+        overlap_three(a, b, 3);
     }
 }
 
