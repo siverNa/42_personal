@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/02 17:11:51 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/02 19:14:59 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ void                perform_three(t_deque *a, int size);
 */
 void                overlap_four(t_deque *a, t_deque *b, int size);
 void                overlap_three(t_deque *a, t_deque *b, int size);
+void                four_more_two(t_deque *a, t_deque *b, int min);
+void                four_less_two(t_deque *a, t_deque *b, int *arr, int min);
+/*
+** perform_four.c
+*/
+void                five_more_two(t_deque *a, t_deque *b, int min);
+void                five_less_two(t_deque *a, t_deque *b, int *arr, int min);
 /*
 ** quick_sort.c
 */

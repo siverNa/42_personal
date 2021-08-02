@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 18:07:34 by sna               #+#    #+#              #
-#    Updated: 2021/07/29 19:23:23 by sna              ###   ########.fr        #
+#    Updated: 2021/08/02 19:13:47 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFT =		-L./libft -lft
 G3 =		-g3 -fsanitize=address
 
 SRCS =		pw_main.c build_deque.c deque_func.c swap_func.c perform.c \
-			quick_sort.c test_swap_fun.c perform_sec.c perform_third.c
+			quick_sort.c test_swap_fun.c perform_sec.c perform_third.c \
+			perform_four.c
 
 OBJS = $(SRCS:.c=.o)
 

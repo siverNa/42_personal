@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:46:45 by sna               #+#    #+#             */
-/*   Updated: 2021/08/02 17:12:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/02 19:17:52 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,19 @@ void    perform_five(t_deque *a, t_deque *b, int size)
     t_node  *temp;
     int     arr[5];
     int     min;
-    int     i;
 
     temp = a->head;
     dec_to_arr(temp, arr, size);
     min = search_min(arr, size);
-    i = 0;
-    if (min == 0)
+    if (0 <= min && min < 3)
     {
         if (arr[0] < arr[1] && arr[1] < arr[2] && arr[2] < arr[3] &&
         arr[3] < arr[4] && arr[0] < arr[4])
             return ;
-        overlap_four(a, b, 4);
+        five_less_two(a, b, arr, min);
     }
-    else if (0 < min && min < 3)
-    {
-        while (i++ < min)
-            rotate(&a->head, &a->tail, 'a');
-        overlap_four(a, b, 4);
-    }
-    else if (min == 3)
-    {
-        while (i++ < (min - 1))
-            rev_rotate(&a->head, &a->tail, 'a');
-        overlap_four(a, b, 4);
-    }
-    else if (min == 4)
-    {
-        rev_rotate(&a->head, &a->tail, 'a');
-        overlap_four(a, b, 4);
-    }
+    else if (3 <= min && min <= 4)
+        five_more_two(a, b, min);
 }
 
 void    perform_four(t_deque *a, t_deque *b, int size)
@@ -90,29 +73,15 @@ void    perform_four(t_deque *a, t_deque *b, int size)
     temp = a->head;
     dec_to_arr(temp, arr, size);
     min = search_min(arr, size);
-    if (min == 0)
+    if (0 <= min && min < 2)
     {
         if (arr[0] < arr[1] && arr[1] < arr[2] && arr[2] < arr[3] &&
         arr[0] < arr[3])
             return ;
-        overlap_three(a, b, 3);
+        four_less_two(a, b, arr, min);
     }
-    else if (min == 1)
-    {
-        rotate(&a->head, &a->tail, 'a');
-        overlap_three(a, b, 3);
-    }
-    else if (min == 2)
-    {
-        rev_rotate(&a->head, &a->tail, 'a');
-        rev_rotate(&a->head, &a->tail, 'a');
-        overlap_three(a, b, 3);
-    }
-    else if (min == 3)
-    {
-        rev_rotate(&a->head, &a->tail, 'a');
-        overlap_three(a, b, 3);
-    }
+    else if (2 <= min && min <= 3)
+        four_more_two(a, b, min);
 }
 
 void    perform_three(t_deque *a, int size)
