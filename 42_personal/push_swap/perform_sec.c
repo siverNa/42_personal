@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:46:45 by sna               #+#    #+#             */
-/*   Updated: 2021/07/29 19:47:18 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/02 17:12:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void    perform_four(t_deque *a, t_deque *b, int size)
     }
 }
 
-void    perform_three(t_deque *a, t_deque *b, int size)
+void    perform_three(t_deque *a, int size)
 {
     t_node  *temp;
     int     arr[3];
@@ -126,9 +126,8 @@ void    perform_three(t_deque *a, t_deque *b, int size)
         return ;
     else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
     {
-        test_push(a, b, 'b');
+        rev_rotate(&a->head, &a->tail, 'a');
         swap(&a->head, 'a');
-        test_push(b, a, 'a');
     }
     else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
         swap(&a->head, 'a');
@@ -138,8 +137,7 @@ void    perform_three(t_deque *a, t_deque *b, int size)
         rotate(&a->head, &a->tail, 'a');
     else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
     {
-        rev_rotate(&a->head, &a->tail, 'a');
-        rev_rotate(&a->head, &a->tail, 'a');
+        rotate(&a->head, &a->tail, 'a');
         swap(&a->head, 'a');
     }
 }

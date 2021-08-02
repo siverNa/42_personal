@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:09:26 by sna               #+#    #+#             */
-/*   Updated: 2021/07/29 19:50:14 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/02 17:12:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void    overlap_four(t_deque *a, t_deque *b, int size)
 void    overlap_three(t_deque *a, t_deque *b, int size)
 {
     test_push(a, b, 'b');
-    perform_three(a, b, size);
+    perform_three(a, size);
     test_push(b, a, 'a');
 }
