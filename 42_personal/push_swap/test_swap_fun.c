@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:45:14 by sna               #+#    #+#             */
-/*   Updated: 2021/07/26 19:31:33 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/06 21:53:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,71 @@ void	test_push(t_deque *from, t_deque *to, char c)
 		write(1, "pa\n", 3);
 	else if (c == 'b')
 		write(1, "pb\n", 3);
+}
+
+char	**ft_free_pw(char **new_str)
+{
+	size_t	i;
+
+	i = 0;
+	while (new_str[i])
+	{
+		free(new_str[i]);
+		i++;
+	}
+	free(new_str);
+	return (NULL);
+}
+
+int     check_number_test(char **av)
+{
+    int     i;
+    int     j;
+	int		k;
+	char	**c_av;
+
+    i = 0;
+    while (av[++i])
+    {
+		c_av = ft_split(av[i], ' ');
+		j = 0;
+		k = 0;
+		while (c_av[j])
+		{
+			if (c_av[j][k] == '-' || c_av[j][k] == '+')
+				k++;
+			if (!ft_isdigit(c_av[j][k]))
+				return (0);
+			//if (ft_isdigit(c_av[j][k]))
+			//	k++;
+			j++;
+		}
+		ft_free_pw(c_av);
+    }
+    return (1);
+}
+
+void	insert_a_deq(t_deque *a, char **av)
+{
+	int		i;
+	int		j;
+	char	**c_av;
+
+	i = 1;
+	a->head->prev = NULL;
+    a->tail = a->head;
+	while (av[i])
+	{
+		c_av = ft_split(av[i], ' ');
+		j = 0;
+		while (c_av[j])
+		{
+			if (!ft_strlen(c_av[j]))
+				print_error();
+			lst_addend(c_av[j], a);
+			j++;
+		}
+		ft_free_pw(c_av);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/02 19:14:59 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/06 21:20:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ void                sort(t_deque *a, int *arr, int n);
 ** test_swap_func.c
 */
 void	            test_push(t_deque *from, t_deque *to, char c);
+char	            **ft_free_pw(char **new_str);
+int                 check_number_test(char **av);
+void	            insert_a_deq(t_deque *a, char **av);
 
 #endif

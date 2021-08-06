@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/03 17:39:58 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/06 21:23:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,21 @@ void    lst_addend(char *str, t_deque *a)
 void    build_deque(t_deque *a, t_deque *b, int ac, char **av)
 {
     t_node  *temp;
-    int     i;
+    //int     i;
 
-    i = 1;
+    //i = 1;
     a->head = malloc(sizeof(t_node));
-    if (!check_number(ac, av) || !a->head)
+    if (!check_number_test(av) || !a->head)
         print_error();
     deque_init(b);
+    /*
     a->head->data = ft_atoi(av[i++]);
     a->head->prev = NULL;
     a->tail = a->head;
     while (i < ac)
         lst_addend(av[i++], a);
+    */
+    insert_a_deq(a, av);
     if (!check_overlap(a, ac))
     {
         while (a->head)
