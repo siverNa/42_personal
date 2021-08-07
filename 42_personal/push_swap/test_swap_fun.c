@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:45:14 by sna               #+#    #+#             */
-/*   Updated: 2021/08/06 21:53:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/08 01:50:10 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,46 @@ char	**ft_free_pw(char **new_str)
 	return (NULL);
 }
 
+int		ft_str_isdigit(char *c)
+{
+	int 	i;
+
+	i = 0;
+	if (c[i] == '+' || c[i] == '-')
+		i++;
+	while (c[i])
+	{
+		if (c[i] >= '0' && c[i] <= '9')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 int     check_number_test(char **av)
 {
-    int     i;
-    int     j;
-	int		k;
-	char	**c_av;
+    int 	i;
+	int		j;
+	char 	**c_av;
 
-    i = 0;
-    while (av[++i])
-    {
+	i = 0;
+	while (av[++i])
+	{
 		c_av = ft_split(av[i], ' ');
-		j = 0;
-		k = 0;
-		while (c_av[j])
+		j = -1;
+		while (c_av[++j])
 		{
-			if (c_av[j][k] == '-' || c_av[j][k] == '+')
-				k++;
-			if (!ft_isdigit(c_av[j][k]))
+			if (!ft_str_isdigit(c_av[j]))
+			{
+				ft_free_pw(c_av);
 				return (0);
-			//if (ft_isdigit(c_av[j][k]))
-			//	k++;
-			j++;
+			}
 		}
 		ft_free_pw(c_av);
-    }
-    return (1);
+	}
+	write(1, "number checked\n", 16);
+	return (1);
 }
 
 void	insert_a_deq(t_deque *a, char **av)
