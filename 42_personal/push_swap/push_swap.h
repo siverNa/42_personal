@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/08 01:20:06 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/09 23:18:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,12 @@ void	            test_push(t_deque *from, t_deque *to, char c);
 char	            **ft_free_pw(char **new_str);
 int		            ft_str_isdigit(char *c);
 int                 check_number_test(char **av);
-void	            insert_a_deq(t_deque *a, char **av);
+void	            insert_a_deq(t_deque *a, char **av, int ac);
+/*
+**  push_util.c
+*/
+//char                **move_av_to_cav(char **av);
+void                lst_addend_test(char *str, t_deque *a, int *j);
+int                 ft_atoi_pw(char *str, int *i);
 
 #endif

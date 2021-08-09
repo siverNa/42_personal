@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/08 01:48:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/09 23:33:54 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void    build_deque(t_deque *a, t_deque *b, int ac, char **av)
     while (i < ac)
         lst_addend(av[i++], a);
     */
-    insert_a_deq(a, av);
+    insert_a_deq(a, av, ac);
     if (!check_overlap(a, ac))
     {
         while (a->head)

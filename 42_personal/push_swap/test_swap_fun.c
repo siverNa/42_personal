@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:45:14 by sna               #+#    #+#             */
-/*   Updated: 2021/08/08 01:50:10 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 00:13:42 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,25 @@ int     check_number_test(char **av)
 	return (1);
 }
 
-void	insert_a_deq(t_deque *a, char **av)
+void	insert_a_deq(t_deque *a, char **av, int ac)
 {
 	int		i;
 	int		j;
-	char	**c_av;
+	int		check;
 
 	i = 1;
+	j = 0;
+	a->head->data = ft_atoi_pw(av[i], &j);
 	a->head->prev = NULL;
     a->tail = a->head;
-	while (av[i])
+	check = 1;
+	while (i < ac)
 	{
-		c_av = ft_split(av[i], ' ');
+		if (check == 0)
 		j = 0;
-		while (c_av[j])
-		{
-			if (!ft_strlen(c_av[j]))
-				print_error();
-			lst_addend(c_av[j], a);
-			j++;
-		}
-		ft_free_pw(c_av);
+		while (av[i][j])
+			lst_addend_test(av[i], a, &j);
+		check = 0;
 		i++;
 	}
 }
