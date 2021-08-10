@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/08/02 17:11:41 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 19:18:33 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int     push_swap(t_deque *a, t_deque *b, int size)
         perform_four(a, b, size);
     if (size == 5)
         perform_five(a, b, size);
-    if (size > 5)
+    if (size > 5 && !(a_is_sorted(a)))
         perform_over_five(a, b, size);
     return (2);
 }
