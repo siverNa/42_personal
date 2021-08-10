@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:45:14 by sna               #+#    #+#             */
-/*   Updated: 2021/08/10 00:13:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 17:18:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,25 @@ void	insert_a_deq(t_deque *a, char **av, int ac)
 {
 	int		i;
 	int		j;
-	int		check;
+	//int		check;
 
 	i = 1;
 	j = 0;
-	a->head->data = ft_atoi_pw(av[i], &j);
-	a->head->prev = NULL;
-    a->tail = a->head;
-	check = 1;
+	a->size = 0;
+	//a->head->data = ft_atoi_pw(av[i], &j);
+	//a->head->prev = NULL;
+    //a->tail = a->head;
+	//check = 1;
 	while (i < ac)
 	{
-		if (check == 0)
+		//if (check == 0)
 		j = 0;
 		while (av[i][j])
+		{	
 			lst_addend_test(av[i], a, &j);
-		check = 0;
+			a->size++;
+		}
+		//check = 0;
 		i++;
 	}
 }

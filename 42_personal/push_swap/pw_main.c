@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/08/08 15:49:28 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 17:24:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ int     main(int ac, char **av)
 
     //./push_swap 1 2 3 4 가 입력됐을 경우 ac의 값은 5임
     //배열의 크기는 숫자 4개만 들어가야 하므로 ac - 1을 해줘야함
-    sort(&a, copy_arr, ac - 1);
+    sort(&a, copy_arr, a.size);
 
     printf("sorted number : ");
-    for (int i = 0; i < ac - 1; i++)
+    for (int i = 0; i < a.size; i++)
         printf("%d ", copy_arr[i]);
     printf("\n");
 
-    simply_number(&a, copy_arr, ac - 1);
-    push_swap(&a, &b, ac - 1);
+    simply_number(&a, copy_arr, a.size);
+    push_swap(&a, &b, a.size);
     
     while (!dq_is_empty(&a))
         printf("%d ",dq_remove_first(&a));

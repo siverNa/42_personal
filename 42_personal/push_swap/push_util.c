@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 16:14:19 by sna               #+#    #+#             */
-/*   Updated: 2021/08/09 23:18:59 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 17:27:50 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void    lst_addend_test(char *str, t_deque *a, int *j)
     num = ft_atoi_pw(str, j);
     if (num > INT_MAX || num < INT_MIN)
         print_error();
-    if (a == NULL)
-        return ;
+    //if (a == NULL)
+    //    return ;
     dq_add_last(a, (int)num);
 }
 
@@ -52,6 +52,9 @@ int     ft_atoi_pw(char *str, int *i)
 
     num = 0;
     sign = 1;
+    while (str[*i] == '\f' || str[*i] == '\n' || str[*i] == '\r' || str
+		[*i] == '\t' || str[*i] == '\v' || str[*i] == ' ')
+		++*i;
     if (str[*i] == '-' || str[*i] == '+')
     {
         if (str[*i] == '-')

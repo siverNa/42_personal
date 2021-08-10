@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/09 23:33:54 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/10 17:21:12 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ void    build_deque(t_deque *a, t_deque *b, int ac, char **av)
     //int     i;
 
     //i = 1;
-    a->head = malloc(sizeof(t_node));
-    if (!check_number_test(av) || !a->head)
+    a->head = 0;
+    a->tail = 0;
+    if (!check_number_test(av))
         print_error();
     deque_init(b);
     /*
