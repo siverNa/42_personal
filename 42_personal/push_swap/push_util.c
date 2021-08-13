@@ -6,44 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 16:14:19 by sna               #+#    #+#             */
-/*   Updated: 2021/08/10 17:27:50 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/13 17:47:47 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-char    **move_av_to_cav(char **av)
-{
-    int     i;
-    int     j;
-    int     k;
-    char    **c_av;
-    char    **all_arr;
-
-    i = 1;
-    k = 0;
-    while (av[i])
-    {
-        j = 0;
-        c_av = ft_split(av[i], ' ');
-        while (c_av[j])
-            all_arr[k++] = c_av[j++];
-        ft_free_pw(c_av);
-    }
-    return (all_arr);
-}
-*/
-void    lst_addend_test(char *str, t_deque *a, int *j)
-{
-    long    num;
-
-    num = ft_atoi_pw(str, j);
-    if (num > INT_MAX || num < INT_MIN)
-        print_error();
-    //if (a == NULL)
-    //    return ;
-    dq_add_last(a, (int)num);
-}
 
 int     ft_atoi_pw(char *str, int *i)
 {
@@ -73,4 +40,55 @@ int     ft_atoi_pw(char *str, int *i)
     if (num * sign < -2147483648 || num * sign > 2147483647)
         print_error();
     return (num * sign);
+}
+
+char	**ft_free_pw(char **new_str)
+{
+	size_t	i;
+
+	i = 0;
+	while (new_str[i])
+	{
+		free(new_str[i]);
+		i++;
+	}
+	free(new_str);
+	return (NULL);
+}
+
+int		ft_str_isdigit(char *c)
+{
+	int 	i;
+
+	i = 0;
+	if (c[i] == '+' || c[i] == '-')
+		i++;
+	while (c[i])
+	{
+		if (c[i] >= '0' && c[i] <= '9')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+void	insert_a_deq(t_deque *a, char **av, int ac)
+{
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
+	a->size = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{	
+			lst_addend(av[i], a, &j);
+			a->size++;
+		}
+		i++;
+	}
 }

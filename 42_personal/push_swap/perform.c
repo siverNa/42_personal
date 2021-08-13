@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/08/10 19:18:33 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/13 17:21:10 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void    perform_over_five(t_deque *a, t_deque *b, int size)
             if (((num >> i) & 1) == 1)
                 rotate(&a->head, &a->tail, 'a');
             else
-                test_push(a, b, 'b');
+                push(a, b, 'b');
         }
         while (!dq_is_empty(b))
-            test_push(b, a, 'a');
+            push(b, a, 'a');
     }
 }
 

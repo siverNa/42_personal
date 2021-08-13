@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/10 17:21:12 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/13 17:21:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,36 @@ int     check_overlap(t_deque *q, int ac)
     return (1);
 }
 
-int     check_number(int ac, char **av)
+int     check_number(char **av)
 {
-    int     i;
-    int     j;
+    int 	i;
+	int		j;
+	char 	**c_av;
 
-    i = 1;
-    while (i < ac)
-    {
-        j = 0;
-        if (av[i][j] == '-')
-            j++;
-        if (!ft_isdigit(av[i][j]))
-            return (0);
-        while (ft_isdigit(av[i][j]))
-            j++;
-        if (av[i][j])
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (av[++i])
+	{
+		c_av = ft_split(av[i], ' ');
+		j = -1;
+		while (c_av[++j])
+		{
+			if (!ft_str_isdigit(c_av[j]))
+			{
+				ft_free_pw(c_av);
+				return (0);
+			}
+		}
+		ft_free_pw(c_av);
+	}
+	write(1, "number checked\n", 16);
+	return (1);
 }
 
-void    lst_addend(char *str, t_deque *a)
+void    lst_addend(char *str, t_deque *a, int *j)
 {
     long    num;
 
-    num = ft_atoi(str);
+    num = ft_atoi_pw(str, j);
     if (num > INT_MAX || num < INT_MIN)
         print_error();
     if (a == NULL)
@@ -81,21 +84,12 @@ void    lst_addend(char *str, t_deque *a)
 void    build_deque(t_deque *a, t_deque *b, int ac, char **av)
 {
     t_node  *temp;
-    //int     i;
 
-    //i = 1;
     a->head = 0;
     a->tail = 0;
-    if (!check_number_test(av))
+    if (!check_number(av))
         print_error();
     deque_init(b);
-    /*
-    a->head->data = ft_atoi(av[i++]);
-    a->head->prev = NULL;
-    a->tail = a->head;
-    while (i < ac)
-        lst_addend(av[i++], a);
-    */
     insert_a_deq(a, av, ac);
     if (!check_overlap(a, ac))
     {

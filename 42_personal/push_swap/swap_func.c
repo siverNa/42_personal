@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:26:29 by sna               #+#    #+#             */
-/*   Updated: 2021/07/26 19:02:09 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/13 17:46:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rev_rotate(t_node **head, t_node **tail, char c)
 		write(1, "rra\n", 4);
 	else if (c == 'b')
 		write(1, "rrb\n", 4);
-	
 }
 
 void	rotate(t_node **head, t_node **tail, char c)
@@ -63,21 +62,27 @@ void	swap(t_node **head, char c)
 		write(1, "sb\n", 3);
 }
 
-void	push(t_node **from, t_node **to, t_node **to_head)
+void	push(t_deque *from, t_deque *to, char c)
 {
 	t_node *temp;
 
-	if (*from == NULL)//from이 비어있을 때는 아무것도 수행 안함
+	if (from == NULL || to == NULL || !c)//from이 비어있을 때는 아무것도 수행 안함
 		return ;
-	temp = *from;//from 주소 저장
-	*from = (*from)->prev;//from의 이전 리스트 주소를 from에 저장
-	if (*from)
-		(*from)->next = NULL;//이전 리스트가 있다면 prev에 null 입력(이전주소 끊기?)
-	if (*to)
-		(*to)->next = temp;//*to 주소가 존재하면 from 주소가 저장된 temp를 (*to)->prev에 입력
+	temp = from->head;//from 주소 저장
+	from->head = (from->head)->next;//from의 다음 리스트 주소를 from에 저장
+	if (from->head == NULL)
+        from->tail = NULL;
+    else
+		(from->head)->prev = NULL;//이전 리스트가 있다면 prev에 null 입력(이전주소 끊기?)
+	if (to->head)
+		(to->head)->prev = temp;//*to 주소가 존재하면 from 주소가 저장된 temp를 (*to)->prev에 입력
 	else
-		*to_head = temp;//아니면 *to_tail 에 temp입력
-	temp->prev = *to;//temp->next 주소(다음 주소)로 *to 저장
-	*to = temp;
-	(*to)->next = NULL;
+		to->tail = temp;//아니면 *to_tail 에 temp입력
+	temp->next = to->head;//temp->next 주소(다음 주소)로 *to 저장
+	to->head = temp;
+	(to->head)->prev = NULL;
+	if (c == 'a')
+		write(1, "pa\n", 3);
+	else if (c == 'b')
+		write(1, "pb\n", 3);
 }
