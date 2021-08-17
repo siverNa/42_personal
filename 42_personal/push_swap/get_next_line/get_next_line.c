@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 18:24:05 by sna               #+#    #+#             */
-/*   Updated: 2021/08/17 18:34:12 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/17 18:38:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	get_next_line(int fd, char **line)
 		temp = ft_strjoin(rem[fd], buff);
 		free(rem[fd]);
 		rem[fd] = temp;
+		nl_addr = ft_strchr(rem[fd], '\n');
+		rd_len = read(fd, buff, BUFFER_SIZE);
 	}
 	if (rd_len < 0)
 		return (-1);
