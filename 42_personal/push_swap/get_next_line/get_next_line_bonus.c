@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:47:55 by sna               #+#    #+#             */
-/*   Updated: 2021/01/18 18:31:03 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/17 18:35:35 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int		get_line(char **line, char **rem, char *nl_addr)
+int	get_line(char **line, char **rem, char *nl_addr)
 {
 	char		*temp;
 
@@ -36,7 +36,7 @@ int		get_line(char **line, char **rem, char *nl_addr)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*rem[OPEN_MAX];
 	char		buff[BUFFER_SIZE + 1];
@@ -48,13 +48,16 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (rem[fd] == NULL)
 		rem[fd] = ft_strdup("");
-	while ((nl_addr = ft_strchr(rem[fd], '\n')) == 0
-			&& (rd_len = read(fd, buff, BUFFER_SIZE)) > 0)
+	nl_addr = ft_strchr(rem[fd], '\n');
+	rd_len = read(fd, buff, BUFFER_SIZE);
+	while (nl_addr == 0 && rd_len > 0)
 	{
 		buff[rd_len] = '\0';
 		temp = ft_strjoin(rem[fd], buff);
 		free(rem[fd]);
 		rem[fd] = temp;
+		nl_addr = ft_strchr(rem[fd], '\n');
+		rd_len = read(fd, buff, BUFFER_SIZE);
 	}
 	if (rd_len < 0)
 		return (-1);
