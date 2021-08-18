@@ -6,16 +6,16 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/08/10 17:24:55 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/18 17:25:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	 free_deque(t_deque *a)
+void	free_deque(t_deque *a)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	while (a->head)
 	{
@@ -25,37 +25,40 @@ void	 free_deque(t_deque *a)
 	}
 }
 
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_deque a;
-    t_deque b;
-    int     copy_arr[ac - 1];
-    
-    build_deque(&a, &b, ac, av);
-    if (a_is_sorted(&a))
-        printf("a is sorted\n");
-    else
-        printf("a is not sorted\n");
+	t_deque	a;
+	t_deque	b;
+	int		*copy_arr;
 
+	build_deque(&a, &b, ac, av);
+	if (a_is_sorted(&a))
+		printf("a is sorted\n");
+	else
+		printf("a is not sorted\n");
     //./push_swap 1 2 3 4 가 입력됐을 경우 ac의 값은 5임
     //배열의 크기는 숫자 4개만 들어가야 하므로 ac - 1을 해줘야함
-    sort(&a, copy_arr, a.size);
+	copy_arr = (int *)malloc(sizeof(int) * a.size);
+	if (!copy_arr)
+		exit(1);
+	sort(&a, copy_arr, a.size);
 
-    printf("sorted number : ");
-    for (int i = 0; i < a.size; i++)
-        printf("%d ", copy_arr[i]);
-    printf("\n");
+	printf("sorted number : ");
+	for (int i = 0; i < a.size; i++)
+		printf("%d ", copy_arr[i]);
+	printf("\n");
 
-    simply_number(&a, copy_arr, a.size);
-    push_swap(&a, &b, a.size);
-    
-    while (!dq_is_empty(&a))
-        printf("%d ",dq_remove_first(&a));
-    printf("\n");
+	simply_number(&a, copy_arr, a.size);
+	push_swap(&a, &b, a.size);
 
-    while (!dq_is_empty(&b))
-        printf("%d ",dq_remove_first(&b));
-    printf("\n");
+	while (!dq_is_empty(&a))
+		printf("%d ",dq_remove_first(&a));
+	printf("\n");
+
+	while (!dq_is_empty(&b))
+		printf("%d ",dq_remove_first(&b));
+	printf("\n");
+	free(copy_arr);
     
     //free_deque(&a);
 }
