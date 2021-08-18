@@ -6,11 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 20:17:18 by sna               #+#    #+#             */
-/*   Updated: 2021/08/17 18:15:16 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/18 13:35:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	perform_exit(t_deque *a, t_deque *b, int input)
 {
@@ -29,9 +29,9 @@ void	perform_exit(t_deque *a, t_deque *b, int input)
 		free(temp);
 	}
 	if (input)
-		ft_putstr("OK\n");
+		write(0, "OK\n", 3);
 	if (!input)
-		ft_putstr("KO\n");
+		write(0, "KO\n", 3);
 	exit(1);
 }
 

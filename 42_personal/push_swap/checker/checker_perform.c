@@ -6,11 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 18:06:31 by sna               #+#    #+#             */
-/*   Updated: 2021/08/17 18:19:51 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/18 13:31:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	swap_perform(char *line, t_deque *a, t_deque *b)
 {
