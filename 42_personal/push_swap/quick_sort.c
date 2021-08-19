@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 17:28:00 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 17:41:11 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 18:32:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ int	partition(int *arr, int left, int right)
 	pivot = arr[left];
 	low = left + 1;
 	high = right;
-	while (low <= high) // 교차되기 전까지 반복한다 
+	while (low <= high)
 	{
-		while (low <= right && pivot >= arr[low]) // 피벗보다 큰 값을 찾는 과정 
-			low++; // low를 오른쪽으로 이동 
-		while (high >= (left + 1) && pivot <= arr[high]) // 피벗보다 작은 값을 찾는 과정 
-			high--; // high를 왼쪽으로 이동
-		if (low <= high)// 교차되지 않은 상태이면 스왑 과정 실행 
-			quick_swap(arr, low, high); //low와 high를 스왑 
+		while (low <= right && pivot >= arr[low])
+			low++;
+		while (high >= (left + 1) && pivot <= arr[high])
+			high--;
+		if (low <= high)
+			quick_swap(arr, low, high);
 	}
-	quick_swap(arr, left, high); // 피벗과 high가 가리키는 대상을 교환 
-	return (high);// 옮겨진 피벗의 위치정보를 반환 
+	quick_swap(arr, left, high);
+	return (high);
 }
 
 void	quicksort(int *arr, int left, int right)
@@ -49,9 +49,9 @@ void	quicksort(int *arr, int left, int right)
 
 	if (left <= right)
 	{
-		pivot = partition(arr, left, right); // 둘로 나누어서
-		quicksort(arr, left, pivot - 1); // 왼쪽 영역을 정렬한다.
-		quicksort(arr, pivot + 1, right); // 오른쪽 영역을 정렬한다.
+		pivot = partition(arr, left, right);
+		quicksort(arr, left, pivot - 1);
+		quicksort(arr, pivot + 1, right);
 	}
 }
 

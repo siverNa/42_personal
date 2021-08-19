@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 17:13:43 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 20:25:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void				sort(t_deque *a, int *arr, int n);
 /*
 **  push_util.c
 */
+int					int_malloc(int **arr, int size);
 int					ft_atoi_pw(char *str, int *i);
 char				**ft_free_pw(char **new_str);
 int					ft_str_isdigit(char *c);

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:33:55 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 17:47:12 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 20:31:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ void	simply_number_sec(int *temp, int *copy, int n)
 void	simply_number(t_deque *a, int *copy_arr, int n)
 {
 	t_node	*temp;
-	int		temp_arr[n];
+	int		*temp_arr;
 	int		i;
 
 	if (a == NULL || copy_arr == NULL || !n)
 		return ;
+	int_malloc(&temp_arr, n);
 	temp = a->head;
 	i = 0;
 	while (i < n)
@@ -73,6 +74,7 @@ void	simply_number(t_deque *a, int *copy_arr, int n)
 		temp->data = temp_arr[i++];
 		temp = temp->next;
 	}
+	free(temp_arr);
 }
 
 void	perform_over_five(t_deque *a, t_deque *b, int size)

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 17:33:52 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 20:32:27 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	check_overlap(t_deque *q, int ac)
 	int		*arr;
 
 	temp = q->head;
-	arr = (int *)malloc(sizeof(int) * ac);
-	if (!arr)
-		return (0);
+	int_malloc(&arr, ac);
 	i = 0;
 	while (temp)
 	{

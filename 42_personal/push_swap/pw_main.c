@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:32:12 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 17:25:46 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 20:26:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	main(int ac, char **av)
 		printf("a is not sorted\n");
     //./push_swap 1 2 3 4 가 입력됐을 경우 ac의 값은 5임
     //배열의 크기는 숫자 4개만 들어가야 하므로 ac - 1을 해줘야함
-	copy_arr = (int *)malloc(sizeof(int) * a.size);
-	if (!copy_arr)
-		exit(1);
+	///copy_arr = (int *)malloc(sizeof(int) * a.size);
+	int_malloc(&copy_arr, a.size);
 	sort(&a, copy_arr, a.size);
 
 	printf("sorted number : ");

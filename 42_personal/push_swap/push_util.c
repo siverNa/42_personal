@@ -6,11 +6,19 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 16:14:19 by sna               #+#    #+#             */
-/*   Updated: 2021/08/13 17:47:47 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 20:26:19 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	int_malloc(int **arr, int size)
+{
+	(*arr) = (int *)malloc(sizeof(int) * size);
+	if (!(*arr))
+		exit(1);
+	return (1);
+}
 
 int     ft_atoi_pw(char *str, int *i)
 {
