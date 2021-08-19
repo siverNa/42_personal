@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 16:14:19 by sna               #+#    #+#             */
-/*   Updated: 2021/08/19 20:26:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/19 21:20:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,33 @@ int	int_malloc(int **arr, int size)
 	return (1);
 }
 
-int     ft_atoi_pw(char *str, int *i)
+int	ft_atoi_pw(char *str, int *i)
 {
-    long    num;
-    int     sign;
+	long	num;
+	int		sign;
 
-    num = 0;
-    sign = 1;
-    while (str[*i] == '\f' || str[*i] == '\n' || str[*i] == '\r' || str
-		[*i] == '\t' || str[*i] == '\v' || str[*i] == ' ')
+	num = 0;
+	sign = 1;
+	while (str[*i] == '\t' || str[*i] == ' ')
 		++*i;
-    if (str[*i] == '-' || str[*i] == '+')
-    {
-        if (str[*i] == '-')
-            sign = -1;
-        ++*i;
-    }
-    while (str[*i])
-    {
-        if (str[*i] < '0' || str[*i] > '9')
-            break ;
-        num = num * 10 + (str[*i] - '0');
-        ++*i;
-    }
-    while (str[*i] && (str[*i] == ' ' || str[*i] == '\t'))
-        ++*i;
-    if (num * sign < -2147483648 || num * sign > 2147483647)
-        print_error();
-    return (num * sign);
+	if (str[*i] == '-' || str[*i] == '+')
+	{
+		if (str[*i] == '-')
+			sign = -1;
+		++*i;
+	}
+	while (str[*i])
+	{
+		if (str[*i] < '0' || str[*i] > '9')
+			break ;
+		num = num * 10 + (str[*i] - '0');
+		++*i;
+	}
+	while (str[*i] && (str[*i] == ' ' || str[*i] == '\t'))
+		++*i;
+	if (num * sign < -2147483648 || num * sign > 2147483647)
+		print_error();
+	return (num * sign);
 }
 
 char	**ft_free_pw(char **new_str)
@@ -64,9 +63,9 @@ char	**ft_free_pw(char **new_str)
 	return (NULL);
 }
 
-int		ft_str_isdigit(char *c)
+int	ft_str_isdigit(char *c)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (c[i] == '+' || c[i] == '-')
