@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:49:23 by sna               #+#    #+#             */
-/*   Updated: 2021/08/19 20:32:27 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/20 22:45:30 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,25 @@ void	print_error(void)
 int	check_overlap(t_deque *q, int ac)
 {
 	t_node	*temp;
-	int		i;
 	int		j;
 	int		k;
 	int		*arr;
 
 	temp = q->head;
 	int_malloc(&arr, ac);
-	i = 0;
-	while (temp)
-	{
-		arr[i++] = temp->data;
-		temp = temp->next;
-	}
+	dec_to_arr(temp, arr, ac);
 	j = -1;
-	while (j++ < i)
+	while (j++ < ac)
 	{
 		k = j;
-		while (++k < i)
+		while (++k < ac)
+		{
 			if (arr[j] == arr[k])
+			{
+				free(arr);
 				return (0);
+			}
+		}	
 	}
 	free(arr);
 	return (1);
@@ -93,7 +92,7 @@ void	build_deque(t_deque *a, t_deque *b, int ac, char **av)
 		print_error();
 	deque_init(b);
 	insert_a_deq(a, av, ac);
-	if (!check_overlap(a, ac))
+	if (!check_overlap(a, a->size))
 	{
 		while (a->head)
 		{
