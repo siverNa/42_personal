@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 20:17:18 by sna               #+#    #+#             */
-/*   Updated: 2021/08/18 13:35:09 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/20 22:11:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,35 @@ void	perform_exit(t_deque *a, t_deque *b, int input)
 	exit(1);
 }
 
-int main(int ac, char **av)
+void	check_char(char *line, t_deque *a, t_deque *b)
+{
+	if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb")
+		|| !ft_strcmp(line, "ss"))
+		swap_perform(line, &a, &b);
+	else if (!ft_strcmp(line, "pa"))
+		push(&b, &a, 'a');
+	else if (!ft_strcmp(line, "pb"))
+		push(&a, &b, 'b');
+	else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb")
+		|| !ft_strcmp(line, "rr"))
+		rotate_perform(line, &a, &b);
+	else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb")
+		|| !ft_strcmp(line, "rrr"))
+		rev_rotate_perform(line, &a, &b);
+	else
+		perform_exit(&a, &b, 0);
+}
+
+int	main(int ac, char **av)
 {
 	t_deque	a;
 	t_deque	b;
 	char	*line;
 
-    build_deque(&a, &b, ac, av);
-    while (get_next_line(0, &line) > 0)
-    {
-		if (!STRCMP(line, "sa") || !STRCMP(line, "sa") || !STRCMP(line, "sa"))
-			swap_perform(line, &a, &b);
-		else if (!STRCMP(line, "pa"))
-			push(&b, &a, 'a');
-		else if (!STRCMP(line, "pb"))
-			push(&a, &b, 'b');
-		else if (!STRCMP(line, "ra") || !STRCMP(line, "rb") ||
-			!STRCMP(line, "rr"))
-			rotate_perform(line, &a, &b);
-		else if (!STRCMP(line, "rra") || !STRCMP(line, "rrb") ||
-			!STRCMP(line, "rrr"))
-			rev_rotate_perform(line, &a, &b);
-		else
-			perform_exit(&a, &b, 0);
+	build_deque(&a, &b, ac, av);
+	while (get_next_line(0, &line) > 0)
+	{
+		check_char(line, &a, &b);
 		free(line);
 	}
 	if (!a_is_sorted(&a) || b.head)

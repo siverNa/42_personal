@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 16:14:19 by sna               #+#    #+#             */
-/*   Updated: 2021/08/19 21:20:13 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/20 22:29:31 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	int_malloc(int **arr, int size)
 {
 	(*arr) = (int *)malloc(sizeof(int) * size);
 	if (!(*arr))
-		exit(1);
+		return (0);
 	return (1);
 }
 

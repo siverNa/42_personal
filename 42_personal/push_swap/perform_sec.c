@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:46:45 by sna               #+#    #+#             */
-/*   Updated: 2021/08/19 21:00:34 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/20 22:28:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	perform_three(t_deque *a, int size)
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
 	{
 		rev_rotate(&a->head, &a->tail, 'a');
-		wap(&a->head, 'a');
+		swap(&a->head, 'a');
 	}
 	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
 		swap(&a->head, 'a');

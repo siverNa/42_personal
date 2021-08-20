@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/19 20:25:48 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/20 22:27:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define FALSE		0
 # define INT_MAX	2147483647
 # define INT_MIN	-2147483648
-# define STRCMP		ft_strcmp
 
 typedef struct s_node
 {
@@ -104,11 +103,5 @@ int					ft_atoi_pw(char *str, int *i);
 char				**ft_free_pw(char **new_str);
 int					ft_str_isdigit(char *c);
 void				insert_a_deq(t_deque *a, char **av, int ac);
-/*
-**  checker_perform.c
-*/
-void				swap_perform(char *line, t_deque *a, t_deque *b);
-void				rotate_perform(char *line, t_deque *a, t_deque *b);
-void				rev_rotate_perform(char *line, t_deque *a, t_deque *b);
 
 #endif
