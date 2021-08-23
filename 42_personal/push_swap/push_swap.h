@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:37:15 by sna               #+#    #+#             */
-/*   Updated: 2021/08/20 22:27:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/08/23 18:03:00 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
 # define TRUE		1
 # define FALSE		0
 # define INT_MAX	2147483647
