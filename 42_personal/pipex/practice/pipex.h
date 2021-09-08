@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # define CHILD	0
 # define FILE_1	argv[1]
 # define FILE_2 argv[4]

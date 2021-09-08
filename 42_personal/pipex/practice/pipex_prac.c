@@ -52,23 +52,26 @@ int main(int argc, char const **argv)
 	pid_t	pid;
 	t_cmd	cmd;
 
-	pipe(pipefd);
-	pid = fork();
-	if (pid > 0)
+	if (argc == 5)
 	{
-		redirect_out(FILE_2);
-		connect_pipe(pipefd, STDIN_FILENO);
-		cmd_init(CMD_2, &cmd);
-		if (execve(cmd.cmd, cmd.argv, cmd.envp) == -1)
-			perror(cmd.cmd);
-	}
-	else if (pid == CHILD)
-	{
-		redirect_in(FILE_1);
-		connect_pipe(pipefd, STDOUT_FILENO);
-		cmd_init(CMD_1, &cmd);
-		if (execve(cmd.cmd, cmd.argv, cmd.envp) == -1)
-			perror(cmd.cmd);
+		pipe(pipefd);
+		pid = fork();
+		if (pid > 0)
+		{
+			redirect_out(FILE_2);
+			connect_pipe(pipefd, STDIN_FILENO);
+			cmd_init(CMD_2, &cmd);
+			if (execve(cmd.cmd, cmd.argv, cmd.envp) == -1)
+				perror(cmd.cmd);
+		}
+		else if (pid == CHILD)
+		{
+			redirect_in(FILE_1);
+			connect_pipe(pipefd, STDOUT_FILENO);
+			cmd_init(CMD_1, &cmd);
+			if (execve(cmd.cmd, cmd.argv, cmd.envp) == -1)
+				perror(cmd.cmd);
+		}
 	}
 	return (0);
 }
