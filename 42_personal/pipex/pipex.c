@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:10:53 by sna               #+#    #+#             */
-/*   Updated: 2021/09/17 21:17:04 by sna              ###   ########.fr       */
+/*   Updated: 2021/09/23 18:36:40 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int main(int ac, char **av, char **env)
 	if (pipe(cmd.pipefd) == -1)
 	{
 		ft_putstr_fd("pipe fail!\n", 2);
+		exit(1);
 	}
+	process(&cmd, av, env);
 }
