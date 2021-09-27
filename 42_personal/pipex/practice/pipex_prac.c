@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "pipex_prec.h"
 
 static void	cmd_init(const char *cmd, t_cmd *strt)
 {

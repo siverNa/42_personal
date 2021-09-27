@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   pipex_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 18:32:52 by sna               #+#    #+#             */
-/*   Updated: 2021/09/23 21:32:49 by sna              ###   ########.fr       */
+/*   Updated: 2021/09/27 22:03:40 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	child_process(t_cmd *cmd, char **av, char **env)
 	dup2(cmd->pipefd[1], STDOUT_FILENO);
 	close(cmd->pipefd[0]);
 	close(cmd->pipefd[1]);
+	cmd->cmd_arr = cmd_init(av[2]);
 }
 
 void	parent_process(t_cmd *cmd, char **av, char **env, pid_t *pid)
@@ -39,7 +40,7 @@ void	parent_process(t_cmd *cmd, char **av, char **env, pid_t *pid)
 	dup2(cmd->file_2, STDOUT_FILENO);
 	close(cmd->pipefd[0]);
 	close(cmd->pipefd[1]);
-	
+	cmd->cmd_arr = cmd_init(av[3]);
 }
 
 void	process(t_cmd *cmd, char **av, char **env)
