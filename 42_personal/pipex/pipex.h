@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:07:35 by sna               #+#    #+#             */
-/*   Updated: 2021/09/23 21:32:36 by sna              ###   ########.fr       */
+/*   Updated: 2021/09/29 22:38:06 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,30 @@ typedef struct	s_cmd
 	char	**envp;
 }				t_cmd;
 
+typedef struct	s_pars
+{
+	int		i;
+	int		j;
+	int		count;
+	int		len;
+}				t_pars;
+
+
 /*
-** process.c
+** pipex_process.c
 */
 void	child_process(t_cmd *cmd, char **av, char **env);
 void	parent_process(t_cmd *cmd, char **av, char **env, pid_t *pid);
 void	process(t_cmd *cmd, char **av, char **env);
+/*
+** pipex_cmd_init.c
+*/
+char	**parsing_str(char *str, char **result, t_pars *pars);
+void	count_word(const char *str, int *i, int *count);
+int		count_str(const char *str);
+char	**cmd_init(const char *str);
+/*
+** pipex_cmd_init.c
+*/
 
 #endif

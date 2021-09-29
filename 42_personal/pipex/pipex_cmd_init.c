@@ -6,28 +6,34 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 22:04:53 by sna               #+#    #+#             */
-/*   Updated: 2021/09/28 23:07:19 by sna              ###   ########.fr       */
+/*   Updated: 2021/09/29 20:19:54 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**parsing_str(char *str, char **result, int s_len)
+char	**parsing_str(char *str, char **result, t_pars *pars)
 {
-	int		i;
-	int		j;
-	int		count;
-
-	i = 0;
-	j = 0;
-	while(str[i] && j < s_len)
+	pars->i = 0;
+	pars->j = 0;
+	while(str[pars->i] && pars->j < pars->len)
 	{
-		count = 0;
-		if (str[i] != ' ')
+		pars->count = 0;
+		if (str[pars->i] != ' ')
 		{
-			
+			if (str[pars->i] == 36)
+				case_double_q(str, result, pars);
+			else if (str[pars->i] == 39)
+				case_single_q(str, result, pars);
+			else
+				case_space(str, result, pars);
 		}
+		result[pars->j][pars->count] = '\0';
+		pars->i++;
+		pars->j++;
 	}
+	result[pars->j] = NULL;
+	return (result);
 }
 
 void	count_word(const char *str, int *i, int *count)
@@ -75,14 +81,14 @@ int		count_str(const char *str)
 
 char	**cmd_init(const char *str)
 {
-	int		s_len;
+	t_pars	pars;
 	char	**result;
 
 	if (str == NULL)
 		return (NULL);
-	s_len = count_str(str);
-	result = (char *)malloc(sizeof(char) * s_len + 1);
+	pars.len = count_str(str);
+	result = (char *)malloc(sizeof(char) * pars.len + 1);
 	if (!result)
 		return (NULL);
-	parsing_str((char *)str, result, s_len);
+	return (parsing_str((char *)str, result, &pars));
 }
