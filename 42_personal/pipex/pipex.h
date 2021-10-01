@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:07:35 by sna               #+#    #+#             */
-/*   Updated: 2021/09/30 21:51:31 by sna              ###   ########.fr       */
+/*   Updated: 2021/10/01 21:43:25 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <sys/wait.h>
-# include "libft.h"
+# include "./libft/libft.h"
 
-typedef struct	s_cmd
+typedef struct s_cmd
 {
 	int		pipefd[2];
 	int		status;
@@ -32,7 +32,7 @@ typedef struct	s_cmd
 	char	**envp;
 }				t_cmd;
 
-typedef struct	s_pars
+typedef struct s_pars
 {
 	int		i;
 	int		j;
@@ -40,10 +40,10 @@ typedef struct	s_pars
 	int		len;
 }				t_pars;
 
-
 /*
 ** pipex_process.c
 */
+void	free_struct(t_cmd *cmd);
 void	child_process(t_cmd *cmd, char **av, char **env);
 void	parent_process(t_cmd *cmd, char **av, char **env, pid_t *pid);
 void	process(t_cmd *cmd, char **av, char **env);
@@ -64,7 +64,8 @@ void	case_space(char *str, char **result, t_pars *pars);
 /*
 ** pipex_build_path.c
 */
-void    catch_env_to_path(t_cmd *cmd, char **env);
-char    *build_path(t_cmd *cmd, char *cmd_line, char **env);
+void	free_2d_arr(char **str);
+void	catch_env_to_path(t_cmd *cmd, char **env);
+char	*build_path(t_cmd *cmd, char *cmd_line, char **env);
 
 #endif

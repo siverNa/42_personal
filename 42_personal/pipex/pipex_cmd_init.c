@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 22:04:53 by sna               #+#    #+#             */
-/*   Updated: 2021/09/29 20:19:54 by sna              ###   ########.fr       */
+/*   Updated: 2021/10/01 21:47:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	**parsing_str(char *str, char **result, t_pars *pars)
 {
 	pars->i = 0;
 	pars->j = 0;
-	while(str[pars->i] && pars->j < pars->len)
+	while (str[pars->i] && pars->j < pars->len)
 	{
 		pars->count = 0;
 		if (str[pars->i] != ' ')
@@ -60,7 +60,7 @@ void	count_word(const char *str, int *i, int *count)
 	}
 }
 
-int		count_str(const char *str)
+int	count_str(const char *str)
 {
 	int		i;
 	int		count;
@@ -87,7 +87,7 @@ char	**cmd_init(const char *str)
 	if (str == NULL)
 		return (NULL);
 	pars.len = count_str(str);
-	result = (char *)malloc(sizeof(char) * pars.len + 1);
+	result = (char **)malloc(sizeof(char *) * pars.len + 1);
 	if (!result)
 		return (NULL);
 	return (parsing_str((char *)str, result, &pars));
