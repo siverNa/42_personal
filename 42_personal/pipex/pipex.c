@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:10:53 by sna               #+#    #+#             */
-/*   Updated: 2021/10/01 21:45:32 by sna              ###   ########.fr       */
+/*   Updated: 2021/10/04 18:45:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,8 @@ int	main(int ac, char **av, char **env)
 		exit(1);
 	}
 	process(&cmd, av, env);
+	free_struct(&cmd);
+	close(cmd.file_1);
+	close(cmd.file_2);
+	return (0);
 }
