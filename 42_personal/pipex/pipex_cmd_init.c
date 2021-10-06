@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 22:04:53 by sna               #+#    #+#             */
-/*   Updated: 2021/10/01 21:47:01 by sna              ###   ########.fr       */
+/*   Updated: 2021/10/06 21:34:59 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**parsing_str(char *str, char **result, t_pars *pars)
 		pars->count = 0;
 		if (str[pars->i] != ' ')
 		{
-			if (str[pars->i] == 36)
+			if (str[pars->i] == 34)
 				case_double_q(str, result, pars);
 			else if (str[pars->i] == 39)
 				case_single_q(str, result, pars);

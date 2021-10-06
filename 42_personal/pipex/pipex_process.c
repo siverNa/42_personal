@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 18:32:52 by sna               #+#    #+#             */
-/*   Updated: 2021/10/01 21:45:51 by sna              ###   ########.fr       */
+/*   Updated: 2021/10/06 20:35:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	child_process(t_cmd *cmd, char **av, char **env)
 	cmd->file_1 = open(av[1], O_RDONLY);
 	if (cmd->file_1 == -1)
 	{
-		ft_putstr_fd("file1 has problen\n", 2);
+		ft_putstr_fd("file1 has problem\n", 2);
 		exit(1);
 	}
 	dup2(cmd->file_1, STDIN_FILENO);
