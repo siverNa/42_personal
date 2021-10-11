@@ -18,6 +18,7 @@ ft_printf_test/
 **/*.a
 test_result.txt
 test_all.sh
+./pipex-tester
 pipex-tester
 #lib
 *.a
