@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:00:42 by sna               #+#    #+#             */
-/*   Updated: 2021/11/11 16:15:02 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/11 21:15:37 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,30 @@ int	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int				check;
+	unsigned long	num;
+	size_t			i;
+
+	num = 0;
+	check = 1;
+	i = 0;
+	while (nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r' || nptr
+		[i] == '\t' || nptr[i] == '\v' || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			check = check * (-1);
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		num = num * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return ((int)num * check);
 }

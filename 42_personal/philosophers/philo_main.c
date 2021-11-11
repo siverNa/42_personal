@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:35:16 by sna               #+#    #+#             */
-/*   Updated: 2021/11/11 16:14:47 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/11 21:27:23 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ int	main(int ac, char **av)
 
 	if (ac != 5 && ac != 6)
 		return (print_error("wrong argument! check input value.\n"));
+	if ((result = init(&pars, av)))
+		return(print_error("init error!\n"));
+	printf("pars result\n");
+	printf("num_of_philo : %d\n", pars.num_philo);
+	printf("time_to_die : %d\n", pars.time_to_die);
+	printf("time_to_eat : %d\n", pars.time_to_eat);
+	printf("time_to_sleep : %d\n", pars.time_to_sleep);
+	printf("need_eat : %d\n", pars.need_eat);
+	printf("\n");
+	return (0);
 }
