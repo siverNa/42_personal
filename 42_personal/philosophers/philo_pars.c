@@ -6,11 +6,24 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:36:57 by sna               #+#    #+#             */
-/*   Updated: 2021/11/11 21:22:22 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/15 20:52:54 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	init_mutex(t_pars *pars)
+{
+	int		i;
+
+	i = 0;
+	while (i < pars->num_philo)
+	{
+		if (pthread_mutex_init(&(pars->fork[i]), NULL))
+			return (1);
+	}
+	return (0);
+}
 
 int	init(t_pars *pars, char **av)
 {
@@ -29,5 +42,7 @@ int	init(t_pars *pars, char **av)
 	}
 	else
 		pars->need_eat = -1;
+	if (init_mutex(pars))
+		return (2);
 	return (0);
 }
