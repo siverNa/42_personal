@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:38:02 by sna               #+#    #+#             */
-/*   Updated: 2021/11/15 20:58:37 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/16 15:10:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_philoth
 	int				count_eat;
 	int				id_left_fork;
 	int				id_right_fork;
+	struct s_pars	*pars;
 }					t_philoth;
 
 typedef struct s_pars
@@ -36,12 +37,14 @@ typedef struct s_pars
 	int				time_to_sleep;
 	int				need_eat;
 	pthread_mutex_t	fork[255];
+	t_philoth		philo[255];
 }					t_pars;
 
 /*
 ** main.c
 */
 int					print_error(char *str);
+int					error_message(int error_num);
 /*
 ** philo_util.c
 */
@@ -51,5 +54,9 @@ int					ft_atoi(const char *nptr);
 ** philo_pars.c
 */
 int					init(t_pars *pars, char **av);
+/*
+** philo_start.c
+*/
+int					philo_start(t_pars *pars);
 
 #endif

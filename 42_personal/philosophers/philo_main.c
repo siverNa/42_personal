@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:35:16 by sna               #+#    #+#             */
-/*   Updated: 2021/11/11 21:27:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/16 15:11:38 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ int	print_error(char *str)
 	return (1);
 }
 
+int	error_message(int error_num)
+{
+	if (error_num == 1)
+		print_error("There is a problem with the input value.\n");
+	if (error_num == 2)
+		print_error("An error occurs when initializing the mutex.\n");
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_pars	pars;
@@ -32,7 +41,8 @@ int	main(int ac, char **av)
 	if (ac != 5 && ac != 6)
 		return (print_error("wrong argument! check input value.\n"));
 	if ((result = init(&pars, av)))
-		return(print_error("init error!\n"));
+		return (error_message(result));
+	//parsing printf
 	printf("pars result\n");
 	printf("num_of_philo : %d\n", pars.num_philo);
 	printf("time_to_die : %d\n", pars.time_to_die);
@@ -40,5 +50,8 @@ int	main(int ac, char **av)
 	printf("time_to_sleep : %d\n", pars.time_to_sleep);
 	printf("need_eat : %d\n", pars.need_eat);
 	printf("\n");
+
+	if (philo_start(&pars))
+		return (print_error("An error has occurred in the thread.\n"));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:36:57 by sna               #+#    #+#             */
-/*   Updated: 2021/11/15 20:52:54 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/16 13:11:45 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_mutex(t_pars *pars)
 	{
 		if (pthread_mutex_init(&(pars->fork[i]), NULL))
 			return (1);
+		i++;
 	}
 	return (0);
 }

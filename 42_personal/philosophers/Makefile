@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 16:09:42 by sna               #+#    #+#              #
-#    Updated: 2021/11/11 21:26:01 by sna              ###   ########.fr        #
+#    Updated: 2021/11/16 15:10:25 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 PTHREAD =	-lpthread
 
-SRCS =		philo_main.c philo_util.c philo_pars.c
+SRCS =		philo_main.c philo_util.c philo_pars.c philo_start.c
 
 OBJS = $(SRCS:.c=.o)
 
