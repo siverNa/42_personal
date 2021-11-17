@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:38:02 by sna               #+#    #+#             */
-/*   Updated: 2021/11/16 15:10:46 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/17 20:49:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_philoth
 	int				count_eat;
 	int				id_left_fork;
 	int				id_right_fork;
+	long long		time_of_last_eat;
+	pthread_t		thread_id;
 	struct s_pars	*pars;
 }					t_philoth;
 
@@ -53,6 +55,8 @@ int					ft_atoi(const char *nptr);
 /*
 ** philo_pars.c
 */
+int					init_philoth(t_pars *pars);
+int					init_mutex(t_pars *pars);
 int					init(t_pars *pars, char **av);
 /*
 ** philo_start.c
