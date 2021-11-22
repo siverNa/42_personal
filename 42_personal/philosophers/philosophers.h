@@ -38,6 +38,8 @@ typedef struct s_pars
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				need_eat;
+	int				state_die;
+	int				all_eat;
 	pthread_mutex_t	fork[255];
 	t_philoth		philo[255];
 }					t_pars;
