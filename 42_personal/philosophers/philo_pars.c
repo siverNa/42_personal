@@ -6,13 +6,13 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:36:57 by sna               #+#    #+#             */
-/*   Updated: 2021/11/16 15:23:24 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/24 22:56:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int init_philoth(t_pars *pars)
+int	init_philoth(t_pars *pars)
 {
 	int		i;
 

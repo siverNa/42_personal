@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:35:16 by sna               #+#    #+#             */
-/*   Updated: 2021/11/16 15:11:38 by sna              ###   ########.fr       */
+/*   Updated: 2021/11/24 22:57:14 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	main(int ac, char **av)
 
 	if (ac != 5 && ac != 6)
 		return (print_error("wrong argument! check input value.\n"));
-	if ((result = init(&pars, av)))
+	result = init(&pars, av);
+	if (result)
 		return (error_message(result));
-	//parsing printf
 	printf("pars result\n");
 	printf("num_of_philo : %d\n", pars.num_philo);
 	printf("time_to_die : %d\n", pars.time_to_die);
@@ -50,7 +50,6 @@ int	main(int ac, char **av)
 	printf("time_to_sleep : %d\n", pars.time_to_sleep);
 	printf("need_eat : %d\n", pars.need_eat);
 	printf("\n");
-
 	if (philo_start(&pars))
 		return (print_error("An error has occurred in the thread.\n"));
 	return (0);
