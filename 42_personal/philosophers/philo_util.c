@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:00:42 by sna               #+#    #+#             */
-/*   Updated: 2021/11/11 21:15:37 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/01 20:28:23 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return ((int)num * check);
+}
+
+void print_event(t_pars *pars, int id, char *str)
+{
+	pthread_mutex_lock(&(pars->m_printing));
+	if (!(pars->state_die))
+	{
+		printf("%lli ", timestamp() - pars->init_timestamps);
+		printf("%i ", id + 1);
+		printf("%s\n", str);
+	}
+	pthread_mutex_unlock(&(pars->m_printing));
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:38:02 by sna               #+#    #+#             */
-/*   Updated: 2021/11/17 20:49:15 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/01 21:37:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_philoth
 {
 	int				id;
-	int				count_eat;
+	int				c_eat;
 	int				id_left_fork;
 	int				id_right_fork;
 	long long		time_of_last_eat;
@@ -34,14 +34,17 @@ typedef struct s_philoth
 typedef struct s_pars
 {
 	int				num_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				need_eat;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				n_eat;
 	int				state_die;
 	int				all_eat;
-	pthread_mutex_t	fork[255];
-	t_philoth		philo[255];
+	pthread_mutex_t	m_fork[255];
+	pthread_mutex_t	m_printing;
+	pthread_mutex_t	m_eating;
+	t_philoth		philoth[255];
+	long long		init_timestamps;
 }					t_pars;
 
 /*
@@ -54,6 +57,7 @@ int					error_message(int error_num);
 */
 int					ft_strlen(const char *s);
 int					ft_atoi(const char *nptr);
+void				print_event(t_pars *pars, int id, char *str);
 /*
 ** philo_pars.c
 */
@@ -64,5 +68,11 @@ int					init(t_pars *pars, char **av);
 ** philo_start.c
 */
 int					philo_start(t_pars *pars);
+/*
+** philo_time.h
+*/
+long long			diff_time(long long past, long long curr);
+long long			timestamp(void);
+void				philo_sleep(long long t, t_pars *pars);
 
 #endif
