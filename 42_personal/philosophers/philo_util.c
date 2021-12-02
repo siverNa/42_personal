@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:00:42 by sna               #+#    #+#             */
-/*   Updated: 2021/12/01 20:28:23 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/02 20:57:05 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_atoi(const char *nptr)
 	return ((int)num * check);
 }
 
-void print_event(t_pars *pars, int id, char *str)
+void	print_event(t_pars *pars, int id, char *str)
 {
 	pthread_mutex_lock(&(pars->m_printing));
 	if (!(pars->state_die))

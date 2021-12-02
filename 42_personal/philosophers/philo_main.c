@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:35:16 by sna               #+#    #+#             */
-/*   Updated: 2021/12/02 19:29:59 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/02 20:56:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ int	main(int ac, char **av)
 	result = init(&pars, av);
 	if (result)
 		return (error_message(result));
-	printf("pars result\n");
-	printf("num_of_philo : %d\n", pars.num_philo);
-	printf("time_to_die : %d\n", pars.time_die);
-	printf("time_to_eat : %d\n", pars.time_eat);
-	printf("time_to_sleep : %d\n", pars.time_sleep);
-	printf("need_eat : %d\n", pars.n_eat);
-	printf("\n");
 	if (philo_start(&pars))
 		return (print_error("An error has occurred in the thread.\n"));
 	return (0);
