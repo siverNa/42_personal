@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:36:57 by sna               #+#    #+#             */
-/*   Updated: 2021/12/01 21:23:06 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/02 19:47:41 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_philoth(t_pars *pars)
 	i = 0;
 	while (i < pars->num_philo)
 	{
-		pars->philoth[i].id = 0;
+		pars->philoth[i].id = i;
 		pars->philoth[i].c_eat = 0;
 		pars->philoth[i].id_left_fork = i;
 		pars->philoth[i].id_right_fork = (i + 1) % pars->num_philo;
