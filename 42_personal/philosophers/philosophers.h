@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 20:38:02 by sna               #+#    #+#             */
-/*   Updated: 2021/12/01 21:37:09 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/04 14:47:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ int					init(t_pars *pars, char **av);
 /*
 ** philo_start.c
 */
+void				finish(t_pars *pars, t_philoth *phith);
+void				death_check(t_pars *p, t_philoth *h);
+void				philo_eat(t_philoth *phith);
+void				*p_thread(void *philosopher);
 int					philo_start(t_pars *pars);
 /*
 ** philo_time.h

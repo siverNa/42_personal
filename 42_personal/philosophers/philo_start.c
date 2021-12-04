@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 20:53:13 by sna               #+#    #+#             */
-/*   Updated: 2021/12/02 20:53:42 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/04 14:58:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	death_check(t_pars *p, t_philoth *h)
 				p->state_die = 1;
 			}
 			pthread_mutex_unlock(&(p->m_eating));
-			usleep(50);
+			usleep(100);
 			i++;
 		}
 		if (p->state_die == 1)

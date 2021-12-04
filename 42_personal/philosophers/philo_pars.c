@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:36:57 by sna               #+#    #+#             */
-/*   Updated: 2021/12/02 19:47:41 by sna              ###   ########.fr       */
+/*   Updated: 2021/12/04 14:56:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	init(t_pars *pars, char **av)
 	pars->state_die = 0;
 	pars->all_eat = 0;
 	if (pars->num_philo < 2 || pars->time_die < 0 || pars->time_eat < 0
-		|| pars->time_sleep < 0)
+		|| pars->time_sleep < 0 || pars->num_philo > 255)
 		return (1);
 	if (av[5])
 	{
