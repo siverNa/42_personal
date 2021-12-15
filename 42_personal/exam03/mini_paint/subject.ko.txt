@@ -1,0 +1,66 @@
+할당 이름: mini_paint
+필요한 파일: *.c *.h
+허용되는 함수: fopen, fread, fscanf, fclose, write, malloc, calloc, realloc, free, memset, powf, sqrtf
+--------------------------------------------------------------------------------------
+
+"operation file"을 읽을 프로그램을 작성하고 그 결과를 터미널에 출력합니다.
+
+프로그램은 하나의 인수를 사용해야 하며, "operation file"의 경로가 됩니다.
+프로그램에 0 개 또는 1개를 넘는의 인수가 주어지면 STDOUT에서 \n 뒤에 "Error: argument"를 쓴다.
+
+$> ./mini_paint | cat -e
+Error: argument$
+$> ./mini_paint do not fear mathematics | cat -e
+Error: argument$
+$> 
+
+"operation file"을 열거나 읽는 동안 문제가 발생하면 "Error: Operation file corrupted" 다음에 STDOUT의 \n을 씁니다.
+
+operation file에는 라인당 작업이 하나씩 있는 라인이 포함됩니다.
+줄이 올바르지 않으면 오류가 발생합니다.
+오류가 발생한 경우 프로그램에서 1을 반환해야 합니다.
+오류가 발생하지 않으면 0을 반환해야 합니다.
+마지막 줄은 \n을 포함하거나 포함하지 않을 수 있습니다.
+라인을 순서대로 읽어야 하므로 작업이 동일한 순서로 실행되어야 합니다.
+라인의 각 변수 사이에 공백이 하나 이상 있어야 합니다.
+
+너비 높이 배경_CHAR(WIDTH HEIGHT BACKGROUND_CHAR)
+이 줄은 항상 파일의 첫 번째 줄이며 그릴 영역을 정의합니다. 프로그램이 그림 영역 외부에 아무것도 표시해서는 안 됩니다. 꼭 한 번 있을 거예요.
+- WIDE: draw zone에 사용할 문자 horizontal 수가 0 < WIDE < = 300인 int여야 합니다.
+- HEIGHT: draw zone에 사용할 문자 vertical 수인 0 < HEIGHT < = 300인 int여야 합니다.
+- BACKGROUND_CHAR: 빈 공간은 BACKGROUND_CHAR로 채워집니다.
+
+c X Y RADIUS CHAR
+이 작업을 수행하면 원의 테두리만 그려지는 빈 원이 그려집니다.
+- c: 문자 c
+- X: a float, 원의 중심 수평 위치
+- Y: a float, 원의 중심 수직 위치
+- RADIUS: 양의 부동 소수(a positive float)이지만 원의 반지름인 0은 아님
+- CHAR: 원을 그리는 데 문자를 사용합니다.
+
+C X Y RADIUS CHAR
+이 작업을 수행하면 채워진 원이 그려집니다.
+- C: 문자 C
+- X: a float, 원의 중심 수평 위치
+- Y: a float, 원의 중심 수직 위치
+- RADIUS: 양의 부동 소수(a positive float)이지만 원의 반지름인 0은 아님
+- CHAR: 원을 그리는 데 문자를 사용합니다.
+
+
+The draw zone은 각각 하나의 문자를 포함할 수 있는 직사각형으로 나뉘며(단말기에 있기 때문에...), 픽셀이라고 부릅니다.
+모든 것을 쉽게 하기 위해 픽셀의 왼쪽 상단 모서리만 사용하여 픽셀이 원 안에 있는지 알 수 있습니다.
+픽셀의 왼쪽 상단 모서리와 원의 중심 사이의 거리가 원의 반지름보다 작거나 같으면 픽셀은 원의 일부입니다.
+그러나 또한:
+원의 테두리로부터 거리가 1보다 크거나 같은 왼쪽 상단 모서리가 있는 픽셀은 빈 원의 일부가 아닙니다.
+원의 경계에서 거리가 1보다 작은 왼쪽 상단 모서리를 가진 픽셀은 빈 원의 일부입니다.
+
+당신은 다음 몇 줄을 읽으면서 이미지를 봐야 합니다. 그것은 말단(terminal)을 나타낸다. draw zone을 WIDSE 5와 HEIGHT 3으로 설정했습니다.
+아래 설명을 쉽게 이해할 수 있도록 문자를 다르게 작성했습니다.
+- 작업을 그리려면: C 1.5 1.5 1 0 @(the pink circle)
+-- 이미지의 문자 'b', 'c', 'B', 'C'가 '@'로 바뀝니다.
+
+operation_file.example를 사용하여 테스트하는 데 도움이 되는 our_mini_paint를 찾으십시오.
+
+힌트:
+포인트가 2개인 경우 (Xa,Ya) 및 (Xb,Yb)로 정의됩니다.
+이 공식을 사용하여 두 점 사이의 거리를 구할 수 있습니다. srqt((Xa - Xb) *(Xa - Xb) + (Ya - Yb) *(Ya - Yb)
