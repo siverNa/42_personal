@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 20:02:14 by sna               #+#    #+#             */
-/*   Updated: 2022/01/17 22:36:19 by sna              ###   ########.fr       */
+/*   Updated: 2022/01/19 23:47:35 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 typedef struct s_env
 {
@@ -41,6 +42,7 @@ char				*g_flag[F_SIZE];
 ** shell_main.c
 */
 
+void	print_prompt(void);
 void	shell_init(int ac, char **av, char **env);
 
 /*
@@ -57,5 +59,12 @@ void	free_env(void);
 */
 
 void	exit_shell(void);
+
+/*
+** signal_utils.c
+*/
+
+void    handle_sig(int whatsig);
+void    check_sig(void);
 
 #endif
