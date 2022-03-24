@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 01:22:09 by sna               #+#    #+#              #
-#    Updated: 2022/03/24 01:23:08 by sna              ###   ########.fr        #
+#    Updated: 2022/03/25 01:12:16 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ SRCS		= Contact.cpp PhoneBook.cpp main.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
+
+%.o:		%.cpp
+			$(CC) $(CFLAGS) -I . -o $@ -c $< 
 
 $(NAME):	$(OBJS)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)

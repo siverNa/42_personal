@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 01:16:56 by sna               #+#    #+#             */
-/*   Updated: 2022/03/24 23:50:16 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 01:16:38 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(void)
 		if (command == "ADD")
 		{
 			idx %= 8;
-			phonebook.add_contact(idx);
-			idx++;
+			if (phonebook.add_contact(idx))
+				idx++;
 		}
 		else if (command == "SEARCH")
 			phonebook.search_contact();

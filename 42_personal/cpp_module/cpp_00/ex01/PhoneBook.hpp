@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:22:59 by sna               #+#    #+#             */
-/*   Updated: 2022/03/25 00:54:45 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 01:16:23 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook {
 	PhoneBook();
 	~PhoneBook();
 	void	show_main(void);
-	void	add_contact(int idx);
+	bool	add_contact(int idx);
 	void	search_contact(void);
 	void	show_search_info(void);
 };

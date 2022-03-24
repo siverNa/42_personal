@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:08:44 by sna               #+#    #+#              #
-#    Updated: 2022/03/23 00:56:11 by sna              ###   ########.fr        #
+#    Updated: 2022/03/25 01:23:17 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ SRCS		= megaphone.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
+
+%.o:		%.cpp
+			$(CC) $(CFLAGS) -I . -o $@ -c $< 
 
 $(NAME):	$(OBJS)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJS)

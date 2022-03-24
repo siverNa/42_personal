@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:26:16 by sna               #+#    #+#             */
-/*   Updated: 2022/03/25 01:03:06 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 01:16:17 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ void PhoneBook::show_main(void)
 	std::cout << "@ enter your command : ADD | SEARCH | EXIT " << std::endl;
 }
 
-void PhoneBook::add_contact(int idx)
+bool PhoneBook::add_contact(int idx)
 {
 	this->_count = idx;
-	this->_contact[this->_count].set_information(this->_count + 1);
+	if (this->_contact[this->_count].set_information(this->_count + 1))
+		return (true);
+	else
+		return (false);
 }
 
 void PhoneBook::search_contact(void)

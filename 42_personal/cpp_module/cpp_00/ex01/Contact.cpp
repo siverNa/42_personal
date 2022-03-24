@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:55:23 by sna               #+#    #+#             */
-/*   Updated: 2022/03/25 00:51:25 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 01:18:59 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ bool Contact::set_information(int index)
 	if (str_len == 0)
 	{
 		std::cout << "@ Ouch! You can't enter an empty contact!" << std::endl;
+		this->_index = 0;
 		return (false);
 	}
 	std::cout << "@ Successfully put in contact!" << std::endl;
