@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:26:16 by sna               #+#    #+#             */
-/*   Updated: 2022/03/24 22:39:39 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 01:03:06 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook()
 {
-	this->_count = 0;
+	this->_count = -1;
 }
 PhoneBook::~PhoneBook()
 {
@@ -26,25 +26,23 @@ void PhoneBook::show_main(void)
 	std::cout << "@ enter your command : ADD | SEARCH | EXIT " << std::endl;
 }
 
-void PhoneBook::add_contact(void)
+void PhoneBook::add_contact(int idx)
 {
-	if (this->_count == 8)
-		std::cout << "@ PhoneBook is full up to number 8!" << std::endl;
-	else if (this->_contact[this->_count].set_information(this->_count + 1))
-		this->_count++;
+	this->_count = idx;
+	this->_contact[this->_count].set_information(this->_count + 1);
 }
 
 void PhoneBook::search_contact(void)
 {
 	int		index;
 
-	if (this->_count == 0)
+	if (this->_count == -1)
 		std::cout << "@ First, you should enter contact befor SEARCH!" << std::endl;
 	else
 	{
 		this->show_search_info();
 		std::cout << "@ Please enter the index you want to find. add 0 is exit\n";
-		while (!(std::cin >> index) || (index < 0 || index > this->_count))
+		while (!(std::cin >> index) || (index < 0 || index > 8))
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -59,7 +57,7 @@ void PhoneBook::search_contact(void)
 void PhoneBook::show_search_info(void)
 {
 	std::cout << "     Index|First name| Last name| Nickname" << std::endl;
-	for (int i = 0; i < this->_count; i++)
+	for (int i = 0; i < 8; i++)
 		this->_contact[i].display_info();
 	std::cout << "---------------------------------------------" << std::endl;
 }

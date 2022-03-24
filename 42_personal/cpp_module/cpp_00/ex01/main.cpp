@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 01:16:56 by sna               #+#    #+#             */
-/*   Updated: 2022/03/24 22:34:19 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/24 23:50:16 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@ int main(void)
 	PhoneBook	phonebook;
 	std::string	command;
 	bool		status;
+	int			idx;
 
 	phonebook.show_main();
 	status = true;
+	idx = 0;
 	while (status)
 	{
 		std::cout << "input > ";
 		std::getline(std::cin, command);
 		if (command == "ADD")
-			phonebook.add_contact();
+		{
+			idx %= 8;
+			phonebook.add_contact(idx);
+			idx++;
+		}
 		else if (command == "SEARCH")
 			phonebook.search_contact();
 		else if (command == "EXIT")
