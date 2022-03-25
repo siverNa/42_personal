@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:55:23 by sna               #+#    #+#             */
-/*   Updated: 2022/03/25 01:18:59 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 23:17:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ bool Contact::set_information(int index)
 	{
 		std::cout << "@ " << Contact::_field_names[i] << ":\n";
 		std::getline(std::cin, this->_information[i]);
+		if (!std::cin.good())
+		{
+			std::cout << "@ You caused an error in getline." << std::endl;
+			return (false);
+		}
 	}
 
 	size_t str_len = 0;

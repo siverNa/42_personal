@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:26:16 by sna               #+#    #+#             */
-/*   Updated: 2022/03/25 17:04:29 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/25 23:33:10 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void PhoneBook::search_contact(void)
 		std::cout << "@ Please enter the index you want to find. add 0 is exit\n";
 		while (!(std::cin >> index) || (index <= 0 || index > 8))
 		{
+			if (std::cin.eof())
+			{	
+				std::cout << "@ You caused an error in getline." << std::endl;
+				return ;
+			}
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "@ You enter invalid index!" << std::endl;
