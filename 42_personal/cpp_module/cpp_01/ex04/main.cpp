@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:33:54 by sna               #+#    #+#             */
-/*   Updated: 2022/03/29 19:40:12 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/29 21:43:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 				break ;
 			}
 			ofs << content.substr(0, idx) << argv[3];
-			content = content.substr(idx + std::strlen(argv[2]));
+			content = content.substr(idx + std::strlen(argv[2]));//2번째 인수가 생략된 경우, 해당 위치부터 끝까지 문자열 취득
 		}
 		if (ifs.eof())
 			break ;
