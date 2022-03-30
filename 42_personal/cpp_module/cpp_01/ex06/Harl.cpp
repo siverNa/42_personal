@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:50:26 by sna               #+#    #+#             */
-/*   Updated: 2022/03/30 00:52:16 by sna              ###   ########.fr       */
+/*   Updated: 2022/03/30 13:27:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,42 +23,30 @@ Harl::~Harl(void)
 
 void	Harl::complain(std::string level)
 {
-	int status;
+	bool status = false;
 
-	status = 0;
-	for (int i = 1; i < 5; i++)
-		if (lookup[i].str == level)
-			status = i;
-
-	switch (status)
+	for (int i = 0; i < 4; i++)
 	{
-		case 0:
-			(this->*(lookup[0].f))();
-			break;
-		case 1:
-			(this->*(lookup[1].f))();
-		case 2:
-			(this->*(lookup[2].f))();
-		case 3:
-			(this->*(lookup[3].f))();
-		case 4:
-			(this->*(lookup[4].f))();
-			break;
+		if (status == true || lookup[i].str == level)
+		{
+			(this->*(lookup[i].f))();
+			status = true;
+		}
 	}
+	if (status == false)
+		problems();
 }
 
 void	Harl::init(void)
 {
-	lookup[0].str = "PROBLEMS";
-	lookup[0].f = &Harl::problems;
-	lookup[1].str = "DEBUG";
-	lookup[1].f = &Harl::debug;
-	lookup[2].str = "INFO";
-	lookup[2].f = &Harl::info;
-	lookup[3].str = "WARNING";
-	lookup[3].f = &Harl::warning;
-	lookup[4].str = "ERROR";
-	lookup[4].f = &Harl::error;
+	lookup[0].str = "DEBUG";
+	lookup[0].f = &Harl::debug;
+	lookup[1].str = "INFO";
+	lookup[1].f = &Harl::info;
+	lookup[2].str = "WARNING";
+	lookup[2].f = &Harl::warning;
+	lookup[3].str = "ERROR";
+	lookup[3].f = &Harl::error;
 }
 
 void	Harl::problems()
