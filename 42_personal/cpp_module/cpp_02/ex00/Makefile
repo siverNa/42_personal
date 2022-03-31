@@ -6,11 +6,11 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 23:05:57 by sna               #+#    #+#              #
-#    Updated: 2022/03/30 23:06:21 by sna              ###   ########.fr        #
+#    Updated: 2022/03/31 23:36:54 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Fixed
+NAME		= a.out
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
