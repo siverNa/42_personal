@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 00:50:43 by sna               #+#    #+#             */
-/*   Updated: 2022/03/31 23:20:26 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/01 15:14:52 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Fixed::Fixed(const Fixed& f)
 Fixed& Fixed::operator=(const Fixed& f)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	_value = f._value;
+	_value = f.getRawBits();
 	return (*this);
 }
 
@@ -71,7 +71,7 @@ Fixed::~Fixed()
 
 int		Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (_value);
 }
 
