@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:24:07 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 16:09:38 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 16:36:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 ClapTrap::ClapTrap(void) : _name("default"), _hit(10), _energy(10), _attack(0)
 {
 	std::cout << GREEN;
-	std::cout << "ClapTrap default constructor called : " << _name << std::endl;
+	std::cout << "ClapTrap default constructor called : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit(10), _energy(10), _attack(0)
 {
 	std::cout << GREEN;
-	std::cout << "ClapTrap string constructor called : " << _name << std::endl;
+	std::cout << "ClapTrap string constructor called : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj) : _name(obj._name), _hit(obj._hit), _energy(obj._energy), _attack(obj._attack)
 {
 	std::cout << GREEN;
-	std::cout << "ClapTrap copy constructor called : " << _name << std::endl;
+	std::cout << "ClapTrap copy constructor called : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;
 }
 
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << RED;
-	std::cout << "ClapTrap destructor called : " << _name << std::endl;
+	std::cout << "ClapTrap destructor called : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;
 }
 
