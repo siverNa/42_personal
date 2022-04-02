@@ -6,17 +6,17 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 16:52:52 by sna               #+#    #+#              #
-#    Updated: 2022/04/02 16:52:53 by sna              ###   ########.fr        #
+#    Updated: 2022/04/02 19:58:38 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= FragTrap
+NAME		= DiamondTrap
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 RM			= rm -f
 
-SRCS		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)

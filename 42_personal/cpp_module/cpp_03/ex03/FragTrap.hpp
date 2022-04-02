@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:05:38 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 17:11:19 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 19:58:50 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap {
+class FragTrap: virtual public ClapTrap {
  private:
  public:
 	FragTrap(void);
 	FragTrap(std::string name);
 	FragTrap(const FragTrap& obj);
-	~FragTrap(void);
+	virtual ~FragTrap(void);
 	FragTrap& operator=(const FragTrap& obj);
 
 	void	highFivesGuys(void);

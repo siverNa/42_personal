@@ -6,57 +6,66 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:52:19 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 17:54:51 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 20:00:05 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-#include "ClapTrap.hpp"
+#include "DiamondTrap.hpp"
 
-/*
-** 생성자 호출 순서 : 부모 생성자 -> 자식 생성자
-** 소멸자 호출 순서 : 자식 소멸자 -> 부모 소멸자
-*/
-int main(void)
+int	main(void)
 {
-	FragTrap a("a");
-	ScavTrap b("b");
-	ClapTrap c("c");
+	DiamondTrap	a("A");
 
 	std::cout << std::endl;
-	a.attack("b");
-	b.takeDamage(a.getAttack());
+	a.whoAmI();
+	std::cout << std::endl;
+	
+	{
+		DiamondTrap b("B");
+		DiamondTrap c("C");
+
+
+		std::cout << std::endl;
+		
+		b.whoAmI();
+		c.whoAmI();		
+		c.highFivesGuys();
+		
+		std::cout << std::endl;
+		
+		b.attack("C");
+		c.takeDamage(b.getAttack());
+		
+		std::cout << std::endl;
+		
+		b.attack("C");
+		c.takeDamage(b.getAttack());
+		
+		std::cout << std::endl;
+		
+		b.guardGate();
+		
+		std::cout << std::endl;
+	}
 
 	std::cout << std::endl;
-	b.attack("a");
-	a.takeDamage(b.getAttack());
-
+	
+	DiamondTrap d;
+	
 	std::cout << std::endl;
-	a.attack("b");
-	b.takeDamage(a.getAttack());
-
+	
+	d.whoAmI();
+	
 	std::cout << std::endl;
-	b.attack("a");
-	a.takeDamage(b.getAttack());
 
+	d = a;
+	
 	std::cout << std::endl;
-	c.attack("a");
-	a.takeDamage(c.getAttack());
-
+	
+	d.whoAmI();
+	
 	std::cout << std::endl;
-	a.attack("c");
-	c.takeDamage(a.getAttack());
-
-	std::cout << std::endl;
-	c.attack("a");
-	a.takeDamage(c.getAttack());
-
-	std::cout << std::endl;
-	b.guardGate();
-
-	std::cout << std::endl;
-	a.highFivesGuys();
-
 	return (0);
 }
