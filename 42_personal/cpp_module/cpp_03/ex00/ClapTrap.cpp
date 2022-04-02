@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:47:02 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 14:54:01 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 15:12:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ void	ClapTrap::attack(const std::string& target)
 	if (_hit <= 0)
 	{
 		std::cout << "ClapTrap [ " << _name << " ] already dead." << std::endl;
+		std::cout << RESET;
 		return ;
 	}
-	if (_energy <= 0)
+	else if (_energy <= 0)
 	{
 		std::cout << "ClapTrap [ " << _name << " ] has no energy." << std::endl;
+		std::cout << RESET;
 		return ;
 	}
 	else
@@ -78,6 +80,12 @@ void	ClapTrap::attack(const std::string& target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << YELLOW;
+	if (_hit <= 0)
+	{
+		std::cout << "Claptrap [ " << _name << " ] not damaged : (Already dead)" << std::endl;
+		std::cout << RESET;
+		return ;
+	}
 	std::cout << "ClapTrap [ " << _name << " ] has taken damage with an " << amount << " point!" << std::endl;
 	_hit -= amount;
 	if (_hit <= 0)
@@ -93,7 +101,15 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	std::cout << YELLOW;
+	if (_hit <= 0)
+	{
+		std::cout << "ClapTrap : [ " << _name << " ] not repaired : (Already dead)" << std::endl;
+		std::cout << RESET;
+		return ;
+	}
 	_hit += amount;
+	if (_hit > 10)
+		_hit = 10;
 	std::cout << "ClapTrap [ " << _name << " ] has been repaired an " << amount << " point!" << std::endl;
 	std::cout << "ClapTrap [ " << _name << " ] a remain hitPoint : " << _hit << std::endl;
 	std::cout << RESET;
