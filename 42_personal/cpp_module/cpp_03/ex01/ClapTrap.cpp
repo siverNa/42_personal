@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:24:07 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 16:38:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 18:11:22 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		_hit = 10;
 	std::cout << "ClapTrap [ " << _name << " ] has been repaired an " << amount << " point!" << std::endl;
 	std::cout << "ClapTrap [ " << _name << " ] a remain hitPoint : " << _hit << std::endl;
+	_energy--;
+	std::cout << "ClapTrap [ " << _name << " ] remain energy : " << _energy << std::endl;
 	std::cout << RESET;
 }
 
