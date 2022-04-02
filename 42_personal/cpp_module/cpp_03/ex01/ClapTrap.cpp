@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:24:07 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 16:36:20 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/02 16:38:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 	_energy = obj._energy;
 	_attack = obj._attack;
 	std::cout << PURPLE;
-	std::cout << "ClapTrap operator = called : " << _name << std::endl;
+	std::cout << "ClapTrap operator = called : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;
 	return (*this);
 }
