@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:24:07 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 18:11:22 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/03 14:40:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (_hit <= 0)
 	{
 		std::cout << "ClapTrap : [ " << _name << " ] not repaired : (Already dead)" << std::endl;
+		std::cout << RESET;
+		return ;
+	}
+	if (_energy <= 0)
+	{
+		std::cout << "ClapTrap : [ " << _name << " ] not repaired : (No energy)" << std::endl;
 		std::cout << RESET;
 		return ;
 	}
