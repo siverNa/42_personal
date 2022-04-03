@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 15:14:26 by sna               #+#    #+#             */
-/*   Updated: 2022/04/03 16:50:30 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/03 21:03:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ class Animal {
 	virtual ~Animal(void);//상속받은 하위 클래스의 소멸자가 작동할 수 있도록 가상 소멸자로 만들기
 	Animal& operator=(const Animal& obj);
 
-	virtual void makeSound(void) const;//Virtual Function이란 자식 클래스에서 재정의 할 수 있는 멤버 함수이다.
+	//순수 가상 함수, 하위 클래스에서 꼭 재정의해야함
+	//추상 클래스는 하나 이상의 순수 가상 함수를 포함하고 있는 클래스를 말함
+	//이 때문에 .cpp 에서 makeSound 에 대한 동작이 정의가 안되어있음
+	virtual void makeSound(void) const = 0;
 	std::string getType(void) const;
 	void		setType(const std::string& type);
 };
