@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 18:31:24 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 19:52:50 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/04 15:06:28 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ DiamondTrap::~DiamondTrap(void)
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
 {
+	ClapTrap::operator=(obj);
 	_name = obj._name;
-	_hit = obj._hit;
-	_energy = obj._energy;
-	_attack = obj._attack;
 	std::cout << PURPLE;
 	std::cout << "DiamondTrap operator= called. : [ " << _name << " ]" << std::endl;
 	std::cout << RESET;

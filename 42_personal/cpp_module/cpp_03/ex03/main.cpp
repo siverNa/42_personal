@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:52:19 by sna               #+#    #+#             */
-/*   Updated: 2022/04/02 20:00:05 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/04 15:00:22 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(void)
 	std::cout << std::endl;
 	
 	d.whoAmI();
+	d.guardGate();
+	d.highFivesGuys();
 	
 	std::cout << std::endl;
 
@@ -65,6 +67,8 @@ int	main(void)
 	std::cout << std::endl;
 	
 	d.whoAmI();
+	d.guardGate();
+	d.highFivesGuys();
 	
 	std::cout << std::endl;
 	return (0);
