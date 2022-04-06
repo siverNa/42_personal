@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:04:22 by sna               #+#    #+#             */
-/*   Updated: 2022/04/03 18:34:14 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/06 15:25:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class Brain {
  private:
-
+	std::string _idea[100];
  public:
 	Brain();
 	Brain(const Brain& obj);
@@ -27,8 +27,6 @@ class Brain {
 
 	std::string getIdea(const int& i) const;
 	void		setIdea(const int& i, const std::string& idea);
-
-	std::string _idea[100];
 };
 
 #endif
