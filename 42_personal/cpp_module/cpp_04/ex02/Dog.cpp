@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:01:17 by sna               #+#    #+#             */
-/*   Updated: 2022/04/03 19:55:58 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/06 15:47:10 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog::Dog(const Dog& obj): Animal()
 	_type = obj.getType();
 	_brain = new Brain();
 	for (int i = 0; i < 100; i++)
-		_brain->_idea[i] = obj._brain->_idea[i];
+		_brain->getIdea(i) = obj._brain->getIdea(i);
 	std::cout << "Dog copy constructor called." << std::endl;
 }
 
@@ -38,7 +38,7 @@ Dog& Dog::operator=(const Dog& obj)
 {
 	_type = obj.getType();
 	for (int i = 0; i < 100; i++)
-		_brain->_idea[i] = obj._brain->_idea[i];
+		_brain->getIdea(i) = obj._brain->getIdea(i);
 	std::cout << "Dog operator= called." << std::endl;
 	return (*this);
 }
