@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:30:18 by sna               #+#    #+#             */
-/*   Updated: 2022/04/05 20:58:47 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/07 16:34:45 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj.getName())
 {
 	if (obj.getGrade() < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (obj.getGrade() > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	_grade = obj.getGrade();
 }
 
@@ -51,7 +51,7 @@ std::string	Bureaucrat::getName(void) const
 	return (_name);
 }
 
-unsigned int Bureaucrat::getGrade(void) const
+int Bureaucrat::getGrade(void) const
 {
 	return (_grade);
 }
@@ -59,25 +59,40 @@ unsigned int Bureaucrat::getGrade(void) const
 void Bureaucrat::incrementGrade(void)
 {
 	if (_grade - 1 < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	--_grade;
 }
 
 void Bureaucrat::decrementGrade(void)
 {
 	if (_grade + 1 > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	++_grade;
+}
+
+//추가된 함수
+void Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << *this << " signed " << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << *this << " couldn’t sign " << form << " because " << e.what() << std::endl;
+	}
+	
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade too high exception.");
+	return ("Bur Grade too high exception.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade too low exception.");
+	return ("Bur Grade too low exception.");
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bur)

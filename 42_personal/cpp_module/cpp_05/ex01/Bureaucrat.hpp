@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:28:26 by sna               #+#    #+#             */
-/*   Updated: 2022/04/05 20:56:19 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/07 16:27:07 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <string>
 # include <exception>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
  private:
@@ -29,9 +32,11 @@ class Bureaucrat {
 	Bureaucrat& operator=(const Bureaucrat& obj);
 
 	std::string	getName(void) const;
-	unsigned int getGrade(void) const;
+	int getGrade(void) const;
 	void incrementGrade(void);
 	void decrementGrade(void);
+
+	void signForm(Form& form);
 
 	class GradeTooHighException: public std::exception {
 		public:

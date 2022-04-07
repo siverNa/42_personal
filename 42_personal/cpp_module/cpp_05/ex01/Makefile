@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:09:02 by sna               #+#    #+#              #
-#    Updated: 2022/04/05 21:10:38 by sna              ###   ########.fr        #
+#    Updated: 2022/04/07 16:19:40 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 RM			= rm -f
 
-SRCS		= main.cpp Bureaucrat.cpp
+SRCS		= main.cpp Bureaucrat.cpp Form.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
