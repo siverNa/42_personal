@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:33:20 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 00:36:50 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 01:30:06 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ class Bureaucrat;
 
 class Form {
  private:
+	const std::string _target;//ex02에 추가된 변수
 	const std::string _formName;
 	bool _signed;//sign 상태
 	const int _signGrade;//사인하는 데 요구되는 grade
 	const int _execGrade;//실행하는 데 요구되는 grade
-	const std::string _target;//ex02에 추가된 변수
  public:
 	Form(void);
 	Form(const std::string target, const std::string name, int signgrade, int execgrade);

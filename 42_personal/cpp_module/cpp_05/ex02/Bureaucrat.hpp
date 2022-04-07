@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:28:26 by sna               #+#    #+#             */
-/*   Updated: 2022/04/07 16:27:07 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 01:07:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Bureaucrat {
 	void decrementGrade(void);
 
 	void signForm(Form& form);
+	void executeForm(Form const & form);//ex02에서 추가된 함수
 
 	class GradeTooHighException: public std::exception {
 		public:

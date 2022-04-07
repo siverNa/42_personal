@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:50:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 00:58:27 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 01:39:16 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (getSigned() == false)
 		throw IsNotSignedException();
-	if (getExecGrade() > executor.getGrade())
+	if (getExecGrade() < executor.getGrade())
 		throw ExecGradeTooLowException();
 	
 	std::string fileName = getTarget().append("_shrubbery");
-	std::ofstream ofs(fileName);
+	std::ofstream ofs(fileName.c_str());
 	if (ofs.is_open() == false)
 	{
 		std::cout << "Error: fail open <" << fileName << ">" << std::endl;

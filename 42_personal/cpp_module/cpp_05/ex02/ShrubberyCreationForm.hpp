@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:49:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 00:41:40 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 01:31:18 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
-# include "fstream"
+# include <fstream>
+# include <cstring>
 
 class ShrubberyCreationForm : public Form {
  private:
