@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:30:18 by sna               #+#    #+#             */
-/*   Updated: 2022/04/07 16:34:45 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/07 18:30:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void Bureaucrat::signForm(Form& form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout << *this << " signed " << form << std::endl;
+		std::cout << this->getName() << " signed " << form.getFormName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << *this << " couldn’t sign " << form << " because " << e.what() << std::endl;
+		std::cout << this->getName() << " couldn’t sign " << form.getFormName() << " because " << e.what() << std::endl;
 	}
 	
 }
