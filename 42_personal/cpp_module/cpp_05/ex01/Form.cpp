@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:36:21 by sna               #+#    #+#             */
-/*   Updated: 2022/04/07 16:36:09 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/07 18:40:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,19 @@ Form::Form() : _formName(""), _signGrade(0), _execGrade(0)
 
 Form::Form(const std::string name, int signgrade, int execgrade) : _formName(name), _signGrade(signgrade), _execGrade(execgrade)
 {
+	if (_signGrade < 1 || _execGrade < 1)
+		throw Form::GradeTooHighException();
+	else if (_signGrade > 150 || _execGrade > 150)
+		throw Form::GradeTooLowException();
 	_signed = false;
 }
 
 Form::Form(const Form& obj) : _formName(obj.getFormName()), _signGrade(obj.getSignGrade()), _execGrade(obj.getExecGrade())
 {
+	if (_signGrade < 1 || _execGrade < 1)
+		throw Form::GradeTooHighException();
+	else if (_signGrade > 150 || _execGrade > 150)
+		throw Form::GradeTooLowException();
 	_signed = obj.getSigned();
 }
 
