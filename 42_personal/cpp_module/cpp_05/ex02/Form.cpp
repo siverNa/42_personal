@@ -6,18 +6,18 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:36:21 by sna               #+#    #+#             */
-/*   Updated: 2022/04/07 18:40:08 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 00:36:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : _formName(""), _signGrade(0), _execGrade(0)
+Form::Form() : _target(""), _formName(""), _signGrade(0), _execGrade(0)
 {
 	_signed = false;
 }
 
-Form::Form(const std::string name, int signgrade, int execgrade) : _formName(name), _signGrade(signgrade), _execGrade(execgrade)
+Form::Form(const std::string target, const std::string name, int signgrade, int execgrade) : _target(target), _formName(name), _signGrade(signgrade), _execGrade(execgrade)
 {
 	if (_signGrade < 1 || _execGrade < 1)
 		throw Form::GradeTooHighException();
@@ -26,7 +26,7 @@ Form::Form(const std::string name, int signgrade, int execgrade) : _formName(nam
 	_signed = false;
 }
 
-Form::Form(const Form& obj) : _formName(obj.getFormName()), _signGrade(obj.getSignGrade()), _execGrade(obj.getExecGrade())
+Form::Form(const Form& obj) : _target(obj.getTarget()), _formName(obj.getFormName()), _signGrade(obj.getSignGrade()), _execGrade(obj.getExecGrade())
 {
 	if (_signGrade < 1 || _execGrade < 1)
 		throw Form::GradeTooHighException();
@@ -74,6 +74,11 @@ int Form::getExecGrade(void) const
 	return (_execGrade);
 }
 
+std::string Form::getTarget(void) const
+{
+	return (_target);
+}
+
 const char* Form::GradeTooHighException::what(void) const throw()
 {
 	return ("Form Grade too high exception.");
@@ -82,6 +87,16 @@ const char* Form::GradeTooHighException::what(void) const throw()
 const char* Form::GradeTooLowException::what(void) const throw()
 {
 	return ("Form Grade too low exception.");
+}
+
+const char* Form::IsNotSignedException::what(void) const throw()
+{
+	return ("Not Singed exception.");
+}
+
+const char* Form::ExecGradeTooLowException::what(void) const throw()
+{
+	return ("Exec Grade too low exception.");
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form)
