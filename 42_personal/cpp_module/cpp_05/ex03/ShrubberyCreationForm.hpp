@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:49:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 13:22:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 16:11:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ShrubberyCreationForm : public Form {
 	ShrubberyCreationForm();
 	ShrubberyCreationForm(const std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm& obj);
-	~ShrubberyCreationForm();
+	virtual ~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
 
 	//<target>_shrubbery 라는 파일을 생성하고 현재 디렉토리에 아스키아트 만들기

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:15:16 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 14:27:42 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 16:11:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class RobotomyRequestForm : public Form {
 	RobotomyRequestForm();
 	RobotomyRequestForm(const std::string target);
 	RobotomyRequestForm(const RobotomyRequestForm& obj);
-	~RobotomyRequestForm();
+	virtual ~RobotomyRequestForm();
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 
 	// 드릴 소리를 내고, <target>이 50%의 확률로 성공하면 성공메세지를, 그렇지 않으면 실패라고 알려주십시오.

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:42:34 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 14:47:50 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 16:11:18 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class PresidentialPardonForm : public Form {
 	PresidentialPardonForm();
 	PresidentialPardonForm(const std::string target);
 	PresidentialPardonForm(const PresidentialPardonForm& obj);
-	~PresidentialPardonForm();
+	virtual ~PresidentialPardonForm();
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
 
 	void execute(Bureaucrat const & executor) const;
