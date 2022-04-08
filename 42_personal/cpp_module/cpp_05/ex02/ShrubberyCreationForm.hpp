@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:49:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 01:31:18 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 13:22:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class ShrubberyCreationForm : public Form {
  private:
  public:
 	ShrubberyCreationForm();
-	ShrubberyCreationForm(const std::string& target);
+	ShrubberyCreationForm(const std::string target);
 	ShrubberyCreationForm(const ShrubberyCreationForm& obj);
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);

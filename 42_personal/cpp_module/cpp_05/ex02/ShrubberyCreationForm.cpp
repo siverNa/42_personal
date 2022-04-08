@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:50:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 01:39:16 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 13:22:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : Form("none", "ShrubberyCreation
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : Form(target, "ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : Form(target, "ShrubberyCreationForm", 145, 137)
 {
 
 }
