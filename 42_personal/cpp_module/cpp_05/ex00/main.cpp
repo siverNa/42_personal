@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 20:59:31 by sna               #+#    #+#             */
-/*   Updated: 2022/04/05 22:38:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:31:45 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main(void)
 	}
 	catch(std::exception & e)//throw 에 설정된 에러문 출력
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	
 }
