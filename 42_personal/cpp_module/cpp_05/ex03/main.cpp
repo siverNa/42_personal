@@ -6,55 +6,39 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:12:28 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 15:30:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:25:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
-	try
-	{
-		Bureaucrat jucy("jucy", 5);
-		ShrubberyCreationForm tree("mjuni");
-		RobotomyRequestForm robot("rami");
-		PresidentialPardonForm Presi("hanti");
 
-		//사원 등급 및 폼 정보 출력
-		std::cout << std::endl;
-		std::cout << jucy << std::endl;
-		std::cout << tree << std::endl;
-		std::cout << robot << std::endl;
-		std::cout << Presi << std::endl;
+	Intern intern1;
+	Form *receive;
+	Bureaucrat baltan("baltan", 3);
 
-		//각각의 폼에 sign 작업
-		std::cout << std::endl;
-		tree.beSigned(jucy);
-		robot.beSigned(jucy);
-		Presi.beSigned(jucy);
+	receive = intern1.makeForm("PresidentialPardonForm", "yasuo");
+	intern1.makeForm("WrongForm", "yasuo");
 
-		//sing이 되어있는 지 확인
-		std::cout << std::endl;
-		jucy.signForm(tree);
-		jucy.signForm(robot);
-		jucy.signForm(Presi);
+	std::cout << std::endl;
+	std::cout << "FormName : " << receive->getFormName() << std::endl;
+	std::cout << "FormTarget : " << receive->getTarget() << std::endl;
+	std::cout << *receive << std::endl;
 
-		std::cout << std::endl;
-		// tree.execute(jucy);
-		// robot.execute(jucy);
-		// Presi.execute(jucy);
-		jucy.executeForm(tree);
-		jucy.executeForm(robot);
-		jucy.executeForm(Presi);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	std::cout << std::endl;
+	std::cout << baltan << std::endl;
+
+	std::cout << std::endl;
+	baltan.signForm(*receive);
+
+	std::cout << std::endl;
+	baltan.executeForm(*receive);
+
+	delete receive;
+	
 	return (0);
 }
