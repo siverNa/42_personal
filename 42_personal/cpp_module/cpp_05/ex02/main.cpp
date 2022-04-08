@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:12:28 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 15:06:56 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 15:30:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ int main(void)
 		jucy.signForm(Presi);
 
 		std::cout << std::endl;
-		tree.execute(jucy);
-		robot.execute(jucy);
-		Presi.execute(jucy);
+		// tree.execute(jucy);
+		// robot.execute(jucy);
+		// Presi.execute(jucy);
+		jucy.executeForm(tree);
+		jucy.executeForm(robot);
+		jucy.executeForm(Presi);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+	return (0);
 }
