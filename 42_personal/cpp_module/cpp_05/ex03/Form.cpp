@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 23:36:21 by sna               #+#    #+#             */
-/*   Updated: 2022/04/08 00:36:08 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:46:40 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ const char* Form::ExecGradeTooLowException::what(void) const throw()
 
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {
-	os << form.getFormName() << " signGrade : [ " << form.getSignGrade()
+	os << form.getFormName() << ", target : [ " << form.getTarget()
+	<< " ] signGrade : [ " << form.getSignGrade()
 	<< " ] , execGrade : [ " << form.getExecGrade();
 	if (form.getSigned())
 		os << " ], signed.";
