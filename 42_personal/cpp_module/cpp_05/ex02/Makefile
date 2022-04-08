@@ -6,7 +6,7 @@
 #    By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:09:02 by sna               #+#    #+#              #
-#    Updated: 2022/04/08 14:11:21 by sna              ###   ########.fr        #
+#    Updated: 2022/04/08 15:04:47 by sna              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 RM			= rm -f
 
 SRCS		= main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp \
-				RobotomyRequestForm.cpp #PresidentialPardonForm.cpp
+				RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 all:		$(NAME)
