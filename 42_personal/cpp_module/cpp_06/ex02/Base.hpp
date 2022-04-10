@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 21:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/04/09 21:29:51 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/10 14:15:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include <cstdlib>
-# include <ctime>
+# include <cstdlib>//strtod
+# include <ctime>//rand
 # include <exception>
 
 class Base {
