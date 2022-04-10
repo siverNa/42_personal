@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 19:00:28 by sna               #+#    #+#             */
-/*   Updated: 2022/04/10 20:35:10 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/10 20:42:56 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ class Array {
 	//복사 생성자
  	Array(const Array& obj)
 	{
-		//delete[] _arr;//혹시나의 메모리 누수를 예방하기위해 추가
-		//_arr = NULL;
-
 		_size = obj._size;
 		_arr = new T[obj._size];
 		for (unsigned int i = 0; i < _size; i++)
