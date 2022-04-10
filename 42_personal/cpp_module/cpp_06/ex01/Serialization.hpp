@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:03:27 by sna               #+#    #+#             */
-/*   Updated: 2022/04/09 21:03:02 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/10 14:52:32 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,7 @@
 
 # include <iostream>
 # include <string>
-
-class Serialization {
- private:
- public:
-	Serialization();
-	Serialization(const Serialization& obj);
-	~Serialization();
-	Serialization& operator=(const Serialization& obj);
-};
+# include <stdint.h>
 
 typedef struct	s_Data
 {

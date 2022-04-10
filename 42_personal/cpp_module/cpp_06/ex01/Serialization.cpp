@@ -6,16 +6,11 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:32:49 by sna               #+#    #+#             */
-/*   Updated: 2022/04/09 20:49:36 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/10 14:52:41 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serialization.hpp"
-
-Serialization::Serialization() {}
-Serialization::Serialization(const Serialization& obj) {}
-Serialization::~Serialization() {}
-Serialization& Serialization::operator=(const Serialization& obj) {}
 
 /*
 ** reinterpret_cast<바꿀 타입>(대상)
