@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:09:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/09 17:26:21 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 17:40:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include <iostream>
 # include <string>
-# include <cmath>
+# include <cmath>//std::isnan, std::isinf
 # include <cfloat>
-# include <limits>
+# include <limits>//numeric_limits
+# include <cstring>//std::strcmp()
+# include <iomanip>//std::showpos
 
 class Convert {
  private:
