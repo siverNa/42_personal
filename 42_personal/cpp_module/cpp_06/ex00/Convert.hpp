@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:09:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/11 17:40:43 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 18:13:54 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include <limits>//numeric_limits
 # include <cstring>//std::strcmp()
 # include <iomanip>//std::showpos
+# include <cstdlib>//std::strtod()
 
 class Convert {
  private:
-	char* 			_cInput;
 	std::string 	_sInput;
 	double 			_dValue;
 	bool			_isImpossible;
  public:
 	Convert();
-	Convert(char* input);
+	Convert(std::string input);
 	Convert(const Convert& obj);
 	~Convert();
 	Convert& operator=(const Convert& obj);

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:08:02 by sna               #+#    #+#             */
-/*   Updated: 2022/04/09 19:07:11 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 18:13:38 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int main(int ac, char **av)
 
 	std::cout << std::fixed;
 	std::cout.precision(1);
-	char *input = av[1];
-	Convert convert(input);
+	Convert convert(av[1]);
 
 	convert.toChar();
 	convert.toInt();
