@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:09:06 by sna               #+#    #+#             */
-/*   Updated: 2022/04/11 18:13:54 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 18:49:25 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # include <cstring>//std::strcmp()
 # include <iomanip>//std::showpos
 # include <cstdlib>//std::strtod()
+# include <cctype>//int64_t
 
 class Convert {
  private:
 	std::string 	_sInput;
 	double 			_dValue;
-	bool			_isImpossible;
+	bool			_error;
  public:
 	Convert();
 	Convert(std::string input);
@@ -39,17 +40,7 @@ class Convert {
 	void	toFloat();
 	void	toDouble();
 
-	class ImpossibleException : public std::exception
-	{
-		public:
-			const char *what(void) const throw();
-	};
-
-	class NonDisplayableException : public std::exception
-	{
-		public:
-			const char *what(void) const throw();
-	};
+	bool	getError() const;
 };
 
 #endif
