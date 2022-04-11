@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:09:03 by sna               #+#    #+#             */
-/*   Updated: 2022/04/11 18:51:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 18:59:48 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ Convert& Convert::operator=(const Convert& obj)
 
 void	Convert::toChar()
 {
+	char c = static_cast<char>(_dValue);
+
 	std::cout << "char: ";
 	if (std::isnan(_dValue) || std::isinf(_dValue))
 		std::cout << "Impossible";
-	else if (std::isprint(static_cast<char>(_dValue)))
-		std::cout << "'" << static_cast<char>(_dValue) << "'";
+	else if (std::isprint(c))
+		std::cout << "'" << c << "'";
 	else
 		std::cout << "Non displayable";
 	std::cout << std::endl;
