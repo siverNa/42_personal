@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 19:00:28 by sna               #+#    #+#             */
-/*   Updated: 2022/04/10 20:42:56 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/11 14:11:42 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Array {
 	Array()
 	{
 		_size = 0;
-		_arr = new T[0];
+		_arr = NULL;
 	};
 
 	//기본생성자(unsigned int n) : 크기 n의 배열 생성
@@ -47,7 +47,7 @@ class Array {
 		_size = obj._size;
 		_arr = new T[obj._size];
 		for (unsigned int i = 0; i < _size; i++)
-			_arr[i] = obj[i];
+			_arr[i] = obj._arr[i];
 	};
 
 	//소멸자
@@ -66,7 +66,7 @@ class Array {
 		_size = obj._size;
 		_arr = new T[obj._size];
 		for (unsigned int i = 0; i < _size; i++)
-			_arr[i] = obj[i];
+			_arr[i] = obj._arr[i];
 	};
 
 	//연산자[] 재정의
