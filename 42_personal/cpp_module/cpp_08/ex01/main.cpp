@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:12:58 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 15:30:35 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 15:37:33 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
 	std::cout << sp.longestSpan() << std::endl;
 
 	std::cout << "====================== test2 =====================" << std::endl;
-	Span sp2(9);
+	Span sp2 = Span(9);
 	std::vector<int> temp;
 	for (int i = 0; i < 9; i++)
 		temp.push_back(i + 1);
@@ -38,7 +38,7 @@ int main(void)
 
 	try
 	{
-		Span sp2_2(9);
+		Span sp2_2 = Span(9);
 
 		sp2_2.addNumber(12);
 		sp2_2.addNumber(15);
