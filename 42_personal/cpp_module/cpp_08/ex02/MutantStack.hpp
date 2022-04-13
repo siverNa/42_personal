@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 15:56:33 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 18:35:16 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 18:51:41 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <iostream>
 # include <stack>
-# include <deque>
 
 template <typename T>
 class MutantStack : public std::stack<T> {
