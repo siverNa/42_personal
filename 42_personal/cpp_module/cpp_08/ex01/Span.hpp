@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:53:36 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 15:51:14 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 21:06:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,21 @@ class Span {
 	std::vector<int> getVector() const;
 
 	void addNumber(int n);
-	void addNumber(std::vector<int>::iterator const& begin, std::vector<int>::iterator const& end);
+	
+	template <typename T>
+	void addNumber(T const& begin, T const& end)
+	{
+		int vec_size = std::distance(begin, end);//두 구간의 거리가 얼마나 되는지 반환
+		if (vec_size > static_cast<int>(_size) - static_cast<int>(_vector.size()))
+			throw Span::FullVectorException();
+		
+		T temp = begin;
+		while (temp != end)
+		{
+			_vector.push_back(*temp);
+			temp++;
+		}
+	}
 
 	unsigned int shortestSpan() const;
 	unsigned int longestSpan() const;

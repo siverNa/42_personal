@@ -6,11 +6,12 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:12:58 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 15:37:33 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 21:14:57 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <list>
 
 int main(void)
 {
@@ -115,6 +116,27 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
+	std::cout << "====================== test7 =====================" << std::endl;
+	int a[10] = {22, 15, 3, 6, 11, 8, 2, 11, 3, 10};
+	Span sp9 = Span(10);
+	sp9.addNumber(a + 0, a + 10);
+
+	std::cout << sp9.shortestSpan() << std::endl;
+	std::cout << sp9.longestSpan() << std::endl;
+
+	std::cout << "====================== test8 =====================" << std::endl;
+	std::list<int> l;
+	Span sp10 = Span(5);
+
+	l.push_back(6);
+	l.push_back(3);
+	l.push_back(17);
+	l.push_back(9);
+	l.push_back(11);
+	sp10.addNumber(l.begin(), l.end());
+	std::cout << sp10.shortestSpan() << std::endl;
+	std::cout << sp10.longestSpan() << std::endl;
 	
 	return (0);
 }
