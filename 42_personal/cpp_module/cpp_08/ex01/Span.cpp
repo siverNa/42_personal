@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:53:46 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 14:53:31 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 15:51:10 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,6 @@ unsigned int Span::longestSpan() const
 const char *Span::NotFoundException::what(void) const throw()
 {
 	return ("Not Found Exception.");
-}
-
-const char *Span::OutOfVectorRangeException::what(void) const throw()
-{
-	return ("Out Of Range Exception.");
 }
 
 const char *Span::FullVectorException::what(void) const throw()

@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:53:36 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 01:05:24 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 15:51:14 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ class Span {
 	unsigned int longestSpan() const;
 
 	class NotFoundException : public std::exception {
-		public:
-			const char *what(void) const throw();
-	};
-
-	class OutOfVectorRangeException : public std::exception {
 		public:
 			const char *what(void) const throw();
 	};
