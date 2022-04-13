@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:53:46 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 21:02:02 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/13 21:47:29 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,6 @@ void Span::addNumber(int n)
 		throw Span::FullVectorException();
 	_vector.push_back(n);
 }
-
-// void Span::addNumber(std::vector<int>::iterator const& begin, std::vector<int>::iterator const& end)
-// {
-// 	int vec_size = std::distance(begin, end);//두 구간의 거리가 얼마나 되는지 반환
-// 	if (vec_size > static_cast<int>(_size) - static_cast<int>(_vector.size()))
-// 		throw Span::FullVectorException();
-// 	//insert : 원하는 위치에서부터 begin ~ end의 값을 붙여줌
-// 	_vector.insert(_vector.end(), begin, end);
-// }
 
 unsigned int Span::shortestSpan() const
 {
