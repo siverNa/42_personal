@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:53:46 by sna               #+#    #+#             */
-/*   Updated: 2022/04/13 21:47:29 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/16 22:49:20 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,23 @@ unsigned int Span::shortestSpan() const
 	std::vector<int>::iterator r_iter = ++copy.begin();
 
 	shortSpan = *r_iter - *l_iter;
-	while (r_iter != copy.end())
+	// while (r_iter != copy.end())
+	// {
+	// 	if (static_cast<unsigned int>(*r_iter - *l_iter) < shortSpan)
+	// 		shortSpan = *r_iter - *l_iter;
+	// 	l_iter = r_iter;
+	// 	r_iter++;
+	// }
+	size_t v_size = copy.size();
+	for (size_t i = 0; i < v_size; i++)
 	{
-		if (static_cast<unsigned int>(*r_iter - *l_iter) < shortSpan)
-			shortSpan = *r_iter - *l_iter;
-		l_iter = r_iter;
-		r_iter++;
+		for (size_t j = i + 1; j < v_size; j++)
+		{
+			if (i == j)
+				break;
+			if (static_cast<unsigned int>(copy[j] - copy[i]) < shortSpan)
+				shortSpan = copy[j] - copy[i];
+		}
 	}
 	return (shortSpan);
 }
