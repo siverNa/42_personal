@@ -1,3 +1,7 @@
+Assignment name  : microshell
+Expected files   : *.c *.h
+Allowed functions: malloc, free, write, close, fork, waitpid, signal, kill, exit, chdir, execve, dup, dup2, pipe, strcmp, strncmp
+
 셸 명령을 실행하는 것처럼 동작하는 프로그램 쓰기
 - 실행할 명령줄은 이 프로그램의 인수가 됩니다.
 
@@ -24,3 +28,15 @@
 - execeive에 실패한 경우 STDERR에서 "error: cannot execute executable_that_failed"를 출력한 후 executable_failed가 실패한 실행 파일의 경로로 대체됩니다(exece의 첫 번째 인수여야 함).
 
 - 열려 있는 파일 수를 30개 미만으로 제한하더라도 프로그램이 수백 개 이상의 "|"을 관리할 수 있어야 합니다.
+
+for example this should work:
+$>./microshell /bin/ls "|" /usr/bin/grep microshell ";" /bin/echo i love my microshell
+microshell
+i love my microshell
+$>
+
+Hints:
+Don't forget to pass the environment variable to execve
+
+Hints:
+Do not leak file descriptors!
