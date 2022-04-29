@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/04/28 23:53:44 by sna              ###   ########.fr       */
+/*   Updated: 2022/04/29 23:42:55 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,55 @@ namespace ft {
 		typedef typename Iterator::difference_type		difference_type;
 		typedef typename Iterator::pointer				pointer;
 		typedef typename Iterator::reference			reference;
+	};
+
+	template <class T>
+	struct iterator_traits<T*> {
+		typedef random_access_iterator_tag				iterator_category;
+		typedef T										value_type;
+		typedef ptrdiff_t								difference_type;
+		typedef T*										pointer;
+		typedef T&										reference;
+	};
+
+	template <class T>
+	struct iterator_traits<T* const> {
+		typedef random_access_iterator_tag				iterator_category;
+		typedef T										value_type;
+		typedef ptrdiff_t								difference_type;
+		typedef const T*								pointer;
+		typedef const T&								reference;
+	};
+
+	template <class Iterator>
+	class reverse_iterator {
+		public:
+			typedef Iterator												iterator_type;
+			typedef typename iterator_traits<Iterator>::iterator_category	iterator_category;
+			typedef typename iterator_traits<Iterator>::value_type			value_type;
+			typedef typename iterator_traits<Iterator>::difference_type		difference_type;
+			typedef typename iterator_traits<Iterator>::pointer				pointer;
+			typedef typename iterator_traits<Iterator>::reference			reference;
+
+		protected:
+			iterator_type	current;
+		
+		public:
+			reverse_iterator() : current() {};
+
+			explicit reverse_iterator(iterator_type _x) : current(_x) {};
+
+			reverse_iterator(const reverse_iterator& _x) : current(_x.current) {};
+
+			template <class Iter>
+			reverse_iterator(const reverse_iterator<Iter>& _x) : current(_x.base()) {};
+
+			virtual ~reverse_iterator() {};
+
+			iterator_type
+			base() const { return current; };
+
+			operator reverse_iterator<const Iterator>() const { return this->current; };
 	};
 }
 
