@@ -14,6 +14,12 @@
 #define TYPE_PIPE		1
 #define TYPE_BREAK		2
 
+#ifdef TEST_SH
+# define TEST		1
+#else
+# define TEST		0
+#endif
+
 typedef struct	s_list
 {
 	char			**args;
@@ -257,5 +263,7 @@ int main(int ac, char **av, char **env)
 	if (cmds)
 		res = exec_cmds(&cmds, env);
 	list_clear(&cmds);
+	if (TEST)
+		while (1);
 	return (res);
 }
