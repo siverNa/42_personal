@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/04/29 23:42:55 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/04 23:09:26 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ namespace ft {
 		public:
 			reverse_iterator() : current() {};
 
-			explicit reverse_iterator(iterator_type _x) : current(_x) {};
+			explicit reverse_iterator(iterator_type it) : current(it) {};
 
-			reverse_iterator(const reverse_iterator& _x) : current(_x.current) {};
+			reverse_iterator(const reverse_iterator& it) : current(it.current) {};
 
 			template <class Iter>
-			reverse_iterator(const reverse_iterator<Iter>& _x) : current(_x.base()) {};
+			reverse_iterator(const reverse_iterator<Iter>& rev_it) : current(rev_it.base()) {};
 
 			virtual ~reverse_iterator() {};
 
@@ -89,7 +89,207 @@ namespace ft {
 			base() const { return current; };
 
 			operator reverse_iterator<const Iterator>() const { return this->current; };
+
+			/**
+			 * @brief Returns a reference to the element pointed to by the iterator.
+			 */
+			reference operator*() const
+			{
+				iterator_type temp_iter = current;
+				return *(--temp_iter);
+			};
+
+			/**
+			 * @brief Returns a reverse iterator pointing to the element located n positions away 
+			 * from the element the iterator currently points to.
+			 */
+			reverse_iterator operator+(difference_type n) const
+			{
+				return (reverse_iterator(current - n));
+			};
+
+			/**
+			 * @brief Advances the reverse_iterator by one position.(전위 증가연산자)
+			 *
+			 * @example ++rev_it;
+			 */
+			reverse_iterator& operator++()
+			{
+				--current;
+				return (*this);
+			};
+
+			/**
+			 * @brief Advances the reverse_iterator by one position.(후위 증가 연산자)
+			 *
+			 * @example rev_it++;
+			 */
+			reverse_iterator operator++(int)
+			{
+				reverse_iterator temp = *this;
+				--current;
+				return (temp);
+			};
+
+			/**
+			 * @brief Advances the reverse_iterator by n element positions.
+			 */
+			reverse_iterator& operator+= (difference_type n)
+			{
+				current -= n;
+				return (*this);
+			};
+
+			/**
+			 * @brief Returns a reverse iterator pointing to the element located n positions
+			 * before the element the iterator currently points to.
+			 */
+			reverse_iterator operator- (difference_type n) const
+			{
+				return (reverse_iterator(current + n));
+			};
+
+			/**
+			 * @brief Decreases the reverse_iterator by one position.(전위 감소연산자)
+			 *
+			 * @example --rev_it;
+			 */
+			reverse_iterator& operator--()
+			{
+				++current;
+				return (*this);
+			};
+
+			/**
+			 * @brief Decreases the reverse_iterator by one position.(후위 감소연산자)
+			 *
+			 * @example rev_it--;
+			 */
+			reverse_iterator operator--(int)
+			{
+				reverse_iterator temp = *this;
+				++current;
+				return (temp);
+			};
+
+			/**
+			 * @brief Descreases the reverse_iterator by n element positions.
+			 */
+			reverse_iterator& operator-= (difference_type n)
+			{
+				current += n;
+				return (*this);
+			};
+
+			/**
+			 * @brief Returns a pointer to the element pointed to by the iterator
+			 * (in order to access one of its members).
+			 */
+			pointer operator->() const
+			{
+				return &(operator*());
+			};
+
+			/**
+			 * @brief Accesses the element located n positions away
+			 * from the element currently pointed to by the iterator.
+			 * 
+			 * If such an element does not exist, it causes undefined behavior.
+			 */
+			reference operator[] (difference_type n) const
+			{
+				return (current[-n - 1]);
+			};
 	};
-}
+
+	/**
+	 * @brief Relational operators== for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator== (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() == rhs.base());
+	};
+
+	/**
+	 * @brief Relational operators!= for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator!= (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() != rhs.base());
+	};
+
+	/**
+	 * @brief Relational operators< for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator< (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() > rhs.base());
+	};
+
+	/**
+	 * @brief Relational operators<= for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator<= (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() >= rhs.base());
+	};
+
+	/**
+	 * @brief Relational operators> for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator> (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() < rhs.base());
+	};
+
+	/**
+	 * @brief Relational operators>= for reverse_iterator
+	 */
+	template <class Iterator>
+	bool operator>= (const reverse_iterator<Iterator>& lhs,
+					const reverse_iterator<Iterator>& rhs)
+	{
+		return (lhs.base() <= rhs.base());
+	};
+
+	/**
+	 * @brief Returns a reverse iterator pointing to the element located n positions away
+	 * from the element pointed to by rev_it.
+	 * 
+	 * @param n Number of elements to offset.
+	 * 			Member type difference_type is an alias of Iterator's own difference type.
+	 * 
+	 * @param rev_it Reverse iterator.
+	 */
+	template <class Iterator>
+	reverse_iterator<Iterator> operator+ (
+		typename reverse_iterator<Iterator>::difference_type n,
+		const reverse_iterator<Iterator>& rev_it)
+	{
+		return (rev_it + n);
+	};
+
+	/**
+	 * @brief Returns the distance between lhs and rhs.
+	 */
+	template <class Iterator>
+	typename reverse_iterator<Iterator>::difference_type operator- (
+		const reverse_iterator<Iterator>& lhs,
+		const reverse_iterator<Iterator>& rhs
+	)
+	{
+		return (rhs.base() - lhs.base());
+	};
+}//namespace ft
 
 #endif
