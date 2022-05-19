@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/05/18 22:09:33 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/20 00:52:15 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -444,6 +444,236 @@ namespace ft {
 			 * Returns a reference to the last element in the vector.
 			 */
 			const_reference back() const {return (*(_end - 1)); };
+
+			/**
+			 * @brief Assign vector content
+			 * range (1)
+			 * Assigns new contents to the vector, replacing its current contents,
+			 * and modifying its size accordingly.
+			 * 
+			 * @tparam InputIterator
+			 * @param first the first element in the range.
+			 * @param last the last element in the range.
+			 */
+			template <class InputIterator>
+			void assign (InputIterator first, InputIterator last,
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = u_nullptr)
+			{
+				size_type n = ft::difference(first, last);
+				
+				if (this->capacity() < n)
+				{
+					_start = _alloc.allocate(n);
+					_end_capacity = _start + n;
+					_end = _start;
+				}
+				else
+					this->clear();
+				while (n--)
+				{
+					_alloc.construct(_end, *first++);
+					_end++;
+				}
+			};
+
+			/**
+			 * @brief Assign vector content
+			 * fill (2)
+			 * Assigns new contents to the vector, replacing its current contents,
+			 * and modifying its size accordingly.
+			 * 
+			 * @param n New size for the container.
+			 * @param val Value to fill the container with.
+			 * Each of the n elements in the container will be initialized to a copy of this value.
+			 */
+			void assign (size_type n, const value_type& val)
+			{
+				this->clear();
+				if (n == 0)
+					return ;
+				if (this->capacity() >= n)
+				{
+					while (n--)
+					{
+						_alloc.construct(_end, val);
+						_end++;
+					}
+				}
+				else
+				{
+					_alloc.deallocate(_start, this->capacity());
+					_start = _alloc.allocate(n);
+					_end_capacity = _start + n;
+					_end = _start;
+					while (n--)
+					{
+						_alloc.construct(_end, val);
+						_end++;
+					}
+				}
+			};
+
+			/**
+			 * @brief Add element at the end
+			 * Adds a new element at the end of the vector, after its current last element.
+			 * The content of val is copied (or moved) to the new element.
+			 * 
+			 * @param val Value to be copied (or moved) to the new element.
+			 */
+			void push_back (const value_type& val)
+			{
+				if (_end == _end_capacity)
+				{
+					int next_capacity;
+					next_capacity = (this->size() > 0) ? static_cast<int>(this->size() * 2) : 1;
+					this->reserve(next_capacity);
+				}
+				_alloc.construct(_end, val);
+				_end++;
+			};
+
+			/**
+			 * @brief Delete last element
+			 * Removes the last element in the vector,
+			 * effectively reducing the container size by one.
+			 * This destroys the removed element.
+			 */
+			void pop_back() {_alloc.destroy(--this->_end); };
+
+			/**
+			 * @brief Insert elements
+			 * single element (1)
+			 * The vector is extended by inserting new elements before the element at the specified position,
+			 * effectively increasing the container size by the number of elements inserted.
+			 * 
+			 * @param position Position in the vector where the new elements are inserted.
+			 * @param val Value to be copied (or moved) to the inserted elements.
+			 */
+			iterator insert (iterator position, const value_type& val)
+			{
+				size_type position_len = &(*position) - _start;
+				this->insert(position, 1, val);
+				return (this->_start + position_len);
+			};
+
+			/**
+			 * @brief Insert elements
+			 * fill (2)	
+			 * The vector is extended by inserting new elements before the element at the specified position,
+			 * effectively increasing the container size by the number of elements inserted.
+			 * 
+			 * @param position Position in the vector where the new elements are inserted.
+			 * @param n Number of elements to insert. Each element is initialized to a copy of val.
+			 * @param val Value to be copied (or moved) to the inserted elements.
+			 */
+			void insert (iterator position, size_type n, const value_type& val)
+			{
+				if (n == 0)
+					return ;
+				
+				size_type position_len = &(*position) - _start;
+
+				if (this->capacity() >= this->size() + n)
+				{
+					for (size_type i = 0; i < this->size() - position_len; i++)
+					{
+						_alloc.construct(_end + n - i, *(_end - i));
+						_alloc.destroy(_end - i);
+					}
+					_end = _start + this->size() + n;
+					for (size_type i = 0; i < n; i++)
+						_alloc.construct(_start + position_len + i, val);
+					return ;
+				}
+				
+				size_type next_capacity = this->size() + n;
+				pointer prev_start = _start;
+				pointer prev_end = _end;
+				size_type prev_size = this->size();
+				size_type prev_capacity = this->capacity();
+
+				_start = _alloc.allocate(next_capacity);
+				_end = _start + prev_size + n;
+				_end_capacity = _end;
+
+				for (size_type i = 0; i < position_len; i++)
+				{
+					_alloc.construct(_start + i, *(prev_start + i));
+					_alloc.destroy(prev_start + i);
+				}
+
+				//새로운 vector 뒤부터 이전 vector의 요소들 복사
+				for (size_type i = 0; i < prev_size - position_len; i+)
+				{
+					_alloc.construct(_end - i - 1, *(prev_end - i - 1));
+					_alloc.destroy(prev_end - i - 1);
+				}
+
+				for (size_type i = 0; i < n; i++)
+					_alloc.construct(_start + position_len + i, val);
+				
+				_alloc.deallocate(prev_start, prev_capacity);
+				return ;
+			};
+
+			/**
+			 * @brief Insert elements
+			 * range (3)
+			 * The vector is extended by inserting new elements before the element at the specified position,
+			 * effectively increasing the container size by the number of elements inserted.
+			 * 
+			 * @param position Position in the vector where the new elements are inserted.
+			 * @param first the first element in the range.
+			 * @param last the last element in the range.
+			 */
+			template <class InputIterator>
+    		void insert (iterator position, InputIterator first, InputIterator last,
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = u_nullptr)
+			{
+				size_type position_len = &(*position) - _start;
+				size_type n = ft::difference(first, last);
+
+				if (this->capacity() >= this->size() + n)
+				{
+					for (size_type i = 0; i < this->size() - position_len; i++)
+					{
+						_alloc.construct(_end + n - i, *(_end - i));
+						_alloc.destroy(_end - i);
+					}
+					_end = _start + this->size() + n;
+					for (size_type i = 0; i < n; i++)
+						_alloc.construct(_start + position_len + i, *first++);
+					return ;
+				}
+
+				size_type next_capacity = this->size() + n;
+				pointer prev_start = _start;
+				pointer prev_end = _end;
+				size_type prev_size = this->size();
+				size_type prev_capacity = this->capacity();
+
+				_start = _alloc.allocate(next_capacity);
+				_end = _start + prev_size + n;
+				_end_capacity = _end;
+
+				for (size_type i = 0; i < position_len; i++)
+				{
+					_alloc.construct(_start + i, *(prev_start + i));
+					_alloc.destroy(prev_start + i);
+				}
+
+				for (size_type i = 0; i < prev_size - position_len; i++)
+				{
+					_alloc.construct(_end - i - 1, *(prev_end - i - 1));
+					_alloc.destroy(prev_end - i - 1);
+				}
+
+				for (size_type i = 0; i < n; i++)
+					_alloc.construct(_start + position_len + i, *first++);
+				
+				_alloc.deallocate(prev_start, prev_capacity);
+				return ;
+			};
 	};
 }
 
