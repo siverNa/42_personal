@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/05/20 00:52:15 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/21 00:05:12 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -674,7 +674,177 @@ namespace ft {
 				_alloc.deallocate(prev_start, prev_capacity);
 				return ;
 			};
+
+			/**
+			 * @brief Erase elements
+			 * Removes from the vector either a single element (position)
+			 * or a range of elements ([first,last)).
+			 * 
+			 * @param position Iterator pointing to a single element to be removed from the vector.
+			 */
+			iterator erase (iterator position)
+			{
+				size_type location = &(*position) - _start;
+				_alloc.destroy(&(*position));
+				for (size_type i = 0; i < this->size() - location; i++)
+				{
+					_alloc.construct(_start + location + i, *(_start + location + i + 1));
+					_alloc.destroy(_start + location + i);
+				}
+				--_end;
+				return (_start + location);
+			};
+
+			/**
+			 * @brief Erase elements
+			 * Removes from the vector either a single element (position)
+			 * or a range of elements ([first,last)).
+			 * 
+			 * @param first the first element in the range.
+			 * @param last the last element in the range.
+			 */
+			iterator erase (iterator first, iterator last)
+			{
+				size_type location = &(*first) - _start;
+				size_type n = last - first;
+				
+				for (size_type i = 0; i < n; i++)
+					_alloc.destroy(&(*(first + i)));
+				
+				for (size_type i = 0; i < this->size() - location; i++)
+				{
+					_alloc.construct(_start + location + i, *(_start + location + i + n));
+					_alloc.destroy(_start + location + i + n);
+				}
+				_end = _start + this->size() - n;
+				return (_start + location);
+			};
+
+			/**
+			 * @brief Swap content
+			 * Exchanges the content of the container by the content of x,
+			 * which is another vector object of the same type. Sizes may differ.
+			 * 
+			 * @param x Another vector container of the same type 
+			 * (i.e., instantiated with the same template parameters, T and Alloc)
+			 * whose content is swapped with that of this container.
+			 */
+			void swap (vector& x)
+			{
+				if (x == *this)
+					return ;
+				pointer temp_start = x._start;
+				pointer temp_end = x._end;
+				pointer temp_end_capacity = x._end_capacity;
+				allocator_type temp_alloc = x._alloc;
+
+				x._start = this->_start;
+				x._end = this->_end;
+				x._end_capacity = this->_end_capacity;
+				x._alloc = this->_alloc;
+
+				this->_start = temp_start;
+				this->_end = temp_end;
+				this->_end_capacity = temp_end_capacity;
+				this->_alloc = temp_alloc;
+			};
+
+			/**
+			 * @brief Clear content
+			 * Removes all elements from the vector (which are destroyed),
+			 * leaving the container with a size of 0.
+			 */
+			void clear ()
+			{
+				size_type save_size = this->size();
+				for (size_type i = 0; i < save_size; i++)
+				{
+					_end--;
+					_alloc.destroy(_end);
+				}
+			};
+
+			/**
+			 * @brief Get allocator
+			 * Returns a copy of the allocator object associated with the vector.
+			 */
+			allocator_type get_allocator() const {return (this->_alloc); };
 	};
-}
+
+	/**
+	 * @brief Relational operators for vector
+	 * Performs the appropriate comparison operation between the vector containers lhs and rhs.
+	 * 
+	 * The equality comparison (operator==) is performed by first comparing sizes, 
+	 * and if they match, the elements are compared sequentially using operator==, 
+	 * stopping at the first mismatch (as if using algorithm equal).
+	 * ->
+	 * 상등 비교는 요소의 개수와 모든 요소의 값이 일치할 때 같은 것으로 판단한다. 
+	 * 벡터가 생성되어 있는 메모리 위치나 추가로 할당되어 있는 여유분은 벡터의 실제 내용이 아니므로 상등 비교의 대상이 아니다.
+	 * 들어 있는 내용만 같다면 같은 벡터로 취급된다.
+	 */
+	template <class T, class Alloc>
+  	bool operator== (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		if (lhs.size() != rhs.size())
+			return (false);
+		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	};
+
+	template <class T, class Alloc>
+ 	bool operator!= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (!(lhs == rhs));
+	};
+
+	/**
+	 * @brief Relational operators for vector
+	 * Performs the appropriate comparison operation between the vector containers lhs and rhs.
+	 * 
+	 * The less-than comparison (operator<) behaves as if using algorithm lexicographical_compare,
+	 * which compares the elements sequentially using operator< in a reciprocal manner
+	 * (i.e., checking both a<b and b<a) and stopping at the first occurrence.
+	 * ->
+	 * 대소를 비교할 때는 대응되는 각 요소들을 일대일로 비교하다가
+	 * 최초로 다른 요소가 발견되었을 때 두 요소의 대소를 비교한 결과를 리턴한다. 
+	 * 만약 한쪽 벡터의 길이가 더 짧아 먼저 끝을 만났다면 아직 끝나지 않은 벡터가 더 큰 것으로 판별한다.
+	 * 이런 식으로 비교하는 것을 사전식 비교라고 하는데 상식과도 일치한다.
+	 */
+	template <class T, class Alloc>
+	bool operator<  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	};
+
+	template <class T, class Alloc>
+	bool operator<= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (!(rhs < lhs));
+	};
+
+	template <class T, class Alloc>
+	bool operator>  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (rhs < lhs);
+	};
+
+	template <class T, class Alloc>
+	bool operator>= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (!(lhs < rhs));
+	};
+
+	/**
+	 * @brief Exchange contents of vectors
+	 * The contents of container x are exchanged with those of y.
+	 * Both container objects must be of the same type (same template parameters),
+	 * although sizes may differ.
+	 */
+	template <class T, class Alloc>
+	void swap (vector<T, Alloc>& x, vector<T, Alloc>& y)
+	{
+		x.swap(y);
+	};
+}//namespace ft
 
 #endif
