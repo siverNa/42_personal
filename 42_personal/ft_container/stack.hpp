@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 00:06:56 by sna               #+#    #+#             */
-/*   Updated: 2022/05/22 00:16:49 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/22 00:32:22 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,52 @@ namespace ft {
 			 * This member function effectively calls the member function pop_back of the underlying container object.
 			 */
 			void pop() {_c_t.pop_back(); };
+	};
+
+	/**
+	 * @brief Relational operators for stack
+	 * Performs the appropriate comparison operation between lhs and rhs.
+	 * Each of these operator overloads calls the same operator on the underlying container objects.
+	 * 
+	 * @param lhs stack objects.
+	 * @param rhs stack objects.
+	 * 
+	 * @return true if the condition holds, and false otherwise.
+	 */
+	template <class T, class Container>
+	bool operator== (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t == rhs._c_t);
+	};
+
+	template <class T, class Container>
+	bool operator!= (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t != rhs._c_t);
+	};
+
+	template <class T, class Container>
+	bool operator<  (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t < rhs._c_t);
+	};
+
+	template <class T, class Container>
+	bool operator<= (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t <= rhs._c_t);
+	};
+
+	template <class T, class Container>
+	bool operator>  (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t > rhs._c_t);
+	};
+
+	template <class T, class Container>
+	bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs)
+	{
+		return (lhs._c_t >= rhs._c_t);
 	};
 
 };//namespace ft
