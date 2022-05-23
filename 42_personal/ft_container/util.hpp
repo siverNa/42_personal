@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/05/22 22:37:59 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/23 20:45:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,39 @@ namespace ft
 	pair<T1, T2> make_pair (T1 x, T2 y)
 	{
 		return (pair<T1, T2>(x, y));
+	};
+
+	/**
+	 * @brief Binary function object base class
+	 * This is a base class for standard binary function objects.
+	 * 
+	 * Generically, function objects are instances of a class with member function operator() defined.
+	 * This member function allows the object to be used with the same syntax as a regular function call,
+	 * and therefore its type can be used as template parameter when a generic function type is expected.
+	 */
+	template <class Arg1, class Arg2, class Result>
+	struct binary_function
+	{
+		//The first template parameter (Arg1)
+		typedef Arg1	first_argument_type;
+		//The second template parameter (Arg2)
+		typedef Arg2	second_argument_type;
+		//The third template parameter (Result)
+		typedef Result	result_type;
+	};
+
+	/**
+	 * @brief Function object class for less-than inequality comparison
+	 * Binary function object class whose call returns
+	 * whether the its first argument compares less than the second (as returned by operator <).
+	 * 
+	 * Generically, function objects are instances of a class with member function operator() defined.
+	 * This member function allows the object to be used with the same syntax as a function call.
+	 */
+	template <class T>
+	struct less : binary_function <T, T, bool>
+	{
+		bool operator() (const T& x, const T& y) const {return x < y;}
 	};
 }
 
