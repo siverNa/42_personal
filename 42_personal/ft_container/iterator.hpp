@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/05/04 23:09:26 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/29 19:14:28 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,19 @@ namespace ft {
 		typedef ptrdiff_t								difference_type;
 		typedef const T*								pointer;
 		typedef const T&								reference;
+	};
+
+	template <class T>
+	class bidirectional_iterator : public ft::iterator<ft::bidirectional_iterator_tag, T>
+	{
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::iterator_category	iterator_category;
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::value_type		value_type;
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::difference_type	difference_type;
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::pointer			pointer;
+		typedef typename ft::iterator<ft::bidirectional_iterator_tag, T>::reference			reference;
+
+		protected:
+			pointer _pointer;
 	};
 
 	template <class Iterator>
