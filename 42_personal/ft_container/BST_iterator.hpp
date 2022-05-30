@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:20:10 by sna               #+#    #+#             */
-/*   Updated: 2022/05/29 20:08:35 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/30 22:15:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ namespace ft {
 				this->_comp = copy._comp;
 				return (*this);
 			}
+
+			bool operator==(const BST_iterator& bst_it)
+			{return (this->_node == bst_it._node); };
+
+			bool operator!=(const BST_iterator& bst_it)
+			{return (this->_node != bst_it._node); };
+
+			reference operator*() const
+			{return (this->_node->value); };
 	};
 }//namespace ft
 
