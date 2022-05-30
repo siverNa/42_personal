@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/05/23 20:45:46 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/30 23:55:01 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,81 @@ namespace ft
 	struct less : binary_function <T, T, bool>
 	{
 		bool operator() (const T& x, const T& y) const {return x < y;}
+	};
+
+	template <class T>
+	struct BST_Node
+	{
+		public:
+			/**
+			 * @brief First template argument, the type of stocked value
+			 */
+			typedef T			value_type;
+
+			value_type			value;
+			BST_Node*			parent;
+			BST_Node*			left;
+			BST_Node*			right;
+
+			/**
+			 * @brief default construct
+			 */
+			BST_Node()
+				: value(), parent(u_nullptr), left(u_nullptr), right(u_nullptr)
+			{};
+
+			/**
+			 * @brief default construct
+			 */
+			BST_Node(BST_Node* parent = u_nullptr, BST_Node* left = u_nullptr, BST_Node* right = u_nullptr)
+				: value(), parent(parent), left(left), right(right)
+			{};
+
+			/**
+			 * @brief input construct
+			 */
+			BST_Node(const value_type& value, BST_Node* parent = u_nullptr,
+					BST_Node* left = u_nullptr, BST_Node* right = u_nullptr)
+				: value(value), parent(parent), left(left), right(right)
+			{};
+
+			/**
+			 * @brief copy construct
+			 */
+			BST_Node(const BST_Node& copy)
+				: value(copy.value), parent(copy.parent), left(copy.left), right(copy.right)
+			{};
+
+			/**
+			 * @brief destructor
+			 */
+			virtual ~BST_Node() {};
+
+			/**
+			 * @brief copy operator
+			 * Create a BST_Node that a copy of "bs".
+             * The value is initalized by a copy of "bs" value.
+             * Left and right branch point to the same than "bs" branches.
+			 */
+			BST_Node& operator=(const BST_Node& bs)
+			{
+				if (*this == bs)
+					return (*this);
+				
+				this->value = bs.value;
+				this->parent = bs.parent;
+				this->left = bs.left;
+				this->right = bs.right;
+				
+				return (*this);
+			};
+
+			bool operator==(const BST_Node& bs)
+			{
+				if (this->value == bs.value)
+					return (true);
+				return (false);
+			};
 	};
 }
 
