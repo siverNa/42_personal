@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/05/30 23:55:01 by sna              ###   ########.fr       */
+/*   Updated: 2022/05/31 21:42:50 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,8 +287,8 @@ namespace ft
 			/**
 			 * @brief copy operator
 			 * Create a BST_Node that a copy of "bs".
-             * The value is initalized by a copy of "bs" value.
-             * Left and right branch point to the same than "bs" branches.
+			 * The value is initalized by a copy of "bs" value.
+			 * Left and right branch point to the same than "bs" branches.
 			 */
 			BST_Node& operator=(const BST_Node& bs)
 			{
@@ -303,6 +303,10 @@ namespace ft
 				return (*this);
 			};
 
+			/**
+			 * @brief Compare BST_Node and bs
+			 * if two node value is same
+			 */
 			bool operator==(const BST_Node& bs)
 			{
 				if (this->value == bs.value)
@@ -310,6 +314,36 @@ namespace ft
 				return (false);
 			};
 	};
-}
+
+	template <class T>
+	struct Double_Linked_Node
+	{
+		public:
+			Double_Linked_Node*		prev;
+			Double_Linked_Node*		next;
+			T						data;
+
+			/**
+			 * @brief default construct
+			 */
+			Double_Linked_Node()
+				: prev(u_nullptr), next(u_nullptr)
+			{};
+
+			/**
+			 * @brief input construct
+			 */
+			Double_Linked_Node(const T& value)
+				: prev(u_nullptr), next(u_nullptr), data(value)
+			{};
+
+			/**
+			 * @brief input construct2
+			 */
+			Double_Linked_Node(Double_Linked_Node* prev, Double_Linked_Node* next, const T& value)
+				: prev(prev), next(next), data(value)
+			{};	
+	};
+}//namespace ft
 
 #endif
