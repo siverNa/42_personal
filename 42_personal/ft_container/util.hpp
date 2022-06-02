@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/05/31 21:42:50 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/02 20:19:36 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,16 @@ namespace ft
 	{
 		bool operator() (const T& x, const T& y) const {return x < y;}
 	};
+
+	/**
+	 * @brief Remove const qualification
+	 * Obtains the type T without top-level const qualification.
+	 */
+	template <class T>
+	struct remove_const {typedef T type; };
+
+	template <class T>
+	struct remove_const <const T> {typedef T type; };
 
 	template <class T>
 	struct BST_Node
