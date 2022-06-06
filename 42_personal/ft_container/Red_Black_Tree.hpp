@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 23:12:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/05 20:51:46 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/06 18:16:08 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "util.hpp"
 # include "iterator.hpp"
 # include "tree_iterator.hpp"
+# include "type_trait.hpp"
 
 namespace ft{
 	template <class T, class Compare = ft::less<T>, class Alloc = std::allocator<T> >
@@ -228,7 +229,173 @@ namespace ft{
 			};
 		
 		public:
-			
+			iterator begin() {
+				if (_size == 0)
+					return (iterator(_header));
+				else
+					return (iterator(tree_min(_root)));
+			};
+
+			const_iterator begin() const {
+				if (_size == 0)
+					return (const_iterator(_header));
+				else
+					return (const_iterator(tree_min(_root)));	
+			};
+
+			iterator end() {
+				return (iterator(_header));
+			};
+
+			const_iterator end() const {
+				return (const_iterator(_header));
+			};
+
+			reverse_iterator rbegin() {
+				return (reverse_iterator(end()));
+			};
+
+			const_reverse_iterator rend() {
+				return (const_reverse_iterator(end()));
+			};
+
+			reverse_iterator rend() {
+				return (reverse_iterator(begin()));
+			};
+
+			const_reverse_iterator rend() {
+				return (const_reverse_iterator(begin()));
+			};
+
+			pointer create_value(const value_type& value) {
+				pointer new_value = _val_alloc.allocate(1);
+				_val_alloc.construct(new_value, value);
+				return (new_value);
+			};
+
+			node_pointer copy_node(node_pointer other) {
+				node_pointer new_node = _node_alloc.allocate(1);
+				_node_alloc.construct(new_node, Node<T>());
+				new_node->is_black = other->is_black;
+				new_node->is_nil = other->is_nil;
+				if (other->value)
+				{
+					new_node->value = _val_alloc.allocate(1);
+					_val_alloc.construct(new_node->value, *other->value);
+				}
+				return (new_node);
+			};
+
+			/**
+			 * @brief 내 노드와 복사받을 노드를 입력받아
+			 * 재귀적으로 노드의 값을 복사해옴
+			 */
+			void copy_child(node_pointer my_node, node_pointer other) {
+				if (other->left->is_nil)
+					my_node->left = _nil;
+				else
+				{
+					my_node->left = copy_node(other->left);
+					my_node->left->patent = my_node;
+					copy_child(my_node->left, other->left);
+				}
+				if (other->right->is_nil)
+					my_node->right = _nil;
+				else if (other->right->right == ft::u_nullptr)
+				{
+					my_node->right = _header;
+					_header->parent = my_node;
+				}
+				else
+				{
+					my_node->right = copy_node(other->right);
+					my_node->right->parent = my_node;
+					copy_child(my_node->right, other->right);
+				}
+			};
+
+			node_pointer search(const value_type& value, node_pointer node) const {
+				if (!node || is_nil(node))
+					return (ft::u_nullptr);
+				if (_compare(value, *node->value))//찾으려는 수가 현재노드보다 작으면
+					return (search(value, node->left));//왼쪽노드로 탐색
+				if (_compare(*node->value, value))//반대의 경우
+					return (search(value, node->right));//오른쪽노드로 탐색
+				return (node);
+			};
+
+			iterator find(const value_type& value) {
+				node_pointer find_result = search(value, _root);
+				if (find_result == ft::u_nullptr)
+					return (end());
+				else
+					return (iterator(find_result));
+			};
+
+			const_iterator find(const value_type& value) const {
+				node_pointer find_result = search(value, _root);
+				if (find_result == ft::u_nullptr)
+					return (end());
+				else
+					return (const_iterator(find_result));
+			};
+
+			ft::pair<iterator, bool> insert(const value_type& value) {
+				node_pointer find_value = search(value, _root);
+				if (find_value)//이미 있으면 추가안됨
+					return (ft::pair<iterator, bool>(iterator(find_value), false));
+				node_pointer new_node = _node_alloc.allocate(1);
+				_node_alloc.construct(new_node, Node<value_type>(create_value(value)));
+				new_node->left = _nil;
+				new_node->right = _nil;
+				insert_into_tree(new_node, _root);
+				ft::pair<iterator, bool> res(iterator(new_node), true);
+				insert_fixup(new_node);
+				_size++;
+				new_node = tree_max(_root);
+				new_node->right = _header;
+				_header->parent = new_node;
+				return (res);
+			};
+
+			iterator insert(iterator position, const value_type& value) {
+				node_pointer new_node = search(value, _root);
+				if (new_node)
+					return (iterator(new_node));
+				new_node = _node_alloc.allocate(1);
+				_node_alloc.construct(new_node, Node<value_type>(create_value(value)));
+				new_node->left = _nil;
+				new_node->right = _nil;
+				if (position == begin())
+				{
+					if (position != end() && _compare(value, *position))
+						insert_into_tree(new_node, tree_min(_root));
+					else
+						insert_into_tree(new_node, _root);
+				}
+				else if (position == end())
+				{
+					if (position != begin() && _compare(*(--position), value))
+						insert_into_tree(new_node, _header->parent);
+					else
+						insert_into_tree(new_node, _root);
+				}
+				else
+					insert_into_tree(new_node, _root);
+				insert_fixup(new_node);
+				_size++;
+				node_pointer max_of_tree = tree_max(_root);
+				max_of_tree->right = _header;
+				_header->parent = max_of_tree;
+				return (iterator(new_node));
+			};
+
+			template <class InputIterator>
+			void insert(typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator >::type first
+						, InputIterator last) {
+				for (; first != last; ++first)
+					insert(*first);
+			};
 	};
 }//namespace ft
 
