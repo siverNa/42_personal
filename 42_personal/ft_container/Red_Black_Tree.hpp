@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 23:12:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/06 18:16:08 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/07 23:52:40 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,6 +396,176 @@ namespace ft{
 				for (; first != last; ++first)
 					insert(*first);
 			};
+
+			void erase(iterator pos) {
+				node_pointer y = pos.node();
+				node_pointer x;
+				node_pointer for_free = y;
+				bool y_original_is_black = y->is_black;
+
+				if (is_nil(y->left))
+				{
+					x = y->right;
+					transplate(y, y->right);
+				}
+				else if (is_nil(y->right))
+				{
+					x = y->left;
+					transplate(y, y->left);
+				}
+				else
+				{
+					node_pointer z = y;
+					y = tree_min(z->right);
+					y_original_is_black = y->is_black;
+					x = y->right;
+					if (y->parent != z)
+					{
+						transplate(y, y->right);
+						y->right = z->right;
+						z->right->parent = y;
+					}
+					transplate(z, y);
+					y->left = z->left;
+					y->left->parent = y;
+					y->is_black = z->is_black;
+				}
+				free_node(for_free);
+				if (y_original_is_black)
+					erase_fixup(x);
+				_size--;
+				_nil->parent = ft::u_nullptr;
+				if (_size == 0)
+					_root = _header;
+				else
+				{
+					if (_size != 1)
+						x = tree_max(_root);
+					else
+						x = _root;
+					x->right = _header;
+					_header->parent = x;
+				}
+			};
+
+			size_type erase(const value_type& value) {
+				node_pointer result = search(value, _root);
+				if (result)
+					erase(iterator(result));
+				return (result != ft:u_nullptr);
+			};
+
+			void erase(iterator first, iterator last) {
+				while (first != last)
+					erase(first++);
+			};
+
+			void erase_fixup(node_pointer x) {
+				node_pointer brother;
+
+				while (x != _root && x->is_black)
+				{
+					if (x == x->parent->left)
+					{
+						brother = x->parent->right;
+						//case 1
+						if (!brother->is_black)
+						{
+							brother->is_black = true;
+							x->parent->is_black = false;
+							rotate_left(x->parent);
+							brother = x->parent->right;
+						}
+						//case 2
+						if (brother->left->is_black && brother->right->is_black)
+						{
+							brother->is_black = false;
+							x = x->parent;
+						}
+						else //case 3
+						{
+							if (brother->right->is_black)
+							{
+								brother->left->is_black = true;
+								brother->is_black = false;
+								rotate_right(brother);
+								brother = x->parent->right;
+							}
+							//case 4
+							brother->is_black = x->parent->is_black;
+							x->parent->is_black = true;
+							brother->right->is_black = true;
+							rotate_left(x->parent);
+							x = _root;
+						}
+					}
+					else
+					{
+						brother = x->parent->left;
+						//case 1
+						if (!brother->is_black)
+						{
+							brother->is_black = true;
+							x->parent->is_black = false;
+							rotate_right(x->parent);
+							brother = x->parent->left;
+						}
+						//case 2
+						if (brother->right->is_black && brother->left->is_black)
+						{
+							brother->is_black = false;
+							x = x->parent;
+						}
+						else //case 3
+						{
+							if (brother->left->is_black)
+							{
+								brother->right->is_black = true;
+								brother->is_black = false;
+								rotate_left(brother);
+								brother = x->parent->left;
+							}
+							//case 4
+							brother->is_black = x->parent->is_black;
+							x->parent->is_black = true;
+							brother->left->is_black = true;
+							rotate_right(x->parent);
+							x = _root;
+						}
+					}
+				}
+			};
+
+			Red_Black_Tree(const Compare& comp, const allocator_type& a = allocator_type())
+				: _val_alloc(a), _node_alloc(node_allocator()), _compare(comp), _root(0), _size(0)
+			{
+				init_nil_head();
+				_root = _header;
+			};
+
+			Red_Black_Tree()
+				: _val_alloc(allocator_type()), _node_alloc(node_allocator()), _compare(value_compare()), _root(0), _size(0)
+			{
+				init_nil_head();
+				_root = _header;
+			};
+
+			Red_Black_Tree(const Red_Black_Tree& src)
+				: _compare(src._compare), _root(ft::u_nullptr)
+			{
+				*this = src;
+			};
+
+			template <class InputIterator>
+			Red_Black_Tree(typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator >::type first,
+							InputIterator last, const value_compare& comp, const allocator_type& a = allocator_type())
+				: _val_alloc(a), _node_alloc(node_allocator()), _compare(comp)
+			{
+				init_nil_head();
+				_root = _header;
+				for (; first != last; first++)
+					insert(*first);
+			}
 	};
 }//namespace ft
 
