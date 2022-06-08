@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 23:12:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/07 23:52:40 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/08 19:56:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -565,8 +565,162 @@ namespace ft{
 				_root = _header;
 				for (; first != last; first++)
 					insert(*first);
-			}
+			};
+
+			Red_Black_Tree& operator=(const Red_Black_Tree& src)
+			{
+				if (*this == src)
+					return (*this);
+				this->_node_alloc = src._node_alloc;
+				this->_val_alloc = src._val_alloc;
+				this->_compare = src._compare;
+				if (this->_root == ft::u_nullptr)
+					init_nil_head();
+				else
+					clear_node(_root);
+				if (src._size == 0)
+					this->_root = this->_header;
+				else
+				{
+					this->_root = copy_node(src._root);
+					copy_child(this->_root, src._root);
+				}
+				this->_size = src._size;
+				return (*this);
+			};
+
+			~Red_Black_Tree()
+			{
+				clear_node(_root);
+				_val_alloc.destroy(_header->value);
+				_val_alloc.deallocate(_header->value, 1);
+				_node_alloc.deallocate(_nil, 1);
+				_node_alloc.deallocate(_header, 1);
+			};
+
+			size_type size() const {
+				return (_size);
+			};
+
+			size_type max_size() const {
+				return (_val_alloc.max_size());
+			};
+
+			bool empty() const {
+				return (_size == 0);
+			};
+
+			value_compare value_comp() const {
+				return (_compare);
+			};
+
+			void clear() {
+				clear_node(_root);
+				_root = _header;
+				_header->parent = ft::u_nullptr;
+				_size = 0;
+			};
+
+			size_type count(const value_type& value) const {
+				return (find(value) != end());
+			};
+
+			iterator lower_bound(const value_type& value) {
+				iterator last = end();
+				for (iterator first = begin(); first != last; first++)
+				{
+					if (!_compare(*first, value))
+						return (first);
+				}
+				return (last);
+			};
+
+			const_iterator lower_bound(const value_type& value) {
+				const_iterator last = end();
+				for (const_iterator first = begin(); first != last; first++)
+				{
+					if (!_compare(*first, value))
+						return (first);
+				}
+				return (last);
+			};
+
+			iterator upper_bound(const value_type& value) {
+				iterator last = end();
+				for (iterator first = begin(); first != last; first++)
+				{
+					if (_compare(value, *first))
+						return (first);
+				}
+				return (last);
+			};
+
+			const_iterator upper_bound(const value_type& value) {
+				const_iterator last = end();
+				for (const_iterator first = begin(); first != last; first++)
+				{
+					if (_compare(value, *first))
+						return (first);
+				}
+				return (last);
+			};
+
+			void swap(Red_Black_Tree& other) {
+				if (*this == other)
+					return ;
+				allocator_type	temp_val_alloc = other._val_alloc;
+				node_allocator	temp_node_alloc = other._node_alloc;
+				value_compare	temp_compare = other._compare;
+				node_pointer	temp_nil = other._nil;
+				node_pointer	temp_header = other._header;
+				node_pointer	temp_root = other._root;
+				size_type		temp_size = other._size;
+
+				other._val_alloc = this->_val_alloc;
+				other._node_alloc = this->_node_alloc;
+				other._compare = this->_compare;
+				other._nil = this->_nil;
+				other._header = this->_header;
+				other._root = this->_root;
+				other._size = this->_size;
+
+				this->_val_alloc = temp_val_alloc;
+				this->_node_alloc = temp_node_alloc;
+				this->_compare = temp_compare;
+				this->_nil = temp_nil;
+				this->_header = temp_header;
+				this->_root = temp_root;
+				this->_size = temp_size;
+			};
+
+			ft::pair<iterator, iterator> equal_range(const value_type& value) {
+				return (ft::make_pair(lower_bound(value), upper_bound(value)));
+			};
+
+			allocator_type get_allocator() const {
+				return (_val_alloc);
+			};
 	};
+
+	template<class Content, class Compare, class Alloc>
+	bool operator<(const Red_Black_Tree<Content, Compare, Alloc>& lhs, const Red_Black_Tree<Content, Compare, Alloc>& rhs){
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
+
+	template<class Content, class Compare, class Alloc>
+	bool operator>(const Red_Black_Tree<Content, Compare, Alloc>& lhs, const Red_Black_Tree<Content, Compare, Alloc>& rhs){
+		return (lhs < rhs);
+	}
+
+	template<class Content, class Compare, class Alloc>
+	bool operator==(const Red_Black_Tree<Content, Compare, Alloc>& lhs, const Red_Black_Tree<Content, Compare, Alloc>& rhs){
+		return (lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	}
+
+	template<class Content, class Compare, class Alloc>
+	void swap(const Red_Black_Tree<Content, Compare, Alloc>& lhs, const Red_Black_Tree<Content, Compare, Alloc>& rhs){
+		lhs.swap(rhs);
+	}
 }//namespace ft
 
 #endif
