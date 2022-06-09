@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:57:08 by sna               #+#    #+#             */
-/*   Updated: 2022/05/15 18:30:21 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/09 20:43:25 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ namespace ft {
 	struct enable_if {};
 
 	template <class T>
-	struct enable_if<true, T> {typedef T type};
+	struct enable_if<true, T> {typedef T type; };
 
 	template <class T>
 	struct is_integral {static const bool value = false; };
