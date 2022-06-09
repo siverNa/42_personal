@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:33:52 by sna               #+#    #+#             */
-/*   Updated: 2022/05/09 21:18:10 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/09 20:41:46 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ namespace ft
 			/**
 			 * @brief default constructor
 			 */
-			random_access_iterator(pointer _pointer = ft::u_nullptr) : _pointer(pointer)
+			random_access_iterator(pointer _pointer = ft::u_nullptr) : _pointer(_pointer)
 			{};
 
 			/**
