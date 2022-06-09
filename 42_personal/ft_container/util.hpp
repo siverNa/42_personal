@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/06/02 20:19:36 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/09 20:39:37 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ namespace ft
 			// Return 0 for any member pointer
 			template <class T, class C>
 			operator T C::*() const {
-				retrurn (0);
+				return (0);
 			};
 
 			// Used for bool conversion
