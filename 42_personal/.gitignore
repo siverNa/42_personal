@@ -20,6 +20,8 @@ test_result.txt
 test_all.sh
 ./pipex-tester
 pipex-tester
+
+FT_CONTAINERS_42_tester
 #lib
 *.a
 #exe
