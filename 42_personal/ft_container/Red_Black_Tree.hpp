@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 23:12:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/08 19:56:43 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/09 20:08:24 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -694,6 +694,10 @@ namespace ft{
 			};
 
 			ft::pair<iterator, iterator> equal_range(const value_type& value) {
+				return (ft::make_pair(lower_bound(value), upper_bound(value)));
+			};
+
+			ft::pair<const_iterator, const_iterator> equal_range(const value_type& value) const{
 				return (ft::make_pair(lower_bound(value), upper_bound(value)));
 			};
 
