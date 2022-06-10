@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/05/21 00:05:12 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/10 17:35:50 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,7 +334,7 @@ namespace ft {
 			 * 
 			 * @return true if the container size is 0, false otherwise.
 			 */
-			bool empty() const {return (this->size == 0); };
+			bool empty() const {return (this->size() == 0); };
 
 			/**
 			 * @brief Request a change in capacity
@@ -414,7 +414,7 @@ namespace ft {
 			 * an exception of type out_of_range is thrown.
 			 * Notice that the first element has a position of 0 (not 1).
 			 */
-			const_reference at(size_type n)
+			const_reference at(size_type n) const
 			{
 				if (this->size() <= n)
 					throw (std::out_of_range("ft::vector"));
@@ -603,7 +603,7 @@ namespace ft {
 				}
 
 				//새로운 vector 뒤부터 이전 vector의 요소들 복사
-				for (size_type i = 0; i < prev_size - position_len; i+)
+				for (size_type i = 0; i < prev_size - position_len; i++)
 				{
 					_alloc.construct(_end - i - 1, *(prev_end - i - 1));
 					_alloc.destroy(prev_end - i - 1);
