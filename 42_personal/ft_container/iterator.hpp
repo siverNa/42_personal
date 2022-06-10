@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/05/29 19:14:28 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/10 17:35:09 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ namespace ft {
 	template <class Iterator>
 	struct iterator_traits {
 		typedef typename Iterator::iterator_category	iterator_category;
-		typedef typename Iterator::valuie_type			value_type;
+		typedef typename Iterator::value_type			value_type;
 		typedef typename Iterator::difference_type		difference_type;
 		typedef typename Iterator::pointer				pointer;
 		typedef typename Iterator::reference			reference;
