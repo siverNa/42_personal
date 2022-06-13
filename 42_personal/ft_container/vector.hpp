@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/06/10 17:35:50 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/10 17:41:18 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -353,7 +353,7 @@ namespace ft {
 					return ;
 				pointer prev_start = this->_start;
 				pointer prev_end = this->_end;
-				size_type prev_size = this->size();
+				//size_type prev_size = this->size();
 				size_type prev_capacity = this->capacity();
 
 				this->_start = this->_alloc.allocate(n);
