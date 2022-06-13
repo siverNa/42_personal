@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/06/10 17:41:18 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/13 19:30:24 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,7 @@ namespace ft {
 			 * Returns a reverse iterator pointing to the last element in the vector
 			 * (i.e., its reverse beginning).
 			 */
-			const_reverse_iterator rbegin() const {return (reverse_iterator(this->end())); };
+			const_reverse_iterator rbegin() const {return (const_reverse_iterator(this->end())); };
 
 			/**
 			 * @brief Return reverse iterator to reverse end
@@ -281,7 +281,7 @@ namespace ft {
 			 * Returns a reverse iterator pointing to the theoretical element
 			 * preceding the first element in the vector (which is considered its reverse end).
 			 */
-			const_reverse_iterator rend() const {return (reverse_iterator(this->begin())); };
+			const_reverse_iterator rend() const {return (const_reverse_iterator(this->begin())); };
 
 			/**
 			 * @brief Return size
