@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:33:52 by sna               #+#    #+#             */
-/*   Updated: 2022/06/09 20:41:46 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/14 21:35:27 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,12 @@ namespace ft
 			 */
 			random_access_iterator operator++(int)
 			{
-				random_access_iterator temp = *this;
-				++(*this);
+				// random_access_iterator temp = *this;
+				// ++(*this);
+				// return (temp);
+
+				random_access_iterator temp(*this);
+				++this->_pointer;
 				return (temp);
 			};
 
@@ -129,8 +133,12 @@ namespace ft
 			 */
 			random_access_iterator operator--(int)
 			{
-				random_access_iterator temp = *this;
-				--(*this);
+				// random_access_iterator temp = *this;
+				// --(*this);
+				// return (temp);
+				
+				random_access_iterator temp(*this);
+				--this->_pointer;
 				return (temp);
 			};
 
@@ -156,6 +164,14 @@ namespace ft
 			{
 				return (this->_pointer[n]);
 			};
+
+			difference_type operator-(random_access_iterator it) const {
+				return this->_pointer - it._pointer;
+			}
+
+			difference_type operator+(random_access_iterator it) const {
+				return this->_pointer + it._pointer;
+			}
 	};
 
 	/**
