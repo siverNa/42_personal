@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/06/13 18:15:55 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/19 18:47:33 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ namespace ft {
 	struct bidirectional_iterator_tag : public forward_iterator_tag {};
 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
 
-	template <class Category, class T, class Distance = ptrdiff_t,
+	template <class Category, class T, class Distance = std::ptrdiff_t,
 			  class Pointer = T*, class Reference = T&>
 	struct iterator {
 		typedef T			value_type;
@@ -46,7 +46,7 @@ namespace ft {
 	struct iterator_traits<T*> {
 		typedef ft::random_access_iterator_tag				iterator_category;
 		typedef T											value_type;
-		typedef ptrdiff_t									difference_type;
+		typedef std::ptrdiff_t								difference_type;
 		typedef T*											pointer;
 		typedef T&											reference;
 	};
@@ -55,7 +55,7 @@ namespace ft {
 	struct iterator_traits<T* const> {
 		typedef ft::random_access_iterator_tag				iterator_category;
 		typedef T											value_type;
-		typedef ptrdiff_t									difference_type;
+		typedef std::ptrdiff_t								difference_type;
 		typedef const T*									pointer;
 		typedef const T&									reference;
 	};
@@ -95,6 +95,13 @@ namespace ft {
 
 			template <class Iter>
 			reverse_iterator(const reverse_iterator<Iter>& rev_it) : current(rev_it.base()) {};
+
+			template <class Iter>
+			reverse_iterator& operator=(const reverse_iterator<Iter>& it)
+			{
+				current = it.base();
+				return (*this);
+			}
 
 			virtual ~reverse_iterator() {};
 
@@ -213,6 +220,16 @@ namespace ft {
 			{
 				return (current[-n - 1]);
 			};
+
+			bool operator==(const reverse_iterator &rhs)
+			{
+				return (base() == rhs.base());
+			}
+			
+			bool operator!=(const reverse_iterator & rhs)
+			{
+				return (base() != rhs.base());
+			}
 	};
 
 	/**
