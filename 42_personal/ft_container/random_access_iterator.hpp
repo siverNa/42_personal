@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 18:33:52 by sna               #+#    #+#             */
-/*   Updated: 2022/06/14 21:35:27 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/20 17:45:02 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ namespace ft
 			 */
 			random_access_iterator(const random_access_iterator<T>& obj) : _pointer(obj._pointer)
 			{};
+
+			random_access_iterator& operator=(const random_access_iterator& rhs)
+			{
+				if (this != &rhs)
+					this->_pointer = rhs._pointer;
+				return (*this);
+			}
+
+			virtual ~random_access_iterator() {};
 
 			pointer const& base() const
 			{
@@ -178,8 +187,8 @@ namespace ft
 	 * @brief Relational operators== for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator== (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator== (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() == rhs.base());
 	};
@@ -188,8 +197,8 @@ namespace ft
 	 * @brief Relational operators!= for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator!= (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator!= (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() != rhs.base());
 	};
@@ -198,8 +207,8 @@ namespace ft
 	 * @brief Relational operators< for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator< (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator< (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() < rhs.base());
 	};
@@ -208,8 +217,8 @@ namespace ft
 	 * @brief Relational operators<= for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator<= (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator<= (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() <= rhs.base());
 	};
@@ -218,8 +227,8 @@ namespace ft
 	 * @brief Relational operators> for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator> (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator> (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() > rhs.base());
 	};
@@ -228,8 +237,8 @@ namespace ft
 	 * @brief Relational operators>= for random_access_iterator
 	 */
 	template <class Iterator>
-	bool operator>= (const random_access_iterator<Iterator>& lhs,
-					const random_access_iterator<Iterator>& rhs)
+	bool operator>= (const ft::random_access_iterator<Iterator>& lhs,
+					const ft::random_access_iterator<Iterator>& rhs)
 	{
 		return (lhs.base() >= rhs.base());
 	};
@@ -244,9 +253,9 @@ namespace ft
 	 * @param ran_it random_access_iterator.
 	 */
 	template <class Iterator>
-	random_access_iterator<Iterator> operator+ (
-		typename random_access_iterator<Iterator>::difference_type n,
-		const random_access_iterator<Iterator>& ran_it)
+	ft::random_access_iterator<Iterator> operator+ (
+		typename ft::random_access_iterator<Iterator>::difference_type n,
+		const ft::random_access_iterator<Iterator>& ran_it)
 	{
 		return (ran_it + n);
 	};
@@ -255,9 +264,9 @@ namespace ft
 	 * @brief Returns the distance between lhs and rhs.
 	 */
 	template <class Iterator>
-	typename random_access_iterator<Iterator>::difference_type operator- (
-		const random_access_iterator<Iterator>& lhs,
-		const random_access_iterator<Iterator>& rhs
+	typename ft::random_access_iterator<Iterator>::difference_type operator- (
+		const ft::random_access_iterator<Iterator>& lhs,
+		const ft::random_access_iterator<Iterator>& rhs
 	)
 	{
 		return (rhs.base() - lhs.base());
