@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 20:13:36 by sna               #+#    #+#             */
-/*   Updated: 2022/06/09 20:39:37 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/20 23:55:58 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,18 @@ namespace ft
 	struct less : binary_function <T, T, bool>
 	{
 		bool operator() (const T& x, const T& y) const {return x < y;}
+	};
+
+	/**
+	 * @brief Exchange values of two objects
+	 * Exchanges the values of a and b.
+	 */
+	template <class T>
+	void swap (T& a, T& b)
+	{
+		T c(a);
+		a = b;
+		b = c;
 	};
 
 	/**
