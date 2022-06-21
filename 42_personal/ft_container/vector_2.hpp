@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:13 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/21 21:52:49 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -594,7 +594,15 @@ namespace ft {
 			 */
 			iterator erase (iterator position)
 			{
-				return (this->erase(position, position + 1));
+				size_type location = &(*position) - _node;
+				_alloc.destroy(&(*position));
+				for (size_type i = 0; i < this->size() - location; i++)
+				{
+					_alloc.construct(_node + location + i, *(_node + location + i + 1));
+					_alloc.destroy(_node + location + i);
+				}
+				--_size;
+				return (_node + location);
 			};
 
 			/**
