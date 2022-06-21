@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:52:39 by sna               #+#    #+#             */
-/*   Updated: 2022/06/21 00:00:20 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ namespace ft {
 			 * Constructs an empty container, with no elements.
 			 */
 			explicit vector(const allocator_type& alloc = allocator_type())
-				: _node(0), _alloc(alloc), _size(0), _capacity(0) {}
+				: _node(0), _alloc(alloc), _size(0), _capacity(0)
 			{};
 
 			/**
@@ -169,7 +169,7 @@ namespace ft {
 				for (InputIterator i = first; i != last; i++)
 					_size++;
 
-				for (_capacity = 1; _capacity < _size)
+				for (_capacity = 1; _capacity < _size;)
 					_capacity *= 2;
 				
 				_node = _alloc.allocate(_capacity);
@@ -463,7 +463,7 @@ namespace ft {
 						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = u_nullptr)
 			{
 				size_type n = 0;
-				for (InputIterator it = first; it != last; i++)
+				for (InputIterator it = first; it != last; it++)
 					n++;
 				this->clear();
 				this->reserve(n);
