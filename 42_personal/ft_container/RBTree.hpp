@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:15:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/22 18:18:01 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/22 18:23:53 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ namespace ft {
 					node = get_right_smallest_node(target->right);
 				if (node->parent == target)
 					swap_one_depth(target, node);
-				else //노드가 타겟에서 2depth 이상 떨어져 있다.
+				else //노드가 타겟에서 2depth 이상 떨어져 있을 경우.
 					swap_over_one_depth(target, node);
 			};
 
@@ -119,9 +119,9 @@ namespace ft {
 				low->right = temp_r;
 				if (!temp_r->empty())
 					temp_r->parent = low;
-				//색 바꾸고
+				//색 바꾸기
 				swap_color(high->color, low->color);
-				//치환한게 루트이면 루트 바꿔주고
+				//치환한게 루트이면 루트 바꿔주기
 				if (low->parent->empty())
 					this->_root = low;
 			};
