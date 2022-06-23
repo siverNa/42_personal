@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:15:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/22 18:23:53 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/23 22:17:17 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ namespace ft {
 					this->_root = low;
 			};
 
-			void swap_one_depth(node_type *&p, node_type *&c)
+			void swap_one_depth(node_type *&p, node_type *&c)//target, node
 			{
 				node_type *temp_p = p->parent;
 				node_type *temp_l = p->left;
@@ -432,7 +432,192 @@ namespace ft {
 			};
 		
 		public:
+			RBTree()
+				: _size(0),  _comp(comp_type()), _node_alloc(node_allocator_type())
+			{
+				this->_nil = this->construct_node();
+				this->_nil->parent = _nil;
+				this->_nil->left = _nil;
+				this->_nil->right = _nil;
+				this->_root = _nil;
+			};
 
+			RBTree(const RBTree& x)
+				: _size(0), _comp(comp_type()), _node_alloc(node_allocator_type())
+			{
+				this->_nil = this->construct_node();
+				this->_nil->parent = _nil;
+				this->_nil->left = _nil;
+				this->_nil->right = _nil;
+				this->_root = _nil;
+				this->copy(x);
+			};
+
+			~RBTree()
+			{
+				this->clear();
+				destroy_node(this->_nil);
+			};
+
+			node_type* get_nil() const 
+			{
+				return (this->_nil);
+			};
+
+			size_t get_size() const
+			{
+				return (this->_size);
+			};
+
+			node_type* get_smallest() const
+			{
+				node_type *result = this->_root;
+				while (!result->left->empty())
+					result = result->left;
+				return (result);
+			};
+
+			node_type* get_biggest() const
+			{
+				node_type *result = this->_root;
+				while (!result->right->empty())
+					result = result->right;
+				return (result);
+			};
+
+			node_type* search(const T& value) const
+			{
+				return (search(this->_root, value));
+			};
+
+			node_type* search(node_type* node, const T& value) const
+			{
+				if (node == this->_nil)
+					return (this->_nil);
+				else if (same_value(node->get_value(), value))
+					return (node);
+				else if (_comp(node->get_value(), value))//만약 value가 현재 노드보다 더 크면 오른쪽 탐색
+					return (search(node->right, value));
+				else//value가 현재 노드보다 작다면 왼쪽 탐색 
+					return (search(node->left, value));
+			};
+
+			pair<node_type*, bool> insert(const T& value)
+			{
+				//비어있는 트리이면 들어온 값을 루트 노드로 추가
+				if (this->empty())
+				{
+					this->_root = this->construct_node(value);
+					this->_root->parent = _nil;
+					this->_root->left = _nil;
+					this->_root->right = _nil;
+					this->_root->color = BLACK;//루트 노드는 black
+					++this->_size;
+					this->_nil->parent = this->get_biggest();
+					return (pair<node_type*, bool>(this->_root, true));
+				}
+
+				//트리가 존재하면, 루트 노드부터 값을 비교하면서 동일한 값이 있는 지 확인
+				node_type *current = this->_root;
+				node_type *parent = this->_nil;
+				while (current != this->nil)
+				{
+					parent = current;
+					if (same_value(value, current->get_value()))//같은 값이 존재하면 false 반환
+						return (pair<node_type*, bool>(current, false));
+					else if (_comp(value, current->get_value()))//value가 current보다 작으면 왼쪽 탐색
+						current = current->left;
+					else//value가 current보다 크면 오른쪽 탐색
+						current = current->right;
+				}
+				//여기로 왔다는 건 동일한 value가 없단 뜻이므로 트리에 추가
+				current = this->construct_node(value);
+				current->parent = parent;
+				current->left = this->_nil;
+				current->right = this->_nil;
+				if (_comp(value, parent->get_value()))
+					parent->left = current;
+				else
+					parent->right = current;
+				fix_violation(current);
+				++this->_size;
+				this->_nil->parent = this->get_biggest();
+				return (pair<node_type*, bool>(current, true));
+			};
+
+			size_t erase(node_type* target)
+			{
+				if (this->_nil == target)
+					return (0);
+				if (!target->is_leaf())//리프 노드가 아니면 왼쪽 또는 오른쪽이랑 스왑하고 삭제
+					swap_target(target);
+				delete_node(target);
+				return (1);
+			};
+
+			size_t erase(const T& value)
+			{
+				return (erase(this->search(value)));
+			};
+
+			template <typename InputIterator>
+			size_t erase(InputIterator iterator,
+						typename ft::enable_if<ft::is_iter<InputIterator>::value>::yes = 1)
+			{
+				return (erase(iterator.get_pointer()));
+			};
+
+			void delete_node(node_type* target)
+			{
+				//삭제노드가 루트 노드이고, 자식 노드가 없으면 그냥 삭제
+				if (target->is_root() && target->is_leaf())
+				{
+					delete_root();
+					return ;
+				}
+				node_type *child;
+				if (target->left->empty())
+					child = target->right;
+				else
+					child = target->left;
+				replace_node(target, child);
+				if (target->color == BLACK)
+				{
+					if (child->color == RED)//색이 RED이면 그냥 BLACK으로 바꿔주기만 하면 됨
+						child->color = BLACK;
+					else
+						delete_case1(child);
+				}
+				this->destroy_node(target);
+				--this->_size;
+				this->_nil->parent = this->get_biggest();
+			};
+
+			void clear()
+			{
+				clear(this->_root);
+				this->_size = 0;
+			};
+
+			void clear(node_type* node)
+			{
+				if (node == this->_nil)
+					return ;
+				clear(node->left);
+				clear(node->right);
+				if (node->is_root())
+				{
+					delete_root();
+					return ;
+				}
+				else if (node->is_left())
+					node->parent->left = this->_nil;
+				else
+					node->parent->right = this->_nil;
+				this->destroy_node(node);
+			};
+
+			
 	};
 }//namespace ft
 
