@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:15:38 by sna               #+#    #+#             */
-/*   Updated: 2022/06/23 22:17:17 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/24 22:36:43 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -617,7 +617,132 @@ namespace ft {
 				this->destroy_node(node);
 			};
 
-			
+			void copy(const RBTree& obj)
+			{
+				this->clear();
+				copy(obj._root);
+			};
+
+			void copy(const node_type* node)
+			{
+				if(copy(node->value) == false)
+					return ;
+				copy(node->left);
+				copy(node->right);
+			};
+
+			bool copy(const value_type* value)
+			{
+				if (value == NULL)
+					return (false);
+				insert(*value);
+				return (true);
+			};
+
+			//트리 내에서 특정 value 값보다 같거나 큰 값이 처음 나오는 위치를 리턴
+			node_type* lower_bound(const T& value) const
+			{
+				return (lower_bound(this->_root, value));
+			};
+
+			node_type* lower_bound(node_type* node, const T& value) const
+			{
+				// 트리 최대 value가 매겨변수 value 보다 작으면 _nil
+				if (_comp(this->get_biggest()->get_value(), value))
+					return (this->_nil);
+				while (1)
+				{
+					if (same_value(node->get_value(), value))
+						return (node);
+					else if (_comp(value, node->get_value()))// 현재 node가 찾는 값보다 작으면
+					{
+						if (node->left == this->_nil)
+							return (node);
+						node = node->left;
+					}
+					else
+					{
+						//현재보다 한개 큰노드 가져오기
+						if (node->right == this->_nil)
+							return (this->get_next_node(node));
+						node = node->right;
+					}
+				}
+			};
+
+			//트리 내에서 value값보다 처음으로 큰 값이 나오는 위치를 리턴
+			node_type* upper_bound(const T& value) const
+			{
+				return (upper_bound(this->_root, value));
+			};
+
+			node_type* upper_bound(node_type* node, const T& value) const
+			{
+				// 트리 최대 value가 매겨변수 value 보다 작으면 _nil
+				if (!_comp(value, this->get_biggest()->get_value()))
+					return (this->_nil);
+				while (1)
+				{
+					// 현재 node가 찾는 값보다 작으면
+					if (_comp(value, node->get_value()))
+					{
+						if (node->left == this->_nil)
+							return (node);
+						node = node->left;
+					}
+					else
+					{
+						//현재보다 한개 큰노드 가져오기
+						if (node->right == this->_nil)
+							return (this->get_next_node(node));
+						node = node->right;
+					}
+				}
+			};
+
+			void check_traversal()
+			{
+				node_type *curr = this->_root;
+				node_type *prev = this->_nil;
+				if (curr == this->_nil)
+					return ;
+				while (1)
+				{
+					if (prev == curr->right)
+					{
+						prev = curr;
+						if (curr->parent != this->_nil)
+							curr = curr->parent;
+						else
+							return ;
+						continue;
+					}
+					else if (prev == curr->left)
+					{
+						prev = curr;
+						if (curr->right == this->_nil)
+							curr = curr->parent;
+						else
+							curr = curr->right;
+						continue ;
+					}
+					if (curr->left != this->_nil)
+					{
+						prev = curr;
+						curr = curr->left;
+						continue ;
+					}
+					if (curr->right != this->_nil)
+					{
+						prev = curr;
+						curr = curr->right;
+						continue ;
+					}
+					prev = curr;
+					curr = curr->parent;
+					continue ;
+				}
+			};
 	};
 }//namespace ft
 
