@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 23:17:15 by sna               #+#    #+#             */
-/*   Updated: 2022/06/19 18:47:33 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/24 23:22:38 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ namespace ft {
 		typedef T			value_type;
 		typedef Distance	difference_type;
 		typedef Pointer		pointer;
+		typedef const T*	const_pointer;
 		typedef Reference	reference;
+		typedef const T&	const_reference;
 		typedef Category	iterator_category;
 	};
 
@@ -39,7 +41,9 @@ namespace ft {
 		typedef typename Iterator::value_type			value_type;
 		typedef typename Iterator::difference_type		difference_type;
 		typedef typename Iterator::pointer				pointer;
+		typedef typename Iterator::const_pointer		const_pointer;
 		typedef typename Iterator::reference			reference;
+		typedef typename Iterator::const_reference		const_reference;
 	};
 
 	template <class T>
