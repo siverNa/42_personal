@@ -6,7 +6,7 @@
 /*   By: sna <sna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:24:25 by sna               #+#    #+#             */
-/*   Updated: 2022/06/24 23:27:01 by sna              ###   ########.fr       */
+/*   Updated: 2022/06/25 21:42:13 by sna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,57 @@ namespace ft {
 		
 		private:
 			node* _node;
+
+			node* find_next()
+			{
+				node *result = this->_node->parent;
+				
+				//오른쪽 노드가 있으면 현재 노드 기준 왼쪽 서브트리의 작은 원소 찾기
+				if (!this->_node->right->empty())
+				{
+					result = this->_node->right;
+					while (!result->left->empty())
+						result = result->left;
+					return (result);
+				}//오른쪽 노드가 없으면 처음 나오는 왼쪽 자식 노드 찾기
+				else if (!this->_node->parent->empty())
+				{
+					result = this->_node;
+					while (!result->parent->empty())
+					{
+						if (result->is_left())
+							return (result->parent);
+						result = result->parent;
+					}
+					result = result->parent;
+				}
+				return (result);
+			};
+
+			node* find_prev()
+			{
+				node *result = this->_node->parent;
+
+				if (!this->_node->left->empty())
+				{
+					result = this->_node->left;
+					while (!result->right->empty())
+						result = result->right;
+					return (result);
+				}
+				else if (!this->_node->parent->empty())
+				{
+					result = this->_node;
+					while (!result->parent->empty())
+					{
+						if (result->is_right())
+							return (result->parent);
+						result = result->parent;
+					}
+					result = result->parent;
+				}
+				return (result);
+			};
 		
 		public:
 			map_iterator(node* node) : _node(node) {};
@@ -82,6 +133,32 @@ namespace ft {
 			const_pointer operator->() const
 			{
 				return (&(this->_node->get_value()));
+			};
+
+			this_type_iterator& operator++()
+			{
+				this->_node = this->find_next();
+				return (*this);
+			};
+
+			this_type_iterator operator++(int)
+			{
+				this_type_iterator temp(*this);
+				this->operator++();
+				return (temp);
+			};
+
+			this_type_iterator& operator--()
+			{
+				this->_node = this->find_prev();
+				return (*this);
+			};
+
+			this_type_iterator operator--(int)
+			{
+				this_type_iterator temp(*this);
+				this->operator--();
+				return (temp);
 			};
 	};
 }//namespace ft
